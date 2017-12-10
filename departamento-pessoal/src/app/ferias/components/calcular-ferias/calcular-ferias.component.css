@@ -1,0 +1,15 @@
+.header {
+      border-bottom: 1px solid #ccc;
+}
+
+.container-title-main {
+      display: flex;
+      align-items: center;
+}
+
+.title-main {
+      padding-left: 2px;
+}
+.fs-input{
+      border-left: solid 3px #777;
+}
