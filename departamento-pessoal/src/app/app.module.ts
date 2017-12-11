@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FeriasModule } from './ferias';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+
+
 
 const appRoutes: Routes = [
   {
@@ -24,9 +27,13 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule,
-    RouterModule.forRoot(appRoutes, { useHash: true })
+    RouterModule.forRoot(appRoutes, { useHash: true }),
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
