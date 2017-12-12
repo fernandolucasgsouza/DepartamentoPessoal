@@ -21,8 +21,7 @@
                 id="salario"
                 class="form-control fs-input"
                 placeholder="R$0,00"
-                formControlName="salario"
-               >
+                formControlName="salario">
             </div>
           </div>
             <div class="row form-group">
@@ -64,11 +63,17 @@
             <div class="row form-group">
                 <div class="col-md-12 ">
                   <button
-                    type="button"
+                    type="submit"
                     class="btn fs-btn-dark  pull-right"
                     (click)="calcular()">
                     Calcular
                   </button>
+                    <button
+                      type="submit"
+                      class="btn fs-btn-dark  pull-right fs-margin-right-5"
+                      (click)="clean()">
+                      Limpar
+                    </button>
                 </div>
             </div>
         </div>

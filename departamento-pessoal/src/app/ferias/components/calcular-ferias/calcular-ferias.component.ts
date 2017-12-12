@@ -25,7 +25,6 @@ export class CalcularFeriasComponent implements OnInit {
     private _service : s.FeriasService
   ) {
     this.formCalculaFerias = this._fb.group(this.fbGroup);
-    console.log(this.formCalculaFerias.controls);
     this.itemFerias = {
       ref: '-',
       proventos : '-',
@@ -34,14 +33,18 @@ export class CalcularFeriasComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.calcular();
+
   }
 
 
   public calcular(): void {
 
-    let salario = this.formCalculaFerias.get('salario').value;
-    let horasExtras = this.formCalculaFerias.get('horaExtras').value
+    let salario = parseFloat(this.formCalculaFerias.get('salario').value);
+    let horasExtras = parseFloat(this.formCalculaFerias.get('horasExtras').value);
+
+    console.log(salario);
+    console.log(horasExtras);
+    console.log(this._service.calculaSalarioBruto(salario, horasExtras));
 
     this.itemFerias = {
       ref: '-',
@@ -51,4 +54,7 @@ export class CalcularFeriasComponent implements OnInit {
 
   }
 
+  public clean(){
+    this.itemFerias = { ref: '-', proventos : '-', descontos : '-'};
+  }
 }
