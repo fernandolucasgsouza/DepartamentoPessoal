@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
+import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { FeriasModule } from './ferias';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    CoreModule,
     RouterModule,
     RouterModule.forRoot(appRoutes, { useHash: true }),
     ReactiveFormsModule,
