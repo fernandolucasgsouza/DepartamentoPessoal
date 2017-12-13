@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import * as mdec from './core-routing.module';
+import * as dc from './directives';
 
 @NgModule({
   imports: [
@@ -16,7 +17,10 @@ import * as mdec from './core-routing.module';
   exports:[
     HttpModule,
     FormsModule,
+    dc.MaskDirective
   ],
-  declarations: []
+  declarations: [
+    dc.MaskDirective
+  ]
 })
 export class CoreModule { }
