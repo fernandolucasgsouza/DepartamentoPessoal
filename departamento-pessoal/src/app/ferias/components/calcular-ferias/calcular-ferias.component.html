@@ -34,32 +34,38 @@
                   id="horas-extras"
                   class="form-control fs-input"
                   placeholder="R$0,00"
-                  formControlName="horasExtras">
+                  formControlName="horasExtras"
+                  mask="#.##0,00"
+                  maskReverse="true">
               </div>
             </div>
             <div class="row form-group">
                 <div class="col-md-12">
                   <label class="title-input" for="dias">Dias férias:</label>
                   <input
-                    type="number"
+                    type="text"
                     id="dias"
                     class="form-control fs-input"
                     placeholder="0"
                     min="1"
                     max="30"
-                    formControlName="dias">
+                    formControlName="dias"
+                    mask="99"
+                    maskReverse="true">
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col-md-12">
                   <label class="title-input" for="dependentes">Quantidade denpedentes:</label>
                   <input
-                    type="number"
+                    type="text"
                     id="dependentes"
                     class="form-control fs-input"
                     placeholder="0"
                     min="1"
-                    formControlName="dependentes">
+                    formControlName="dependentes"
+                    mask="99"
+                    maskReverse="true">
                 </div>
             </div>
             <div class="row form-group">
