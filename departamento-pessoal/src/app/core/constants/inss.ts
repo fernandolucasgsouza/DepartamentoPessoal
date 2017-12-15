@@ -1,7 +1,7 @@
 export class Inss{
 
   static readonly FAIXA_1 = {
-    MAX: "1.659.38",
+    MAX: "1.659,38",
     PERCENT: "8%"
   }
 

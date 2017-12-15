@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 import * as s from '../../services';
+import * as fc from '../../../core/format-datas';
+
 
 @Component({
   selector: 'app-calcular-ferias',
@@ -32,21 +34,27 @@ export class CalcularFeriasComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log(parseFloat(fc.FormatDatas.formatForFloat("1.200,03")));
   }
-
 
   public calcular(): void {
 
-    let salario = parseFloat(this.formCalculaFerias.get('salario').value);
-    let horasExtras = parseFloat(this.formCalculaFerias.get('horasExtras').value);
-    let diasFerias = parseInt(this.formCalculaFerias.get('dias').value);
+    debugger;
 
-    let valorFeriasBruto = this._service.calculaFerias(salario, horasExtras, diasFerias)
-    let valor1_3 = this._service.calcularFerias1_3(valorFeriasBruto);
+    let salario = fc.FormatDatas.formatForFloat(this.formCalculaFerias.get('salario').value);
+      // let salario = parseFloat(
+      //   fc.FormatDatas.formatForFloat(this.formCalculaFerias.get('salario').value));
+    let horasExtras = parseFloat(
+      fc.FormatDatas.formatForFloat(this.formCalculaFerias.get('horasExtras').value));
+    let diasFerias = parseInt(
+      fc.FormatDatas.formatForFloat(this.formCalculaFerias.get('dias').value));
+
+    let valorBrutoFerias = this._service.calculaFerias(salario, horasExtras, diasFerias)
+    let valor1_3 = this._service.calculaFerias1_3(valorBrutoFerias);
 
     this.itemFerias = {
       ref: diasFerias + 'd',
-      proventos: 'R$' + valorFeriasBruto,
+      proventos: 'R$' + valorBrutoFerias,
       descontos: '-'
     };
 
@@ -55,6 +63,8 @@ export class CalcularFeriasComponent implements OnInit {
       proventos: 'R$' + valor1_3,
       descontos: '-'
     }
+
+    this._service.calculaInss(valorBrutoFerias);
   }
 
   public clean() {
