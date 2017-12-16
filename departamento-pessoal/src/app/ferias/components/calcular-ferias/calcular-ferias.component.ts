@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 
 import * as s from '../../services';
 import * as fc from '../../../core/format-datas';
+import { stringify } from '@angular/core/src/util';
 
 
 @Component({
@@ -33,36 +34,30 @@ export class CalcularFeriasComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    console.log(parseFloat(fc.FormatDatas.formatForFloat("1.200,03")));
   }
 
   public calcular(): void {
 
-    debugger;
+    const salario = parseFloat(fc.FormatDatas.formatForFloat(
+      this.formCalculaFerias.get('salario').value)) * 10;
+    const horasExtras = parseFloat(fc.FormatDatas.formatForFloat(
+      this.formCalculaFerias.get('horasExtras').value)) * 10;
+    const diasFerias = parseInt(this.formCalculaFerias.get('dias').value);
 
-    let salario = fc.FormatDatas.formatForFloat(this.formCalculaFerias.get('salario').value);
-      // let salario = parseFloat(
-      //   fc.FormatDatas.formatForFloat(this.formCalculaFerias.get('salario').value));
-    let horasExtras = parseFloat(
-      fc.FormatDatas.formatForFloat(this.formCalculaFerias.get('horasExtras').value));
-    let diasFerias = parseInt(
-      fc.FormatDatas.formatForFloat(this.formCalculaFerias.get('dias').value));
-
-    let valorBrutoFerias = this._service.calculaFerias(salario, horasExtras, diasFerias)
-    let valor1_3 = this._service.calculaFerias1_3(valorBrutoFerias);
+    const valorBrutoFerias = this._service.calculaFerias(salario, horasExtras, diasFerias);
+    const valor1_3 = this._service.calculaFerias1_3(valorBrutoFerias);
 
     this.itemFerias = {
       ref: diasFerias + 'd',
-      proventos: 'R$' + valorBrutoFerias,
+      proventos: fc.FormatDatas.formatForFloatReverse(valorBrutoFerias.toFixed(2) + ''),
       descontos: '-'
     };
 
     this.itemFerias1_3 = {
       ref: '-',
-      proventos: 'R$' + valor1_3,
+      proventos: fc.FormatDatas.formatForFloatReverse(valor1_3.toFixed(2) + ''),
       descontos: '-'
-    }
+    };
 
     this._service.calculaInss(valorBrutoFerias);
   }
