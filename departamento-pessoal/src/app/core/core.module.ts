@@ -17,10 +17,12 @@ import * as dc from './directives';
   exports:[
     HttpModule,
     FormsModule,
-    dc.MaskDirective
+    dc.MaskDirective,
+    dc.ErrorsInputDirective
   ],
   declarations: [
-    dc.MaskDirective
+    dc.MaskDirective,
+    dc.ErrorsInputDirective
   ]
 })
 export class CoreModule { }
