@@ -18,11 +18,11 @@ import * as dc from './directives';
     HttpModule,
     FormsModule,
     dc.MaskDirective,
-    dc.ErrorsInputDirective
+    dc.ValidationDirective
   ],
   declarations: [
     dc.MaskDirective,
-    dc.ErrorsInputDirective
+    dc.ValidationDirective
   ]
 })
 export class CoreModule { }

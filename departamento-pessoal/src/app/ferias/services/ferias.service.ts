@@ -25,18 +25,13 @@ export class FeriasService {
 
 
   public calculaFerias(salario, horasExtras: number, dias: number): number {
-    let valorBruto: number;
-    valorBruto = salario + horasExtras;
+    let valorBruto = salario + horasExtras;
     this.result = (valorBruto / 30) * dias;
-    this.result.toFixed(2);
     return this.result;
   }
 
   public calculaFerias1_3(valorBruto: number): number {
-    let result: number;
-    result = valorBruto / 3;
-    result.toFixed(2);
-    return result;
+    return valorBruto / 3;
   }
 
   public calculaInss(salarioBruto: number): number {
@@ -51,7 +46,7 @@ export class FeriasService {
       return result;
     }
 
-    console.log(result);
+    console.log(result)
   }
 
 }

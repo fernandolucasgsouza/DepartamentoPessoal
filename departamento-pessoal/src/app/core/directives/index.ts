@@ -1,2 +1,2 @@
 export * from './mask';
-export * from './errors-input';
+export * from './validation/validation.directive';

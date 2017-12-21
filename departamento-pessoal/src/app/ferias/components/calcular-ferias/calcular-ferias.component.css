@@ -10,9 +10,6 @@
 .title-main {
       padding-left: 2px;
 }
-.fs-input-sucess{
+.fs-input{
       border-left: solid 3px #777;
-}
-.fs-input-danger{
-      border-left: solid 3px rgba(156, 36, 15, 0.801);
 }

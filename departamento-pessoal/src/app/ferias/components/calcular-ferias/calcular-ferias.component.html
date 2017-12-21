@@ -10,7 +10,7 @@
 </section>
 <section class="section bg-color-3">
   <div class="container">
-    <form [formGroup]="formCalculaFerias" contaction="">
+    <form [formGroup]="formCalculaFerias">
       <div class="row form-group ">
         <div class="col-md-4">
           <div class="row form-group">
@@ -23,9 +23,10 @@
                 placeholder="R$0,00"
                 formControlName="salario"
                 mask="#.##0,00"
-                maskReverse="true">
+                maskReverse="true"
+                validation
+                >
             </div>
-            <span errors-input></span>
           </div>
             <div class="row form-group">
               <div class="col-md-12">

@@ -8,13 +8,12 @@ declare var $: any;
 
 export class MaskDirective implements AfterViewInit {
   @Input('mask') mask: string;
-  @Input('maskReverse') maskReverse: string;
+  @Input() maskReverse: string = 'false';
 
   constructor(private elRef: ElementRef) {
   }
 
   ngAfterViewInit(): void {
-    $(this.elRef.nativeElement).mask(this.mask,
-      { reverse: (this.maskReverse === 'true') ? true : false});
+    $(this.elRef.nativeElement).mask(this.mask, { reverse: (this.maskReverse == 'true') ? true : false });
   }
 }
