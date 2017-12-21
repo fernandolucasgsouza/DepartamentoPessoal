@@ -1,5 +1,5 @@
-import { Directive, HostListener, ElementRef } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Directive, HostListener, ElementRef, Input } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
 
 @Directive({
   selector: '[validation]',
@@ -11,18 +11,53 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 })
 export class ValidationDirective implements ControlValueAccessor {
 
-  public onTouched:any
-  public onChange:any
+  @Input() control: FormControl;
+  @Input() minlength: string;
+  @Input() maxlength: string;
 
-  constructor(private elRef: ElementRef) { }
+  public errors: Array<any>;
+  public onTouched:any;
+  public onChange:any;
+
+  constructor(private elRef: ElementRef) {
+    this.errors = [
+      {
+        name: 'required',
+        message: 'Campo não preenchido.'
+      },
+      {
+        name: 'email',
+        message: 'E-mail não é válido.'
+      },
+      {
+        name: 'cpf',
+        message: 'CPF inválido'
+      },
+      {
+        name: 'maxLength',
+        message: 'Tamanho máximo é de ' + this.maxlength + ' caracteres'
+      },
+      {
+        name: 'minLength',
+        message: '"Tamanho minimo é de ' + this.minlength + ' caracteres'
+      },
+    ]
+  }
 
   @HostListener('keyup', ['$event'])
   keyEvent($event: any) {
     let valor = $event.target.value;
     console.log('valor',valor);
 
+    console.log(this.getError(), this.control.valid);
   }
 
+  public getError() {
+    for (let key in this.control.errors) {
+      return this.control.touched;
+    }
+    return false;
+  }
 
   /**
    * Obtem o valor contido na model
