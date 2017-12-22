@@ -11,53 +11,17 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/f
 })
 export class ValidationDirective implements ControlValueAccessor {
 
-  @Input() control: FormControl;
-  @Input() minlength: string;
-  @Input() maxlength: string;
-
-  public errors: Array<any>;
   public onTouched:any;
   public onChange:any;
 
-  constructor(private elRef: ElementRef) {
-    this.errors = [
-      {
-        name: 'required',
-        message: 'Campo não preenchido.'
-      },
-      {
-        name: 'email',
-        message: 'E-mail não é válido.'
-      },
-      {
-        name: 'cpf',
-        message: 'CPF inválido'
-      },
-      {
-        name: 'maxLength',
-        message: 'Tamanho máximo é de ' + this.maxlength + ' caracteres'
-      },
-      {
-        name: 'minLength',
-        message: '"Tamanho minimo é de ' + this.minlength + ' caracteres'
-      },
-    ]
-  }
+  constructor(private elRef: ElementRef) {}
+
 
   @HostListener('keyup', ['$event'])
   keyEvent($event: any) {
     let valor = $event.target.value;
     console.log('valor',valor);
-
-    console.log(this.getError(), $event.control.valid);
-  }
-
-  public getError() {
-    for (let key in this.control.errors) {
-      return this.control.touched;
-    }
-    return false;
-  }
+  };
 
   /**
    * Obtem o valor contido na model
