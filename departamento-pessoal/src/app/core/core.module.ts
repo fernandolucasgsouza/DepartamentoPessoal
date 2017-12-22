@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import * as mdec from './core-routing.module';
 import * as dc from './directives';
+import * as cc from './components';
+import * as sc from './services';
 
 @NgModule({
   imports: [
@@ -18,11 +20,16 @@ import * as dc from './directives';
     HttpModule,
     FormsModule,
     dc.MaskDirective,
-    dc.ValidationDirective
+    dc.ValidationDirective,
+    cc.ValidationMessageComponent
   ],
   declarations: [
     dc.MaskDirective,
-    dc.ValidationDirective
+    dc.ValidationDirective,
+    cc.ValidationMessageComponent
+  ],
+  providers:[
+    sc.ValidationService
   ]
 })
 export class CoreModule { }

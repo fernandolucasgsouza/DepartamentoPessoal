@@ -13,3 +13,6 @@
 .fs-input{
       border-left: solid 3px #777;
 }
+.fs-input-error {
+      border-left: solid 3px rgb(136, 53, 53)
+}

@@ -49,7 +49,7 @@ export class ValidationDirective implements ControlValueAccessor {
     let valor = $event.target.value;
     console.log('valor',valor);
 
-    console.log(this.getError(), this.control.valid);
+    console.log(this.getError(), $event.control.valid);
   }
 
   public getError() {

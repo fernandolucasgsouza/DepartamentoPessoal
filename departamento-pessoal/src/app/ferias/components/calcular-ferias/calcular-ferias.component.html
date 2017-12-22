@@ -19,14 +19,14 @@
               <input
                 type="text"
                 id="salario"
-                class="form-control fs-input"
+                class="form-control | (fbGroup.salario.valid) ? fs-input : fs-input-error"
                 placeholder="R$0,00"
                 formControlName="salario"
                 mask="#.##0,00"
                 maskReverse="true"
-                [control]="fbGroup.salario"
-                validation
                 >
+                <validation-message [control]="fbGroup.salario"></validation-message>
+                <pre>{{fbGroup.salario.valid | json}}</pre>
             </div>
           </div>
             <div class="row form-group">
