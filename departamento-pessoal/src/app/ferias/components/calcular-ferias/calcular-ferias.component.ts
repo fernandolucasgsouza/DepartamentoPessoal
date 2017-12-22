@@ -19,9 +19,10 @@ export class CalcularFeriasComponent implements OnInit {
   public formCalculaFerias: FormGroup;
 
   public fbGroup = {
-    salario: new FormControl('', Validators.compose([Validators.required, Validators.minLength(5)]) ),
+    salario: new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)]) ),
     horasExtras: new FormControl('', Validators.required),
     dias: new FormControl('', Validators.required),
+    faltas: new FormControl('', Validators.required),
     dependentes: new FormControl('', Validators.required),
   };
 

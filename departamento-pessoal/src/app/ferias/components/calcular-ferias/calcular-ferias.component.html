@@ -29,15 +29,16 @@
           </div>
             <div class="row form-group">
               <div class="col-md-12">
-                <label class="title-input" for="horas-extras">Valor médio horas extras ano:</label>
+                <label class="title-input" for="horasExtras">Valor médio horas extras ano:</label>
                 <input
                   type="text"
-                  id="horas-extras"
-                  class="form-control fs-input"
+                  id="horasExtras"
+                  class="form-control {{(fbGroup.salario.valid) ? 'fs-input' : 'fs-input-error'}}"
                   placeholder="R$0,00"
                   formControlName="horasExtras"
                   mask="#.##0,00"
                   maskReverse="true">
+                  <validation-message [control]="fbGroup.horasExtras"></validation-message>
               </div>
             </div>
             <div class="row form-group">
@@ -46,27 +47,45 @@
                   <input
                     type="text"
                     id="dias"
-                    class="form-control fs-input"
+                    class="form-control {{(fbGroup.dias.valid) ? 'fs-input' : 'fs-input-error'}}"
                     placeholder="0"
                     min="1"
                     max="30"
                     formControlName="dias"
                     mask="99"
                     maskReverse="true">
+                    <validation-message [control]="fbGroup.dias"></validation-message>
                 </div>
             </div>
+            <div class="row form-group">
+              <div class="col-md-12">
+                <label class="title-input" for="faltas">Dias falta:</label>
+                <input
+                  type="text"
+                  id="faltas"
+                  class="form-control {{(fbGroup.faltas.valid) ? 'fs-input' : 'fs-input-error'}}"
+                  placeholder="0"
+                  min="1"
+                  max="30"
+                  formControlName="faltas"
+                  mask="99"
+                  maskReverse="true">
+                  <validation-message [control]="fbGroup.faltas"></validation-message>
+              </div>
+          </div>
             <div class="row form-group">
                 <div class="col-md-12">
                   <label class="title-input" for="dependentes">Quantidade denpedentes:</label>
                   <input
                     type="text"
                     id="dependentes"
-                    class="form-control fs-input"
+                    class="form-control {{(fbGroup.dependentes.valid) ? 'fs-input' : 'fs-input-error'}}"
                     placeholder="0"
                     min="1"
                     formControlName="dependentes"
                     mask="99"
                     maskReverse="true">
+                    <validation-message [control]="fbGroup.dependentes"></validation-message>
                 </div>
             </div>
             <div class="row form-group">
@@ -74,15 +93,18 @@
                   <button
                     type="submit"
                     class="btn fs-btn-dark  pull-right"
-                    (click)="calcular()">
+                    (click)="calcular()"
+                    [disabled]="!formCalculaFerias.valid">
                     Calcular
                   </button>
+
                     <button
                       type="submit"
                       class="btn fs-btn-dark  pull-right fs-margin-right-5"
                       (click)="clean()">
                       Limpar
                     </button>
+              
                 </div>
             </div>
         </div>
