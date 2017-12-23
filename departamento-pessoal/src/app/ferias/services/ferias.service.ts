@@ -1,26 +1,22 @@
 import { Injectable } from '@angular/core';
 
 import * as cec from '../../core/constants';
+import * as sc from '../../core/services';
+import * as pc from '../../core/pipes';
+import { CalculaPercentualPipe } from '../../core/pipes';
 
 
 @Injectable()
 export class FeriasService {
 
   public result: number;
-  public faixa1;
-  public faixa2;
-  public faixa3;
+  public percentual: number;
 
+  constructor(private calcPercent: pc.CalculaPercentualPipe) {
 
-  constructor() {
-
-    this.faixa1 = cec.Inss.FAIXA_1;
-    this.faixa2 = cec.Inss.FAIXA_2;
-    this.faixa3 = cec.Inss.FAIXA_3;
-
-    console.log(this.faixa1);
-    console.log(this.faixa2);
-    console.log(this.faixa3);
+    console.log(cec.Inss.FAIXA_1);
+    console.log(cec.Inss.FAIXA_2);
+    console.log(cec.Inss.FAIXA_3);
   }
 
 
@@ -35,18 +31,32 @@ export class FeriasService {
   }
 
   public calculaInss(salarioBruto: number): number {
-
     let result: number;
-    if (salarioBruto <= this.faixa1.MAX) {
-      result = salarioBruto * this.faixa1.PERCENT;
+    let FX1 = parseFloat(sc.FormatDatasService.formatForFloat(cec.Inss.FAIXA_1.MAX));
+    let FX2 = parseFloat(sc.FormatDatasService.formatForFloat(cec.Inss.FAIXA_2.MAX));
+    let FX3 = parseFloat(sc.FormatDatasService.formatForFloat(cec.Inss.FAIXA_3.MAX));
+
+    if (salarioBruto <= FX1) {
+      this.percentual = cec.Inss.FAIXA_1.PERCENT;
+      result = this.calcPercent.transform(salarioBruto, cec.Inss.FAIXA_1.PERCENT)
       return result;
     }
-    if (salarioBruto > this.faixa1.MAX && salarioBruto < this.faixa2.MAX) {
-      result = salarioBruto * this.faixa2.PERCENT;
+    if (salarioBruto > FX1 && salarioBruto <= FX2) {
+      this.percentual = cec.Inss.FAIXA_2.PERCENT;
+      result = this.calcPercent.transform(salarioBruto, cec.Inss.FAIXA_2.PERCENT);
+      return result;
+    }
+    if (salarioBruto > FX2 && salarioBruto <= FX3) {
+      this.percentual = cec.Inss.FAIXA_3.PERCENT;
+      result = this.calcPercent.transform(salarioBruto, cec.Inss.FAIXA_3.PERCENT)
+      return result;
+    } else {
+      let teto = parseFloat(sc.FormatDatasService.formatForFloat(cec.Inss.FAIXA_3.MAX))
+      this.percentual = cec.Inss.FAIXA_3.PERCENT;
+      result = this.calcPercent.transform(teto, cec.Inss.FAIXA_3.PERCENT)
       return result;
     }
 
-    console.log(result)
   }
 
 }

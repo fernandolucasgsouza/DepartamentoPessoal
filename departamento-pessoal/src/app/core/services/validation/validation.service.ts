@@ -12,7 +12,9 @@ export class ValidationService {
         'email'     : 'E-mail não é válido.',
         'cpf'       : 'CPF inválido',
         'minlength' : `Tamanho mínimo é de ${validatorValue.requiredLength} caracteres`,
-        'maxlength' : `Tamanho máximo é de ${validatorValue.requiredLength} caracteres`
+        'maxlength' : `Tamanho máximo é de ${validatorValue.requiredLength} caracteres`,
+        'min'       : `Quantidade mínima é ${validatorValue.min}.`,
+        'max'       : `Quantidade máxima é ${validatorValue.max}.`
       }
 
       return errorsConfig[validatorName];

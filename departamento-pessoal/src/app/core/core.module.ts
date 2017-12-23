@@ -7,6 +7,7 @@ import * as mdec from './core-routing.module';
 import * as dc from './directives';
 import * as cc from './components';
 import * as sc from './services';
+import * as pc from './pipes';
 
 @NgModule({
   imports: [
@@ -16,19 +17,17 @@ import * as sc from './services';
     mdec.CoreRoutingModule
 
   ],
-  exports:[
+  exports: [
     HttpModule,
     FormsModule,
     dc.MaskDirective,
-    dc.ValidationDirective,
     cc.ValidationMessageComponent
   ],
   declarations: [
     dc.MaskDirective,
-    dc.ValidationDirective,
-    cc.ValidationMessageComponent
+    cc.ValidationMessageComponent,
   ],
-  providers:[
+  providers: [
     sc.ValidationService
   ]
 })

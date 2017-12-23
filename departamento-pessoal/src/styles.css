@@ -44,6 +44,14 @@ body {
       background-color: #337ab7;
 }
 
+.txt-color-6 {
+      color: #343a40;
+}
+
+.bg-color-6 {
+      background-color: #343a40;
+}
+
 .section {
       width: 100%;
       padding: 2%;
