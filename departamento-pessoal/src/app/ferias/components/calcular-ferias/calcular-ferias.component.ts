@@ -51,10 +51,13 @@ export class CalcularFeriasComponent implements OnInit {
     let horasExtras = parseFloat(sc.FormatDatasService.formatForFloat(
       this.formCalculaFerias.get('horasExtras').value)) * 10;
     let diasFerias = parseInt(this.formCalculaFerias.get('dias').value);
+    let totDependentes = parseInt(this.formCalculaFerias.get('dependentes').value);
 
     let valorBrutoFerias = this._service.calculaFerias(salario, horasExtras, diasFerias);
     let valor1_3 = this._service.calculaFerias1_3(valorBrutoFerias);
-    let valorInss = this._service.calculaInss(valorBrutoFerias);
+    let valorInss = this._service.calculaINSS(valorBrutoFerias,valor1_3);
+
+    let valorIrrf = this._service.calculaIRRF(valorBrutoFerias,valor1_3,valorInss,totDependentes);
 
     this.itemFerias = {
       ref: diasFerias + 'd',
@@ -66,8 +69,13 @@ export class CalcularFeriasComponent implements OnInit {
       proventos: sc.FormatDatasService.formatForFloatReverse(String(valor1_3.toFixed(2))),
     };
     this.itemInss = {
-      ref: this._service.percentual + '%',
+      ref: this._service.percentual_INSS + '%',
       proventos: sc.FormatDatasService.formatForFloatReverse(String(valorInss.toFixed(2))),
+      descontos: '-'
+    };
+    this.itemIrrf = {
+      ref: this._service.percentual_IRRF + '%',
+      proventos: sc.FormatDatasService.formatForFloatReverse(String(valorIrrf.toFixed(2))),
       descontos: '-'
     };
 
