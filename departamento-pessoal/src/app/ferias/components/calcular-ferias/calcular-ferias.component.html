@@ -24,7 +24,7 @@
                 formControlName="salario"
                 mask="#.##0,00"
                 maskReverse="true">
-                <validation-message [control]="fbGroup.salario"></validation-message>
+                <fs-validation-message [control]="fbGroup.salario"></fs-validation-message>
             </div>
           </div>
             <div class="row form-group">
@@ -38,7 +38,7 @@
                   formControlName="horasExtras"
                   mask="#.##0,00"
                   maskReverse="true">
-                  <validation-message [control]="fbGroup.horasExtras"></validation-message>
+                  <fs-validation-message [control]="fbGroup.horasExtras"></fs-validation-message>
               </div>
             </div>
             <div class="row form-group">
@@ -48,13 +48,11 @@
                     type="text"
                     id="dias"
                     class="form-control {{(fbGroup.dias.valid) ? 'fs-input' : 'fs-input-error'}}"
-                    placeholder="0"
-                    min="1"
-                    max="30"
+                    placeholder="00"
                     formControlName="dias"
                     mask="99"
-                    maskReverse="true">
-                    <validation-message [control]="fbGroup.dias"></validation-message>
+                    maskReverse="false">
+                    <fs-validation-message [control]="fbGroup.dias"></fs-validation-message>
                 </div>
             </div>
             <div class="row form-group">
@@ -64,13 +62,11 @@
                   type="text"
                   id="faltas"
                   class="form-control {{(fbGroup.faltas.valid) ? 'fs-input' : 'fs-input-error'}}"
-                  placeholder="0"
-                  min="1"
-                  max="30"
+                  placeholder="00"
                   formControlName="faltas"
                   mask="99"
                   maskReverse="true">
-                  <validation-message [control]="fbGroup.faltas"></validation-message>
+                  <fs-validation-message [control]="fbGroup.faltas"></fs-validation-message>
               </div>
           </div>
             <div class="row form-group">
@@ -80,12 +76,11 @@
                     type="text"
                     id="dependentes"
                     class="form-control {{(fbGroup.dependentes.valid) ? 'fs-input' : 'fs-input-error'}}"
-                    placeholder="0"
-                    min="1"
+                    placeholder="00"
                     formControlName="dependentes"
                     mask="99"
                     maskReverse="true">
-                    <validation-message [control]="fbGroup.dependentes"></validation-message>
+                    <fs-validation-message [control]="fbGroup.dependentes"></fs-validation-message>
                 </div>
             </div>
             <div class="row form-group">

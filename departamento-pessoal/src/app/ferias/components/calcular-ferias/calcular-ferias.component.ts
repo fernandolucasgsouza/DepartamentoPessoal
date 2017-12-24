@@ -19,7 +19,7 @@ export class CalcularFeriasComponent implements OnInit {
   public itemInss: object = { ref: '-', proventos: '-', descontos: '-' };
   public itemIrrf: object = { ref: '-', proventos: '-', descontos: '-' };
   public itemSubTotais: object = { ref: '-', proventos: '-', descontos: '-' };
-  public vrTotal:any = '-';
+  public vrTotal: any = '-';
 
   public fbGroup = {
     salario: new FormControl('', Validators.compose([
@@ -28,12 +28,22 @@ export class CalcularFeriasComponent implements OnInit {
     ])),
     dias: new FormControl('', Validators.compose([
       Validators.required,
+      Validators.minLength(2),
       Validators.min(5),
       Validators.max(30),
     ])),
-    horasExtras: new FormControl('', Validators.compose([Validators.required])),
-    faltas: new FormControl('', Validators.compose([Validators.required])),
-    dependentes: new FormControl('', Validators.compose([Validators.required])),
+    horasExtras: new FormControl('0,00', Validators.compose([
+      Validators.minLength(3),
+      Validators.required
+    ])),
+    faltas: new FormControl('00', Validators.compose([
+      Validators.minLength(2),
+      Validators.required
+    ])),
+    dependentes: new FormControl('00', Validators.compose([
+      Validators.minLength(2),
+      Validators.required
+    ])),
   };
 
   constructor(
@@ -111,10 +121,10 @@ export class CalcularFeriasComponent implements OnInit {
       descontos: subtotalDesc
     };
 
+    //apresenta valor total
     this.fadeIn('fs-container-total');
   }
-  
-  
+
   public clean() {
     let itensTable = [
       this.itemFerias,
@@ -122,25 +132,47 @@ export class CalcularFeriasComponent implements OnInit {
       this.itemInss,
       this.itemIrrf,
       this.itemSubTotais];
-      
-      for (let i = 0; i < itensTable.length; i++) {
-        for (let key in itensTable[i]) {
-          itensTable[i][key] = '-';
-        }
+
+    /**
+    * reseta campos tabela [ref, proventos, descontos]
+    */
+    for (let i = 0; i < itensTable.length; i++) {
+      for (let key in itensTable[i]) {
+        itensTable[i][key] = '-';
+      }
+    }
+
+    /**
+     * reseta campos formulário inputs
+     */
+    for (let key in this.fbGroup) {
+      if (key == 'horasExtras') {
+        this.fbGroup[key].reset('0,00');
+      } else if (key == 'faltas' || key == 'dependentes') {
+        this.fbGroup[key].reset('00');
+      } else {
+        this.fbGroup[key].reset();
       }
 
-      this.fadeOut('fs-container-total');
+    }
+
+    this.setFocus('salario');
+    this.fadeOut('fs-container-total');
   }
 
-  public fadeIn(itemId:string){
+  public fadeIn(itemId: string) {
     let item = document.getElementById(itemId);
     item.classList.remove('fs-fade-out');
     item.classList.add('fs-fade-in');
   }
 
-  public fadeOut(itemId:string){
+  public fadeOut(itemId: string) {
     let item = document.getElementById(itemId);
     item.classList.remove('fs-fade-in');
     item.classList.add('fs-fade-out');
+  }
+
+  public setFocus(itemId:any){
+    let item = document.getElementById(itemId).focus();
   }
 }

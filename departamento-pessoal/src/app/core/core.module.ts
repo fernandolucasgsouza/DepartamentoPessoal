@@ -26,6 +26,7 @@ import * as pc from './pipes';
   declarations: [
     dc.MaskDirective,
     cc.ValidationMessageComponent,
+    cc.ModalComponent,
   ],
   providers: [
     sc.ValidationService

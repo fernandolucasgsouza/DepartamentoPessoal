@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 import *  as sc from '../../services'
 
 @Component({
-  selector: 'validation-message',
+  selector: 'fs-validation-message',
   templateUrl: './validation-message.component.html',
   styleUrls: ['./validation-message.component.css']
 })
