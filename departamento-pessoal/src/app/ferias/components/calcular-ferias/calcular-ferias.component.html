@@ -43,12 +43,12 @@
             </div> 
             <div class="row form-group">
               <div class="col-md-12">
-                <label class="title-input" for="faltas">Dias falta:</label>
+                <label class="title-input" for="faltas">Qtd. dias falta sem justificativa:</label>
                 <input
-                  type="text"
+                  type="number"
                   id="faltas"
                   class="form-control {{(fbGroup.faltas.valid) ? 'fs-input' : 'fs-input-error'}}"
-                  placeholder="00"
+                  placeholder="0"
                   formControlName="faltas"
                   (keyup)="onKeyFalta($event)"
                   mask="99"
@@ -58,12 +58,12 @@
             </div>
           <div class="row form-group">
             <div class="col-md-12">
-              <label class="title-input" for="dias">Dias férias:</label>
+              <label class="title-input" for="dias">Qtd. dias férias:</label>
               <input
-                type="text"
+                type="number"
                 id="dias"
                 class="form-control {{(fbGroup.dias.valid) ? 'fs-input' : 'fs-input-error'}}"
-                placeholder="00"
+                placeholder="0"
                 formControlName="dias"
                 mask="99"
                 maskReverse="false">
@@ -72,12 +72,12 @@
         </div>
             <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="title-input" for="dependentes">Quantidade dependentes:</label>
+                  <label class="title-input" for="dependentes">Qtd. dependentes:</label>
                   <input
-                    type="text"
+                    type="number"
                     id="dependentes"
                     class="form-control {{(fbGroup.dependentes.valid) ? 'fs-input' : 'fs-input-error'}}"
-                    placeholder="00"
+                    placeholder="0"
                     formControlName="dependentes"
                     mask="99"
                     maskReverse="true">
@@ -90,7 +90,7 @@
                     type="submit"
                     class="btn fs-btn-dark  pull-right"
                     (click)="calcular()"
-                    [disabled]="!formCalculaFerias.valid">
+                    [disabled]="!formCalculaFerias.valid || btnStatus">
                     Calcular
                   </button>
 

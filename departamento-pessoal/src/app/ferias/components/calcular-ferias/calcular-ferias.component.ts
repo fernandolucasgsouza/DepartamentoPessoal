@@ -24,32 +24,34 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
   public itemSubTotais: object = { ref: '-', proventos: '-', descontos: '-' };
   public vrTotal: any = '-';
   public faltas: any;
+  public btnStatus: boolean = false;
 
   public fbGroup = {
     salario: new FormControl('', Validators.compose([
       Validators.required,
+      Validators.min(0),
       Validators.minLength(6)
     ])),
+    horasExtras: new FormControl('0,00', Validators.compose([
+      Validators.required,
+      Validators.min(0),
+      Validators.minLength(3)
+    ])),
     faltas: new FormControl('', Validators.compose([
-      Validators.minLength(2),
-      Validators.required
+      Validators.required,
+      Validators.min(0)
     ])),
     dias: new FormControl(
       { value: '', disabled: true },
       Validators.compose([
         Validators.required,
-        Validators.minLength(2),
         Validators.min(5),
         Validators.max(30),
       ])
     ),
-    horasExtras: new FormControl('0,00', Validators.compose([
-      Validators.minLength(3),
-      Validators.required
-    ])),
-    dependentes: new FormControl('00', Validators.compose([
-      Validators.minLength(2),
-      Validators.required
+    dependentes: new FormControl('', Validators.compose([
+      Validators.required,
+      Validators.min(0)
     ])),
   };
 
@@ -65,6 +67,7 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
   ngOnChanges(): void { }
 
   public calcular(): void {
+    console.log(this.formCalculaFerias.controls.dependentes.value)
 
     let salario = parseFloat(sc.FormatDatasService.formatForFloat(
       this.formCalculaFerias.get('salario').value)) * 10;
@@ -137,20 +140,29 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
 
   onKeyFalta(event: any) {
     let vrInput = event.target.value;
+    this.btnStatus = false;
 
     if (vrInput != undefined && vrInput != null && vrInput != '') {
+      this.formCalculaFerias.get('dias').clearValidators();
       this.formCalculaFerias.get('dias').enable();
       this.faltas = this._service.verificaFaltas(parseInt(vrInput));
-      this.formCalculaFerias.get('dias').setValue('');
+      this.formCalculaFerias.get('dias').setValue(this.faltas);
       this.formCalculaFerias.get('dias').setValidators([
         Validators.required,
         Validators.minLength(2),
         Validators.min(5),
         Validators.max(this.faltas)
       ]);
+
+      if (this.faltas == 0) {
+        this.formCalculaFerias.get('dias').disable();
+        this.btnStatus = true;
+        return
+      }
     }
     else {
       this.formCalculaFerias.get('dias').disable();
+      this.formCalculaFerias.get('dias').setValue('');
     }
   }
 
