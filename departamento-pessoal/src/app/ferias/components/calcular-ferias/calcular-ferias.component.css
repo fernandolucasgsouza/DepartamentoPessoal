@@ -16,3 +16,11 @@
 .fs-input-error {
       border-left: solid 3px rgb(212, 63, 63)
 }
+.fs-container-total{
+      padding: 0 15px;
+}
+.fs-total{
+      text-align: right;
+      font-weight: 600;
+      padding: 2px 8px;
+}

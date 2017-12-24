@@ -89,7 +89,7 @@
                 </div>
             </div>
             <div class="row form-group">
-                <div class="col-md-12 ">
+                <div class="col-md-12">
                   <button
                     type="submit"
                     class="btn fs-btn-dark  pull-right"
@@ -113,9 +113,9 @@
               <thead >
                 <tr>
                   <th>Nome</th>
-                  <th  scope="col">Ref.</th>
-                  <th>Proventos</th>
-                  <th>Descontos</th>
+                  <th class="text-right">Ref.</th>
+                  <th class="text-right">Proventos</th>
+                  <th class="text-right">Descontos</th>
                 </tr>
               </thead>
               <tbody>
@@ -144,13 +144,17 @@
                       <td align="right">{{itemIrrf.descontos}}</td>
                   </tr>
                   <tr scope="row">
-                      <td>Totais</td>
-                      <td align="right">-</td>
-                      <td align="right">-</td>
-                      <td align="right">-</td>
+                      <td class="fs-font-weight-600">Subtotais</td>
+                      <td align="right"  class="fs-font-weight-600">{{itemSubTotais.ref}}</td>
+                      <td align="right" class="fs-font-weight-600">{{itemSubTotais.proventos}}</td>
+                      <td align="right" class="fs-font-weight-600">{{itemSubTotais.descontos}}</td>
                     </tr>
               </tbody>
             </table>
+            <div id="fs-container-total" class="row form-group fs-container-total fs-fade-out">
+              <div class="col-md-9 fs-total txt-color-5">TOTAL:</div>
+              <div class="col-md-3 fs-total txt-color-5">{{vrTotal}}</div>
+            </div>
         </div>
       </div>
     </form>

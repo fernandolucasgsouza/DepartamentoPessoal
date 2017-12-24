@@ -116,4 +116,16 @@ export class FeriasService {
     return calc - deducao;
   }
 
+  public somaSubtotal(val_A: any, val_B: any) {
+    (val_A == '-' ? 0 : val_A);
+    (val_B == '-' ? 0 : val_B);
+    return val_A + val_B;
+  }
+
+  public calcTotal(val_A: any, val_B: any) {
+    (val_A == '-' ? 0 : val_A);
+    (val_B == '-' ? 0 : val_B);
+    return val_A - val_B;
+  }
+
 }
