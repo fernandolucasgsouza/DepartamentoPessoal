@@ -3,7 +3,7 @@
     <div class="container">
       <div class="container-title-main">
         <i class="glyphicon glyphicon-tasks txt-color-5"></i>
-        <h4 class="title-main">Cálcula férias</h4>
+        <h4 class="title-main">Cálcula férias 12/12</h4>
       </div>
     </div>
   </div>
@@ -40,21 +40,7 @@
                   maskReverse="true">
                   <fs-validation-message [control]="fbGroup.horasExtras"></fs-validation-message>
               </div>
-            </div>
-            <div class="row form-group">
-                <div class="col-md-12">
-                  <label class="title-input" for="dias">Dias férias:</label>
-                  <input
-                    type="text"
-                    id="dias"
-                    class="form-control {{(fbGroup.dias.valid) ? 'fs-input' : 'fs-input-error'}}"
-                    placeholder="00"
-                    formControlName="dias"
-                    mask="99"
-                    maskReverse="false">
-                    <fs-validation-message [control]="fbGroup.dias"></fs-validation-message>
-                </div>
-            </div>
+            </div> 
             <div class="row form-group">
               <div class="col-md-12">
                 <label class="title-input" for="faltas">Dias falta:</label>
@@ -64,11 +50,26 @@
                   class="form-control {{(fbGroup.faltas.valid) ? 'fs-input' : 'fs-input-error'}}"
                   placeholder="00"
                   formControlName="faltas"
+                  (keyup)="onKeyFalta($event)"
                   mask="99"
                   maskReverse="true">
                   <fs-validation-message [control]="fbGroup.faltas"></fs-validation-message>
               </div>
-          </div>
+            </div>
+          <div class="row form-group">
+            <div class="col-md-12">
+              <label class="title-input" for="dias">Dias férias:</label>
+              <input
+                type="text"
+                id="dias"
+                class="form-control {{(fbGroup.dias.valid) ? 'fs-input' : 'fs-input-error'}}"
+                placeholder="00"
+                formControlName="dias"
+                mask="99"
+                maskReverse="false">
+                <fs-validation-message [control]="fbGroup.dias"></fs-validation-message>
+            </div>
+        </div>
             <div class="row form-group">
                 <div class="col-md-12">
                   <label class="title-input" for="dependentes">Quantidade dependentes:</label>

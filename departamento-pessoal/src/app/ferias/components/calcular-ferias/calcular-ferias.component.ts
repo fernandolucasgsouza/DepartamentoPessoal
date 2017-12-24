@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 import * as s from '../../services';
 import * as sc from '../../../core/services';
+import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 
 
 
@@ -11,7 +12,9 @@ import * as sc from '../../../core/services';
   templateUrl: './calcular-ferias.component.html',
   styleUrls: ['./calcular-ferias.component.css']
 })
-export class CalcularFeriasComponent implements OnInit {
+export class CalcularFeriasComponent implements OnInit, OnChanges {
+
+
 
   public formCalculaFerias: FormGroup;
   public itemFerias: object = { ref: '-', proventos: '-', descontos: '-' };
@@ -20,24 +23,28 @@ export class CalcularFeriasComponent implements OnInit {
   public itemIrrf: object = { ref: '-', proventos: '-', descontos: '-' };
   public itemSubTotais: object = { ref: '-', proventos: '-', descontos: '-' };
   public vrTotal: any = '-';
+  public faltas: any;
 
   public fbGroup = {
     salario: new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(6)
     ])),
-    dias: new FormControl('', Validators.compose([
-      Validators.required,
+    faltas: new FormControl('', Validators.compose([
       Validators.minLength(2),
-      Validators.min(5),
-      Validators.max(30),
-    ])),
-    horasExtras: new FormControl('0,00', Validators.compose([
-      Validators.minLength(3),
       Validators.required
     ])),
-    faltas: new FormControl('00', Validators.compose([
-      Validators.minLength(2),
+    dias: new FormControl(
+      { value: '', disabled: true },
+      Validators.compose([
+        Validators.required,
+        Validators.minLength(2),
+        Validators.min(5),
+        Validators.max(30),
+      ])
+    ),
+    horasExtras: new FormControl('0,00', Validators.compose([
+      Validators.minLength(3),
       Validators.required
     ])),
     dependentes: new FormControl('00', Validators.compose([
@@ -53,8 +60,9 @@ export class CalcularFeriasComponent implements OnInit {
     this.formCalculaFerias = this._fb.group(this.fbGroup);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
+
+  ngOnChanges(): void { }
 
   public calcular(): void {
 
@@ -121,8 +129,29 @@ export class CalcularFeriasComponent implements OnInit {
       descontos: subtotalDesc
     };
 
-    //apresenta valor total
+    /**
+     * apresenta valor total
+     */
     this.fadeIn('fs-container-total');
+  }
+
+  onKeyFalta(event: any) {
+    let vrInput = event.target.value;
+
+    if (vrInput != undefined && vrInput != null && vrInput != '') {
+      this.formCalculaFerias.get('dias').enable();
+      this.faltas = this._service.verificaFaltas(parseInt(vrInput));
+      this.formCalculaFerias.get('dias').setValue('');
+      this.formCalculaFerias.get('dias').setValidators([
+        Validators.required,
+        Validators.minLength(2),
+        Validators.min(5),
+        Validators.max(this.faltas)
+      ]);
+    }
+    else {
+      this.formCalculaFerias.get('dias').disable();
+    }
   }
 
   public clean() {
@@ -155,9 +184,9 @@ export class CalcularFeriasComponent implements OnInit {
       }
 
     }
-
     this.setFocus('salario');
     this.fadeOut('fs-container-total');
+    this.formCalculaFerias.get('dias').disable();
   }
 
   public fadeIn(itemId: string) {
@@ -172,7 +201,7 @@ export class CalcularFeriasComponent implements OnInit {
     item.classList.add('fs-fade-out');
   }
 
-  public setFocus(itemId:any){
+  public setFocus(itemId: any) {
     let item = document.getElementById(itemId).focus();
   }
 }

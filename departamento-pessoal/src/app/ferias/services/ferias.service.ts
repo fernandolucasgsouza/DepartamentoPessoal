@@ -15,15 +15,21 @@ export class FeriasService {
 
   constructor(private calcPercent: pc.CalculaPercentualPipe) {
 
-    console.log(cec.Inss.FAIXA_1);
-    console.log(cec.Inss.FAIXA_2);
-    console.log(cec.Inss.FAIXA_3);
+    // console.log(cec.Inss.FAIXA_1);
+    // console.log(cec.Inss.FAIXA_2);
+    // console.log(cec.Inss.FAIXA_3);
 
-    console.log(cec.Irrf.FAIXA_1);
-    console.log(cec.Irrf.FAIXA_2);
-    console.log(cec.Irrf.FAIXA_3);
-    console.log(cec.Irrf.FAIXA_4);
-    console.log(cec.Irrf.FAIXA_5);
+    // console.log(cec.Irrf.FAIXA_1);
+    // console.log(cec.Irrf.FAIXA_2);
+    // console.log(cec.Irrf.FAIXA_3);
+    // console.log(cec.Irrf.FAIXA_4);
+    // console.log(cec.Irrf.FAIXA_5);
+
+    // console.log(cec.Faltas.FAIXA_1);
+    // console.log(cec.Faltas.FAIXA_2);
+    // console.log(cec.Faltas.FAIXA_3);
+    // console.log(cec.Faltas.FAIXA_4);
+    // console.log(cec.Faltas.FAIXA_5);
 
   }
 
@@ -108,6 +114,32 @@ export class FeriasService {
     if (valorBase > FX1 && valorBase <= FX2) {
       return this._calculoIRRF(cec.Irrf.FAIXA_2.PERCENT, valorBase, DED_FX2);
     }
+  }
+
+  public verificaFaltas(falta: number) {
+
+    let FX1 = cec.Faltas.FAIXA_1.MAX;
+    let FX2 = cec.Faltas.FAIXA_2.MAX;
+    let FX3 = cec.Faltas.FAIXA_3.MAX;
+    let FX4 = cec.Faltas.FAIXA_4.MAX;
+    let FX5 = cec.Faltas.FAIXA_5.ACIMA;
+
+    if (falta <= FX1) {
+      return cec.Faltas.FAIXA_1.DIREITO;
+    }
+    else if (falta > FX1 && falta <= FX2) {
+      return cec.Faltas.FAIXA_2.DIREITO;
+    }
+    else if (falta > FX2 && falta <= FX3) {
+      return cec.Faltas.FAIXA_3.DIREITO;
+    }
+    else if (falta > FX3 && falta <= FX4) {
+      return cec.Faltas.FAIXA_4.DIREITO;
+    }
+    else {
+      return cec.Faltas.FAIXA_5.DIREITO;
+    }
+
   }
 
   private _calculoIRRF(percentual, valBase, deducao) {
