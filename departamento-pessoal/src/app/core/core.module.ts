@@ -23,11 +23,13 @@ import * as pc from './pipes';
     dc.MaskDirective,
     cc.ValidationMessageComponent,
     cc.ModalComponent,
+    cc.TabelaInssComponent,
   ],
   declarations: [
     dc.MaskDirective,
     cc.ValidationMessageComponent,
     cc.ModalComponent,
+    cc.TabelaInssComponent,
   ],
   providers: [
     sc.ValidationService

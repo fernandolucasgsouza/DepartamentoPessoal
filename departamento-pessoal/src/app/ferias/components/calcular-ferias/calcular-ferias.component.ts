@@ -1,9 +1,10 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewContainerRef, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-
-import * as s from '../../services';
-import * as sc from '../../../core/services';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+
+import * as sc from '../../../core/services';
+import * as cc from '../../../core/components';
+import * as s from '../../services';
 
 
 
@@ -14,7 +15,7 @@ import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 })
 export class CalcularFeriasComponent implements OnInit, OnChanges {
 
-
+  @ViewChild(cc.TabelaInssComponent) inss: cc.TabelaInssComponent
 
   public formCalculaFerias: FormGroup;
   public itemFerias: object = { ref: '-', proventos: '-', descontos: '-' };
@@ -55,9 +56,10 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
     ])),
   };
 
+
   constructor(
     private _fb: FormBuilder,
-    private _service: s.FeriasService
+    private _service: s.FeriasService,
   ) {
     this.formCalculaFerias = this._fb.group(this.fbGroup);
   }

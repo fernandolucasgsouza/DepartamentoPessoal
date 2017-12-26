@@ -20,3 +20,39 @@
   left: 0;
   border-radius: 2px;
 }
+
+.fs-head-modal{
+  width: 100%;
+  padding: 15px 10px 0 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.fs-btn-close-modal{
+  width: 40px;
+  font-size: 1.9em;
+  color: #5d6b7e;
+  cursor: pointer;
+  text-align: center;
+}
+
+.fs-btn-close-modal:hover{
+  color: #337ab7
+}
+
+.fs-title-modal{
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.fs-body-modal{
+  max-height: 500px;
+  overflow-y: hidden;
+}
+.fs-description-modal{
+  font-size: 1em;
+  padding: 0 0 10px 0;
+}

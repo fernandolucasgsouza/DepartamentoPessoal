@@ -1,5 +1,15 @@
 <section class="fs-content-modal {{bgColorClassSection}}">
 
-  <div class="container fs-container-modal {{bgColorClassContainer}}"></div>
+  <div class="container fs-container-modal {{bgColorClassContainer}}">
+    <div class="fs-head-modal">
+        <h2 class="fs-title-modal">{{title}}</h2>
+        <div class="fs-btn-close-modal">&times;</div>
+    </div>
+    <div class="fs-body-modal">
+      <div class="fs-description-modal">{{description}}</div>
+      <!-- <ng-content></ng-content> -->
+      {{component}}
+    </div>
+  </div>
 
 </section>

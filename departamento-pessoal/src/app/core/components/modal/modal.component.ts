@@ -9,6 +9,9 @@ export class ModalComponent implements OnInit {
 
   @Input() bgColorClassSection:string;
   @Input() bgColorClassContainer:string;
+  @Input() title:string;
+  @Input() description:string;
+  @Input() component:Component;
 
   constructor() { }
 
