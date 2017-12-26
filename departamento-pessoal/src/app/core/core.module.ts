@@ -21,7 +21,8 @@ import * as pc from './pipes';
     HttpModule,
     FormsModule,
     dc.MaskDirective,
-    cc.ValidationMessageComponent
+    cc.ValidationMessageComponent,
+    cc.ModalComponent,
   ],
   declarations: [
     dc.MaskDirective,

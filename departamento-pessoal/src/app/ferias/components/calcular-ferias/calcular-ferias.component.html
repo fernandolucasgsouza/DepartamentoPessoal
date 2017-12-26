@@ -2,7 +2,7 @@
   <div class="section header bg-color-3">
     <div class="container">
       <div class="container-title-main">
-        <i class="glyphicon glyphicon-tasks txt-color-5"></i>
+        <i class="icon-calculator"></i>
         <h4 class="title-main">Cálcula férias 12/12</h4>
       </div>
     </div>
@@ -40,7 +40,7 @@
                   maskReverse="true">
                   <fs-validation-message [control]="fbGroup.horasExtras"></fs-validation-message>
               </div>
-            </div> 
+            </div>
             <div class="row form-group">
               <div class="col-md-12">
                 <label class="title-input" for="faltas">Qtd. dias falta sem justificativa:</label>
@@ -100,7 +100,7 @@
                       (click)="clean()">
                       Limpar
                     </button>
-              
+
                 </div>
             </div>
         </div>
@@ -156,3 +156,8 @@
     </form>
   </div>
 </section>
+<fs-modal
+  [bgColorClassSection]="'bg-color-8'"
+  [bgColorClassContainer]="'bg-color-1'"
+
+  ></fs-modal>

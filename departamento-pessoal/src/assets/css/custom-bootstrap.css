@@ -3,19 +3,19 @@
         border-bottom: 2px solid #9d9d9d;
         color: #fff !important;
         background-color: #343a40;
-        font-weight: 300;
+        font-weight: 500;
         opacity: .9;
   }
-  
+
   .btn.fs-btn-dark{
         color: #fff;
-        background-color: #343a40;
-        border: 2px solid #343a40;
+        background-color: #313944;
+        border: 2px solid #313944;
         font-weight: 600;
         transition: all 350ms ease-in-out;
-        outline: none;     
+        outline: none;
   }
-  
+
   .btn.fs-btn-dark:hover{
         color: #343a40;
         background-color: transparent ;
@@ -30,4 +30,3 @@
 }
 
 
-  

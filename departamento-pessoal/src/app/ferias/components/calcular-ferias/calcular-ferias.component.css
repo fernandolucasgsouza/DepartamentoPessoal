@@ -24,3 +24,11 @@
       font-weight: 600;
       padding: 2px 8px;
 }
+.icon-calculator{
+  width: 26px;
+  height: 26px;
+  background-image: url('../../../../assets/images/calculator.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
