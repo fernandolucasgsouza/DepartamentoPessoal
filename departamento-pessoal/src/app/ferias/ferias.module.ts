@@ -16,11 +16,10 @@ import * as me from './routing-ferias.module';
     ReactiveFormsModule,
     FormsModule,
     mdec.CoreModule,
-    cc.TabelaInssComponent
   ],
   declarations: [
     c.CalcularFeriasComponent,
-    
+    cc.TabelaInssComponent
   ],
   providers: [
     FormBuilder,
@@ -28,7 +27,6 @@ import * as me from './routing-ferias.module';
     pc.CalculaPercentualPipe
   ],
   entryComponents:[
-    c.CalcularFeriasComponent,
     cc.TabelaInssComponent
   ]
 })
