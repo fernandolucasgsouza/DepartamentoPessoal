@@ -1,11 +1,10 @@
-import { Component, OnInit, HostListener, ViewContainerRef, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, HostListener, ViewContainerRef, Input } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 
 import * as sc from '../../../core/services';
 import * as cc from '../../../core/components';
 import * as s from '../../services';
-
 
 
 @Component({
@@ -15,7 +14,7 @@ import * as s from '../../services';
 })
 export class CalcularFeriasComponent implements OnInit, OnChanges {
 
-  @ViewChild(cc.TabelaInssComponent) inss: cc.TabelaInssComponent
+  public modal_Inss: any;
 
   public formCalculaFerias: FormGroup;
   public itemFerias: object = { ref: '-', proventos: '-', descontos: '-' };
@@ -64,7 +63,9 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
     this.formCalculaFerias = this._fb.group(this.fbGroup);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.modal_Inss = cc.TabelaInssComponent;
+  }
 
   ngOnChanges(): void { }
 

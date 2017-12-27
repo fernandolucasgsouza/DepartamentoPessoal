@@ -22,14 +22,12 @@ import * as pc from './pipes';
     FormsModule,
     dc.MaskDirective,
     cc.ValidationMessageComponent,
-    cc.ModalComponent,
-    cc.TabelaInssComponent,
+    cc.ModalComponent
   ],
   declarations: [
     dc.MaskDirective,
     cc.ValidationMessageComponent,
-    cc.ModalComponent,
-    cc.TabelaInssComponent,
+    cc.ModalComponent
   ],
   providers: [
     sc.ValidationService
