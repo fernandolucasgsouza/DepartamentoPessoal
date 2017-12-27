@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ComponentRef, ViewContainerRef, ViewChild,ComponentFactoryResolver} from '@angular/core';
+import { Component, OnInit, Input, ComponentRef, ViewContainerRef, ViewChild, ComponentFactoryResolver } from '@angular/core';
 
 @Component({
   selector: 'fs-modal',
@@ -7,16 +7,16 @@ import { Component, OnInit, Input, ComponentRef, ViewContainerRef, ViewChild,Com
 })
 export class ModalComponent implements OnInit {
 
-  @Input() bgColorClassSection:string;
-  @Input() bgColorClassContainer:string;
-  @Input() title:string;
-  @Input() description:string;
-  @Input() modalContent :any;
+  @Input() bgColorClassSection: string;
+  @Input() bgColorClassContainer: string;
+  @Input() title: string;
+  @Input() description: string;
+  @Input() modalContent: any;
 
-  @ViewChild('parent', {read: ViewContainerRef}) parent:ViewContainerRef;
+  @ViewChild('parent', { read: ViewContainerRef }) parent: ViewContainerRef;
 
   private _componentRef: ComponentRef<any>;
-  public innerHtmlContent:any;
+  public innerHtmlContent: any;
 
   constructor(private _componetFR: ComponentFactoryResolver) { }
 
@@ -24,20 +24,20 @@ export class ModalComponent implements OnInit {
     this._buildModal();
   }
 
-  private _buildModal(){
-    debugger;
-    switch(typeof this.modalContent){
-      case'function':
+  private _buildModal() {
+
+    switch (typeof this.modalContent) {
+      case 'function':
         this.createComponent();
-      break;
+        break;
       case 'string':
         this.addToComponent();
-      break;
+        break;
 
     }
   }
 
-  private createComponent(){
+  private createComponent() {
     this.parent.clear();
     let factory = this._componetFR.resolveComponentFactory(this.modalContent);
     this._componentRef = this.parent.createComponent(factory);
@@ -45,5 +45,5 @@ export class ModalComponent implements OnInit {
 
   private addToComponent() {
     this.innerHtmlContent = this.modalContent;
-}
+  }
 }
