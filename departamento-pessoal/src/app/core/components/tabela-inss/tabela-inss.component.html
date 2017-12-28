@@ -1,3 +1,15 @@
-<p>
-  tabela-inss works!
-</p>
+<div class="fs-container-table">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col" *ngFor="let itemH of listHead">{{itemH.name}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr scope="row" *ngFor="let itemB of listBody">
+      <td>{{itemB.description}}</td>
+      <td>{{itemB.percent}}</td>
+    </tr>
+  </tbody>
+  </table>
+</div>
