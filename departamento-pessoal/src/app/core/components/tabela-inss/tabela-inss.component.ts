@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import * as ctc from '../../constants/inss'
 
@@ -9,9 +9,11 @@ import * as ctc from '../../constants/inss'
 })
 export class TabelaInssComponent implements OnInit {
 
+  
   public listHead:any = []
-  public listBody:any = []
+  public listBody:any[][]
   private inss: ctc.Inss
+
   constructor(
   ) { }
 
@@ -21,15 +23,15 @@ export class TabelaInssComponent implements OnInit {
 
   public createTable(){
     this.listHead = [
-      {name:'Descrição' },
-      {name:'Percentual'}
+      {name:'Descrição', aling: 'text-left', width:'' },
+      {name:'Percentual', aling: 'text-right', width:''}
     ]
 
     this.listBody = [
-      {description:`Salário até R$${ctc.Inss.FAIXA_1.MAX}`, percent:`${ctc.Inss.FAIXA_1.PERCENT}%`},
-      {description:`Salário de R$${ctc.Inss.FAIXA_2.MIN} até R$${ctc.Inss.FAIXA_2.MAX}`, percent:`${ctc.Inss.FAIXA_2.PERCENT}%`},
-      {description:`Salário de R$${ctc.Inss.FAIXA_3.MIN} até R$${ctc.Inss.FAIXA_3.MAX}`, percent:`${ctc.Inss.FAIXA_3.PERCENT}%`},
-    ]
+      [`Salário até R$${ctc.Inss.FAIXA_1.MAX}`, `${ctc.Inss.FAIXA_1.PERCENT}%`],
+      [`Salário de R$${ctc.Inss.FAIXA_3.MIN} até R$${ctc.Inss.FAIXA_3.MAX}`, `${ctc.Inss.FAIXA_3.PERCENT}%`],
+      [`Salário de R$${ctc.Inss.FAIXA_2.MIN} até R$${ctc.Inss.FAIXA_2.MAX}`, `${ctc.Inss.FAIXA_2.PERCENT}%`]
+    ]    
   }
 
 }

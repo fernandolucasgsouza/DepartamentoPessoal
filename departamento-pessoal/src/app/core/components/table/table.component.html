@@ -1,0 +1,22 @@
+<div class="fs-container-table" style="z-index:5">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col" 
+        *ngFor="let header of dataHead" 
+        class="fs-th"
+        [attr.aling]="header.aling"
+        [width]="header.width" 
+        [ngClass]="header.aling">{{header.name}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr scope="row" *ngFor="let line of dataBody">
+      <td *ngFor="let colum of line; let id = index" class="{{dataAling}}">
+        {{colum}} - {{i}}
+      </td>
+    </tr>
+  </tbody>
+  <tr *ngFor="let data of dataAling; let i = index" >{{dataAling[i]}}</tr>
+  </table>
+</div>
