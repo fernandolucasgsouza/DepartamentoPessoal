@@ -1,13 +1,14 @@
-<section class="fs-content-modal {{bgColorClassSection}}">
+<section class="fs-content-modal {{bgColorClassSection}} close">
 
   <div class="container fs-container-modal {{bgColorClassContainer}}">
     <div class="fs-head-modal">
-        <h2 class="fs-title-modal">{{title}}</h2>
-        <div class="fs-btn-close-modal">&times;</div>
+      <h2 class="fs-title-modal">{{title}}</h2>
+      <div class="fs-btn-close-modal" (click)="closeModal($event)">&times;</div>
     </div>
     <div class="fs-body-modal">
       <div class="fs-description-modal">{{description}}</div>
       <div #parent></div>
     </div>
   </div>
+
 </section>

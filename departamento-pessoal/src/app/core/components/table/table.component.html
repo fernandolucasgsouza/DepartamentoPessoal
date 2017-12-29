@@ -1,22 +1,16 @@
-<div class="fs-container-table" style="z-index:5">
+<div class="fs-container-table">
   <table class="table table-hover">
-    <thead class="thead-dark">
-    <tr>
-      <th scope="col" 
-        *ngFor="let header of dataHead" 
-        class="fs-th"
-        [attr.aling]="header.aling"
-        [width]="header.width" 
-        [ngClass]="header.aling">{{header.name}}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr scope="row" *ngFor="let line of dataBody">
-      <td *ngFor="let colum of line; let id = index" class="{{dataAling}}">
-        {{colum}} - {{i}}
-      </td>
-    </tr>
-  </tbody>
-  <tr *ngFor="let data of dataAling; let i = index" >{{dataAling[i]}}</tr>
+    <ng-container *ngFor="let line of dataContent; let iL = index">
+      <thead class="thead-dark">
+        <tr *ngIf='iL == 0'>
+          <th *ngFor="let column of dataContent[0]; let iC = index" [ngClass]="dataConfig[iC].aling">{{column }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf='iL > 0'>
+          <td *ngFor="let column of line; let iC = index" [ngClass]="dataConfig[iC].aling"> {{column }}</td>
+        </tr>
+      </tbody>
+    </ng-container>
   </table>
 </div>

@@ -12,6 +12,8 @@ export class ModalComponent implements OnInit {
   @Input() title: string;
   @Input() description: string;
   @Input() modalContent: any;
+  @Input() idModal: any;
+
 
   @ViewChild('parent', { read: ViewContainerRef }) parent: ViewContainerRef;
 
@@ -46,4 +48,9 @@ export class ModalComponent implements OnInit {
   private addToComponent() {
     this.innerHtmlContent = this.modalContent;
   }
+
+  public closeModal(event) {
+   
+  }
+
 }
