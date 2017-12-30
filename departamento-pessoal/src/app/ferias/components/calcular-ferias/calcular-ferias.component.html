@@ -128,7 +128,7 @@
                     <td align="right">{{itemFerias1_3.descontos}}</td>
                   </tr>
                   <tr scope="row">
-                      <td (click)="modalShown()" class="fs-cursor-pointer">
+                      <td (click)="modalShown('modal_1')" class="fs-cursor-pointer">
                         INSS &nbsp;<i class="glyphicon glyphicon-plus-sign txt-color-9"></i> 
                       </td>
                       <td align="right">{{itemInss.ref}}</td>
@@ -161,7 +161,7 @@
 <fs-modal
   [bgColorClassSection]="'bg-color-8'"
   [bgColorClassContainer]="'bg-color-1'"
-  [idModal]="'table_inss'"
+  [idModal]="'modal_1'"
   [title]="'INSS'"
   [description]="'Tabela Atualizada em : 26/12/2017'"
   [modalContent]="modal_Inss"

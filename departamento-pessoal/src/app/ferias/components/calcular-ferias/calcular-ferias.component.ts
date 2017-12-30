@@ -214,10 +214,10 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
     this.formCalculaFerias.get('dias').disable();
   }
 
-  modalShown(){
-    this.modal.openModal()
+  modalShown(id:string){
+    this.modal.openModal(id)
   }
-  
+
   public fadeIn(itemId: string) {
     let item = document.getElementById(itemId);
     item.classList.remove('fs-fade-out');

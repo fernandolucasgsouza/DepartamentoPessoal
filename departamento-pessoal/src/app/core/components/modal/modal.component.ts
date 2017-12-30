@@ -1,8 +1,8 @@
 import {
-  Component, OnInit, Input, ComponentRef, ViewContainerRef, ViewChild, ComponentFactoryResolver,
-  trigger, style, state, transition, animate
+  Component, OnInit, Input, ComponentRef, ViewContainerRef, ViewChild,
+  ComponentFactoryResolver
 } from '@angular/core';
-import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
+
 import { ModalAnimations } from './modal.amination';
 
 @Component({
@@ -20,7 +20,7 @@ export class ModalComponent implements OnInit {
   @Input() description: string;
   @Input() modalContent: any;
   @Input() idModal: any;
-  @Input() modalOpen;
+
 
   @ViewChild('parent', { read: ViewContainerRef }) parent: ViewContainerRef;
 
@@ -64,9 +64,21 @@ export class ModalComponent implements OnInit {
     this._componentRef.destroy();
   }
 
-  openModal() {
+  public openModal(id: string) {
+    let modalCurrent = document.getElementById(id);
+    
+    try {
+      modalCurrent.addEventListener.bind(this._openModal());
+      this._buildModal();
+
+    } catch (err) {
+      console.log('não existe modal de id: ' + id)
+      console.log(err)
+    }
+  }
+
+  private _openModal() {
     this.visibility = 'shown';
-    this._buildModal();
   }
 
 }
