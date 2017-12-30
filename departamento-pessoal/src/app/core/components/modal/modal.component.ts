@@ -51,7 +51,7 @@ export class ModalComponent implements OnInit {
 
   private createComponent() {
     this.parent.clear();
-    debugger
+    // debugger
     let factory = this._componetFR.resolveComponentFactory(this.modalContent);
     this._componentRef = this.parent.createComponent(factory);
   }
