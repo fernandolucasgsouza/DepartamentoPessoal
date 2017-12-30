@@ -59,8 +59,19 @@ body {
       background-color: #5d6b7e;
 }
 
+.txt-color-8 {
+      color: rgba(0,0,0, .7);
+}
 .bg-color-8 {
       background-color: rgba(0,0,0, .7);
+}
+
+.txt-color-9 {
+      color: rgb(255, 166, 0);
+}
+
+.bg-color-9 {
+      background-color: rgb(255, 166, 0);
 }
 
 .section {
@@ -109,6 +120,9 @@ body {
   padding: 10px;
 }
 
+.fs-cursor-pointer{
+      cursor: pointer;
+}
 
 /* inicio custom bootstrap */
 

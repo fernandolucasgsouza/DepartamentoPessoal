@@ -1,3 +1,5 @@
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -5,8 +7,6 @@ import { NgModule } from '@angular/core';
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { FeriasModule } from './ferias';
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-
 
 
 const appRoutes: Routes = [
@@ -26,6 +26,7 @@ const appRoutes: Routes = [
     AppComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     CoreModule,
     RouterModule,

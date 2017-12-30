@@ -128,7 +128,9 @@
                     <td align="right">{{itemFerias1_3.descontos}}</td>
                   </tr>
                   <tr scope="row">
-                      <td>INSS</td>
+                      <td (click)="modalShown()" class="fs-cursor-pointer">
+                        INSS &nbsp;<i class="glyphicon glyphicon-plus-sign txt-color-9"></i> 
+                      </td>
                       <td align="right">{{itemInss.ref}}</td>
                       <td align="right">{{itemInss.proventos}}</td>
                       <td align="right">{{itemInss.descontos}}</td>
