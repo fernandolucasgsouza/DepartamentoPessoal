@@ -17,9 +17,8 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
 
   @ViewChild(ModalComponent) modal:ModalComponent
   
- 
-  
   public modal_Inss: any;
+  public modal_Irrf: any;
 
   public formCalculaFerias: FormGroup;
   public itemFerias: object = { ref: '-', proventos: '-', descontos: '-' };
@@ -62,17 +61,16 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
     ])),
   };
 
-
   constructor(
     private _fb: FormBuilder,
     private _service: s.FeriasService,
   ) {
-    this.modal_visibility = 'hidden'
     this.formCalculaFerias = this._fb.group(this.fbGroup);
   }
 
   ngOnInit() {
     this.modal_Inss = cc.TabelaInssComponent;
+    this.modal_Irrf = cc.TabelaIrrfComponent;
   }
 
   ngOnChanges(): void { }

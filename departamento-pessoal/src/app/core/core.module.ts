@@ -24,6 +24,7 @@ import * as pc from './pipes';
     cc.ValidationMessageComponent,
     cc.ModalComponent,
     cc.TableComponent,
+    cc.TabelaInssComponent,
     cc.TabelaIrrfComponent
   ],
   declarations: [
@@ -31,6 +32,7 @@ import * as pc from './pipes';
     cc.ValidationMessageComponent,
     cc.ModalComponent,
     cc.TableComponent,
+    cc.TabelaInssComponent,
     cc.TabelaIrrfComponent
   ],
   providers: [

@@ -19,7 +19,6 @@ import * as me from './routing-ferias.module';
   ],
   declarations: [
     c.CalcularFeriasComponent,
-    cc.TabelaInssComponent
   ],
   providers: [
     FormBuilder,
@@ -27,7 +26,8 @@ import * as me from './routing-ferias.module';
     pc.CalculaPercentualPipe
   ],
   entryComponents:[
-    cc.TabelaInssComponent
+    cc.TabelaInssComponent,
+    cc.TabelaIrrfComponent
   ]
 })
 export class FeriasModule { }

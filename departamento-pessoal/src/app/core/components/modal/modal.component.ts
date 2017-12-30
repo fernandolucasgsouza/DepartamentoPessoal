@@ -13,7 +13,8 @@ import { ModalAnimations } from './modal.amination';
 })
 
 export class ModalComponent implements OnInit {
-
+  
+  @ViewChild('parent', { read: ViewContainerRef }) parent: ViewContainerRef;
   @Input() bgColorClassSection: string;
   @Input() bgColorClassContainer: string;
   @Input() title: string;
@@ -22,11 +23,10 @@ export class ModalComponent implements OnInit {
   @Input() idModal: any;
 
 
-  @ViewChild('parent', { read: ViewContainerRef }) parent: ViewContainerRef;
-
   private _componentRef: ComponentRef<any>;
   public innerHtmlContent: any;
   public visibility: string = 'hidden';
+  public modalCurrent;
 
   constructor(private _componetFR: ComponentFactoryResolver) {
   }
@@ -51,10 +51,14 @@ export class ModalComponent implements OnInit {
 
   private createComponent() {
     this.parent.clear();
+    debugger
     let factory = this._componetFR.resolveComponentFactory(this.modalContent);
     this._componentRef = this.parent.createComponent(factory);
   }
 
+  private _modalContent(){
+
+  }
   private addToComponent() {
     this.innerHtmlContent = this.modalContent;
   }
@@ -64,11 +68,12 @@ export class ModalComponent implements OnInit {
     this._componentRef.destroy();
   }
 
+
   public openModal(id: string) {
-    let modalCurrent = document.getElementById(id);
-    
+    this.modalCurrent = document.getElementById(id);
+
     try {
-      modalCurrent.addEventListener.bind(this._openModal());
+      this.modalCurrent.addEventListener.bind(this._openModal());
       this._buildModal();
 
     } catch (err) {
