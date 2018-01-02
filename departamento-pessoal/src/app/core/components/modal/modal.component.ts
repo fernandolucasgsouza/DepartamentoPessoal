@@ -73,14 +73,14 @@ export class ModalComponent implements OnInit {
   public openModal(id: string) {
     this.modalCurrent = document.getElementById(id);
 
-    try {
+    //try {
       this.modalCurrent.addEventListener.bind(this._openModal());
       this._buildModal();
 
-    } catch (err) {
-      console.log('não existe modal de id: ' + id)
-      console.log(err)
-    }
+    // } catch (err) {
+    //   console.log('não existe modal de id: ' + id)
+    //   console.log(err)
+    // }
   }
 
   private _openModal() {
