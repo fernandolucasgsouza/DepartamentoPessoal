@@ -129,7 +129,7 @@
                   </tr>
                   <tr scope="row">
                       <td (click)="modalShown('modal_1')" class="fs-cursor-pointer">
-                        INSS &nbsp;<i class="glyphicon glyphicon-plus-sign txt-color-9"></i> 
+                        INSS &nbsp;<i class="glyphicon glyphicon-plus-sign txt-color-9"></i>
                       </td>
                       <td align="right">{{itemInss.ref}}</td>
                       <td align="right">{{itemInss.proventos}}</td>
@@ -138,7 +138,7 @@
                   <tr scope="row">
                       <td>IRRF</td>
                       <!-- <td (click)="modalShown('modal_2')" class="fs-cursor-pointer">
-                          IRRF &nbsp;<i class="glyphicon glyphicon-plus-sign txt-color-9"></i> 
+                          IRRF &nbsp;<i class="glyphicon glyphicon-plus-sign txt-color-9"></i>
                       </td> -->
                       <td align="right">{{itemIrrf.ref}}</td>
                       <td align="right">{{itemIrrf.proventos}}</td>
@@ -161,7 +161,7 @@
     </form>
   </div>
 </section>
-<fs-modal
+<fs-modal #modal_1
   [bgColorClassSection]="'bg-color-8'"
   [bgColorClassContainer]="'bg-color-1'"
   [idModal]="'modal_1'"
@@ -169,7 +169,7 @@
   [description]="'Tabela Atualizada em : 26/12/2017'"
   [modalContent]="modal_Inss">
 </fs-modal>
-<fs-modal
+<fs-modal #modal_2
   [bgColorClassSection]="'bg-color-8'"
   [bgColorClassContainer]="'bg-color-1'"
   [idModal]="'modal_2'"

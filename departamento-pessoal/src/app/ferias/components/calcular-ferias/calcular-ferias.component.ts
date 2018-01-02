@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ViewContainerRef, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, HostListener, ViewContainerRef, Input, ViewChildren} from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 
@@ -8,6 +8,7 @@ import * as s from '../../services';
 import { ModalComponent } from '../../../core/components';
 
 
+
 @Component({
   selector: 'app-calcular-ferias',
   templateUrl: './calcular-ferias.component.html',
@@ -15,8 +16,9 @@ import { ModalComponent } from '../../../core/components';
 })
 export class CalcularFeriasComponent implements OnInit, OnChanges {
 
-  @ViewChild(ModalComponent) modal:ModalComponent
-  
+  @ViewChildren('modal_1') modal_1:ModalComponent
+  @ViewChildren('modal_2') modal_2:ModalComponent
+
   public modal_Inss: any;
   public modal_Irrf: any;
 
@@ -175,7 +177,7 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
     }
   }
 
-  
+
 
   public clean() {
     let itensTable = [
@@ -213,7 +215,12 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
   }
 
   modalShown(id:string){
-    this.modal.openModal(id)
+
+    if(id =='modal_1')
+    this.modal_1.openModal(id);
+
+    if(id =='modal_2')
+    this.modal_2.openModal(id);
   }
 
   public fadeIn(itemId: string) {

@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 
 import { ModalAnimations } from './modal.amination';
+import { TabelaInssComponent, TabelaIrrfComponent } from '../index';
 
 @Component({
   selector: 'fs-modal',
@@ -13,7 +14,7 @@ import { ModalAnimations } from './modal.amination';
 })
 
 export class ModalComponent implements OnInit {
-  
+
   @ViewChild('parent', { read: ViewContainerRef }) parent: ViewContainerRef;
   @Input() bgColorClassSection: string;
   @Input() bgColorClassContainer: string;
@@ -51,7 +52,7 @@ export class ModalComponent implements OnInit {
 
   private createComponent() {
     this.parent.clear();
-    // debugger
+     debugger
     let factory = this._componetFR.resolveComponentFactory(this.modalContent);
     this._componentRef = this.parent.createComponent(factory);
   }
