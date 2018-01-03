@@ -120,42 +120,42 @@
                 <tr scope="row">
                   <td>Valor Férias</td>
                   <td align="right">{{itemFerias.ref}}</td>
-                  <td align="right">{{itemFerias.proventos}} </td>
-                  <td align="right">{{itemFerias.descontos}}</td>
+                  <td align="right">{{(itemFerias.proventos | formatCurrency)}} </td>
+                  <td align="right">{{(itemFerias.descontos | formatCurrency)}}</td>
                 </tr>
                 <tr class="table-success">
                     <td>1/3 Férias</td>
                     <td align="right">{{itemFerias1_3.ref}}</td>
-                    <td align="right">{{itemFerias1_3.proventos}}</td>
-                    <td align="right">{{itemFerias1_3.descontos}}</td>
+                    <td align="right">{{(itemFerias1_3.proventos | formatCurrency)}}</td>
+                    <td align="right">{{(itemFerias1_3.descontos | formatCurrency)}}</td>
                   </tr>
                   <tr scope="row">
                       <td (click)="modalShown('modal_1')" class="fs-cursor-pointer">
                         INSS &nbsp;<i class="glyphicon glyphicon-plus-sign txt-color-9"></i>
                       </td>
                       <td align="right">{{itemInss.ref}}</td>
-                      <td align="right">{{itemInss.proventos}}</td>
-                      <td align="right">{{itemInss.descontos}}</td>
+                      <td align="right">{{(itemInss.proventos | formatCurrency)}}</td>
+                      <td align="right">{{(itemInss.descontos | formatCurrency)}}</td>
                   </tr>
                   <tr scope="row">
                        <td (click)="modalShown('modal_2')" class="fs-cursor-pointer">
                           IRRF &nbsp;<i class="glyphicon glyphicon-plus-sign txt-color-9"></i>
                       </td>
                       <td align="right">{{itemIrrf.ref}}</td>
-                      <td align="right">{{itemIrrf.proventos}}</td>
-                      <td align="right">{{itemIrrf.descontos}}</td>
+                      <td align="right">{{(itemIrrf.proventos | formatCurrency)}}</td>
+                      <td align="right">{{(itemIrrf.descontos | formatCurrency:'de-DE':'EUR')}}</td>
                   </tr>
                   <tr scope="row">
                       <td class="fs-font-weight-600">Subtotais</td>
                       <td align="right"  class="fs-font-weight-600">{{itemSubTotais.ref}}</td>
-                      <td align="right" class="fs-font-weight-600">{{itemSubTotais.proventos}}</td>
-                      <td align="right" class="fs-font-weight-600">{{itemSubTotais.descontos}}</td>
+                      <td align="right" class="fs-font-weight-600">{{(itemSubTotais.proventos | formatCurrency)}}</td>
+                      <td align="right" class="fs-font-weight-600">{{(itemSubTotais.descontos | formatCurrency)}}</td>
                     </tr>
               </tbody>
             </table>
             <div id="fs-container-total" class="row form-group fs-container-total fs-fade-out">
               <div class="col-md-9 fs-total txt-color-5">TOTAL:</div>
-              <div class="col-md-3 fs-total txt-color-5">{{vrTotal}}</div>
+              <div class="col-md-3 fs-total txt-color-5">{{(vrTotal | formatCurrency)}}</div>
             </div>
         </div>
       </div>

@@ -15,21 +15,27 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
 
   @ViewChild(cc.ModalComponent) modal: cc.ModalComponent
 
-  private _startObj = { ref: '-', proventos: '-', descontos: '-' };
+  private _startObj = { ref: '-', proventos: '', descontos: '' };
   private _btnStatus: boolean = false;
   public modal_Inss: any;
   public modal_Irrf: any;
   public modalTitle: string;
   public modalDescription: string;
   public contentModal: any;
+
   public formCalculaFerias: FormGroup;
   public itemFerias: object = this._startObj;
   public itemFerias1_3: object = this._startObj;
   public itemInss: object = this._startObj;
   public itemIrrf: object = this._startObj;
   public itemSubTotais: object = this._startObj;
-  public vrTotal: any = '-';
+  public vrTotal: any;
   public faltas: any;
+
+  public salario: number;
+  public horasExtras: number;
+  public diasFerias: number;
+  public totDependentes: number;
 
   public fbGroup = {
     salario: new FormControl('', Validators.compose([
@@ -72,18 +78,13 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
     this.modal_Irrf = cc.TabelaIrrfComponent;
   }
 
-  public salario;
-  public horasExtras;
-  public diasFerias;
-  public totDependentes;
-
   ngOnChanges(): void { }
 
-  public keyupSalario(event: any){
+  public keyupSalario(event: any) {
     this.salario = parseFloat(sc.FormatDatasService.formatForFloat(event.target.value));
   }
 
-  public keyupHrExtras(event: any){
+  public keyupHrExtras(event: any) {
     this.horasExtras = parseFloat(sc.FormatDatasService.formatForFloat(event.target.value));
   }
 
@@ -98,35 +99,32 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
     let somaProv = this._service.somaSubtotal(vrBrutoFerias, vr1_3);
     let somaDesc = this._service.somaSubtotal(vrInss, vrIrrf);
 
-    let total = this._service.calcTotal(somaProv, somaDesc);
-    this.vrTotal = sc.FormatDatasService.formatForFloatReverse(
-      String(total.toFixed(2)));
+    this.vrTotal = this._service.calcTotal(somaProv, somaDesc);
 
     this.itemFerias = {
       ref: diasFerias + 'd',
-      proventos: sc.FormatDatasService.formatForFloatReverse(
-        String(vrBrutoFerias.toFixed(2)))
+      proventos: vrBrutoFerias,
+      descontos: 0
     };
     this.itemFerias1_3 = {
       ref: '1/3',
-      proventos: sc.FormatDatasService.formatForFloatReverse(
-        String(vr1_3.toFixed(2)))
+      proventos: vr1_3,
+      descontos: 0
     };
     this.itemInss = {
       ref: this._service.percentual_INSS + '%',
-      descontos: sc.FormatDatasService.formatForFloatReverse(
-        String(vrInss.toFixed(2)))
+      proventos: 0,
+      descontos: vrInss
     };
     this.itemIrrf = {
       ref: this._service.percentual_IRRF + '%',
-      descontos: sc.FormatDatasService.formatForFloatReverse(
-        String(vrIrrf.toFixed(2)))
+      proventos: 0,
+      descontos: vrIrrf
     };
     this.itemSubTotais = {
-      proventos: sc.FormatDatasService.formatForFloatReverse(
-        String(somaProv.toFixed(2))),
-      descontos: sc.FormatDatasService.formatForFloatReverse(
-        String(somaDesc.toFixed(2)))
+      ref: '-',
+      proventos: somaProv,
+      descontos: somaDesc
     };
 
     /**
@@ -163,8 +161,6 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
     }
   }
 
-
-
   public clean() {
     /**
     * reseta campos tabela [ref, proventos, descontos]
@@ -197,12 +193,12 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
     if (id == 'modal_1') {
       this.contentModal = this.modal_Inss;
       this.modalTitle = 'INSS',
-      this.modalDescription = 'Tabela referente ao ano de 2016'
+        this.modalDescription = 'Tabela referente ao ano de 2016'
     }
     else {
       this.contentModal = this.modal_Irrf;
       this.modalTitle = 'IRRF',
-      this.modalDescription = 'Tabela referente ao ano de 2016'
+        this.modalDescription = 'Tabela referente ao ano de 2016'
     }
 
     this.modal.openModal();

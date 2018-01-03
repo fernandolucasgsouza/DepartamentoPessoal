@@ -21,6 +21,7 @@ import * as pc from './pipes';
     HttpModule,
     FormsModule,
     dc.MaskDirective,
+    pc.FormatCurrencyPipe,
     cc.ValidationMessageComponent,
     cc.ModalComponent,
     cc.TableComponent,
@@ -29,6 +30,7 @@ import * as pc from './pipes';
   ],
   declarations: [
     dc.MaskDirective,
+    pc.FormatCurrencyPipe,
     cc.ValidationMessageComponent,
     cc.ModalComponent,
     cc.TableComponent,

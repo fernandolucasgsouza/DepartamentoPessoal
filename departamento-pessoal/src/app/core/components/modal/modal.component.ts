@@ -23,7 +23,6 @@ export class ModalComponent implements OnInit {
   @Input() modalContent: any;
   @Input() idModal: any;
 
-
   private _componentRef: ComponentRef<any>;
   public innerHtmlContent: any;
   public visibility: string = 'hidden';
@@ -32,8 +31,7 @@ export class ModalComponent implements OnInit {
   constructor(private _componetFR: ComponentFactoryResolver) {
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngOnChanges() {
     this._buildModal()
@@ -63,7 +61,7 @@ export class ModalComponent implements OnInit {
   private addToComponent() {
     this.innerHtmlContent = this.modalContent;
   }
-  
+
   public openModal() {
     this.visibility = 'shown';
   }
