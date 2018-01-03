@@ -1,0 +1,14 @@
+.fs-container-dependentes{
+        display: flex;
+        align-items: baseline;
+}
+
+.fs-dependentes {
+        padding: 5px 12px;
+        border-radius: 3px;
+        border: solid 1px orange;
+        background-color: rgba(255,166,0,.2);
+        font-weight: 500;
+        max-width: 140px;
+        text-align: center;
+}

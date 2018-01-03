@@ -159,5 +159,4 @@ export class FeriasService {
     (val_B == '-' ? 0 : val_B);
     return val_A - val_B;
   }
-
 }

@@ -1,13 +1,10 @@
-import { Component, OnInit, HostListener, ViewContainerRef, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, HostListener, ViewContainerRef, Input, ViewChild, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+import { } from '@angular/core/src/metadata/lifecycle_hooks';
 
 import * as sc from '../../../core/services';
 import * as cc from '../../../core/components';
 import * as s from '../../services';
-import { ModalComponent } from '../../../core/components';
-
-
 
 @Component({
   selector: 'app-calcular-ferias',
@@ -16,23 +13,23 @@ import { ModalComponent } from '../../../core/components';
 })
 export class CalcularFeriasComponent implements OnInit, OnChanges {
 
-  @ViewChild(ModalComponent) modal: ModalComponent
+  @ViewChild(cc.ModalComponent) modal: cc.ModalComponent
 
+  private _startObj = { ref: '-', proventos: '-', descontos: '-' };
+  private _btnStatus: boolean = false;
   public modal_Inss: any;
   public modal_Irrf: any;
-  public modalContent: any;
-
+  public modalTitle: string;
+  public modalDescription: string;
+  public contentModal: any;
   public formCalculaFerias: FormGroup;
-  public itemFerias: object = { ref: '-', proventos: '-', descontos: '-' };
-  public itemFerias1_3: object = { ref: '-', proventos: '-', descontos: '-' };
-  public itemInss: object = { ref: '-', proventos: '-', descontos: '-' };
-  public itemIrrf: object = { ref: '-', proventos: '-', descontos: '-' };
-  public itemSubTotais: object = { ref: '-', proventos: '-', descontos: '-' };
+  public itemFerias: object = this._startObj;
+  public itemFerias1_3: object = this._startObj;
+  public itemInss: object = this._startObj;
+  public itemIrrf: object = this._startObj;
+  public itemSubTotais: object = this._startObj;
   public vrTotal: any = '-';
   public faltas: any;
-  public btnStatus: boolean = false;
-
-  public modal_visibility;
 
   public fbGroup = {
     salario: new FormControl('', Validators.compose([
@@ -75,43 +72,31 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
     this.modal_Irrf = cc.TabelaIrrfComponent;
   }
 
+  public salario;
+  public horasExtras;
+  public diasFerias;
+  public totDependentes;
+
   ngOnChanges(): void { }
 
+  public keyupSalario(event: any){
+    this.salario = parseFloat(sc.FormatDatasService.formatForFloat(event.target.value));
+  }
+
+  public keyupHrExtras(event: any){
+    this.horasExtras = parseFloat(sc.FormatDatasService.formatForFloat(event.target.value));
+  }
+
   public calcular(): void {
-    console.log(this.formCalculaFerias.controls.dependentes.value)
-
-    let salario = parseFloat(sc.FormatDatasService.formatForFloat(
-      this.formCalculaFerias.get('salario').value)) * 10;
-
-    let horasExtras = parseFloat(sc.FormatDatasService.formatForFloat(
-      this.formCalculaFerias.get('horasExtras').value)) * 10;
-
     let diasFerias = parseInt(this.formCalculaFerias.get('dias').value);
     let totDependentes = parseInt(this.formCalculaFerias.get('dependentes').value);
 
-    let valorBrutoFerias = this._service.calculaFerias(salario, horasExtras, diasFerias);
-    let provFerias = sc.FormatDatasService.formatForFloatReverse(
-      String(valorBrutoFerias.toFixed(2)));
-
-    let valor1_3 = this._service.calculaFerias1_3(valorBrutoFerias);
-    let provFerias1_3 = sc.FormatDatasService.formatForFloatReverse(
-      String(valor1_3.toFixed(2)));
-
-    let valorInss = this._service.calculaINSS(valorBrutoFerias, valor1_3);
-    let descInss = sc.FormatDatasService.formatForFloatReverse(
-      String(valorInss.toFixed(2)));
-
-    let valorIrrf = this._service.calculaIRRF(valorBrutoFerias, valor1_3, valorInss, totDependentes);
-    let descIrrf = sc.FormatDatasService.formatForFloatReverse(
-      String(valorIrrf.toFixed(2)));
-
-    let somaProv = this._service.somaSubtotal(valorBrutoFerias, valor1_3);
-    let subtotalProv = sc.FormatDatasService.formatForFloatReverse(
-      String(somaProv.toFixed(2)));
-
-    let somaDesc = this._service.somaSubtotal(valorInss, valorIrrf);
-    let subtotalDesc = sc.FormatDatasService.formatForFloatReverse(
-      String(somaDesc.toFixed(2)));
+    let vrBrutoFerias = this._service.calculaFerias(this.salario, this.horasExtras, diasFerias);
+    let vr1_3 = this._service.calculaFerias1_3(vrBrutoFerias);
+    let vrInss = this._service.calculaINSS(vrBrutoFerias, vr1_3);
+    let vrIrrf = this._service.calculaIRRF(vrBrutoFerias, vr1_3, vrInss, totDependentes);
+    let somaProv = this._service.somaSubtotal(vrBrutoFerias, vr1_3);
+    let somaDesc = this._service.somaSubtotal(vrInss, vrIrrf);
 
     let total = this._service.calcTotal(somaProv, somaDesc);
     this.vrTotal = sc.FormatDatasService.formatForFloatReverse(
@@ -119,28 +104,29 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
 
     this.itemFerias = {
       ref: diasFerias + 'd',
-      proventos: provFerias,
-      descontos: '-'
+      proventos: sc.FormatDatasService.formatForFloatReverse(
+        String(vrBrutoFerias.toFixed(2)))
     };
     this.itemFerias1_3 = {
       ref: '1/3',
-      proventos: provFerias1_3,
-      descontos: '-'
+      proventos: sc.FormatDatasService.formatForFloatReverse(
+        String(vr1_3.toFixed(2)))
     };
     this.itemInss = {
       ref: this._service.percentual_INSS + '%',
-      proventos: '-',
-      descontos: descInss
+      descontos: sc.FormatDatasService.formatForFloatReverse(
+        String(vrInss.toFixed(2)))
     };
     this.itemIrrf = {
       ref: this._service.percentual_IRRF + '%',
-      proventos: '-',
-      descontos: descIrrf
+      descontos: sc.FormatDatasService.formatForFloatReverse(
+        String(vrIrrf.toFixed(2)))
     };
     this.itemSubTotais = {
-      ref: '-',
-      proventos: subtotalProv,
-      descontos: subtotalDesc
+      proventos: sc.FormatDatasService.formatForFloatReverse(
+        String(somaProv.toFixed(2))),
+      descontos: sc.FormatDatasService.formatForFloatReverse(
+        String(somaDesc.toFixed(2)))
     };
 
     /**
@@ -151,7 +137,7 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
 
   onKeyFalta(event: any) {
     let vrInput = event.target.value;
-    this.btnStatus = false;
+    this._btnStatus = false;
 
     if (vrInput != undefined && vrInput != null && vrInput != '') {
       this.formCalculaFerias.get('dias').clearValidators();
@@ -167,7 +153,7 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
 
       if (this.faltas == 0) {
         this.formCalculaFerias.get('dias').disable();
-        this.btnStatus = true;
+        this._btnStatus = true;
         return
       }
     }
@@ -180,21 +166,14 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
 
 
   public clean() {
-    let itensTable = [
-      this.itemFerias,
-      this.itemFerias1_3,
-      this.itemInss,
-      this.itemIrrf,
-      this.itemSubTotais];
-
     /**
     * reseta campos tabela [ref, proventos, descontos]
     */
-    for (let i = 0; i < itensTable.length; i++) {
-      for (let key in itensTable[i]) {
-        itensTable[i][key] = '-';
-      }
-    }
+    this.itemFerias = this._startObj;
+    this.itemFerias1_3 = this._startObj;
+    this.itemInss = this._startObj;
+    this.itemIrrf = this._startObj;
+    this.itemSubTotais = this._startObj;
 
     /**
      * reseta campos formulário inputs
@@ -215,15 +194,18 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
   }
 
   modalShown(id: string) {
-
     if (id == 'modal_1') {
-      this.modalContent = this.modal_Inss;
-    } else {
-      this.modalContent = this.modal_Irrf;
+      this.contentModal = this.modal_Inss;
+      this.modalTitle = 'INSS',
+      this.modalDescription = 'Tabela referente ao ano de 2016'
+    }
+    else {
+      this.contentModal = this.modal_Irrf;
+      this.modalTitle = 'IRRF',
+      this.modalDescription = 'Tabela referente ao ano de 2016'
     }
 
-
-    this.modal.openModal(id);
+    this.modal.openModal();
   }
 
   public fadeIn(itemId: string) {

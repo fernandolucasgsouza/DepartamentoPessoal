@@ -36,6 +36,7 @@ export class ModalComponent implements OnInit {
   }
 
   ngOnChanges() {
+    this._buildModal()
   }
 
   private _buildModal() {
@@ -52,7 +53,6 @@ export class ModalComponent implements OnInit {
 
   private createComponent() {
     this.parent.clear();
-     debugger
     let factory = this._componetFR.resolveComponentFactory(this.modalContent);
     this._componentRef = this.parent.createComponent(factory);
   }
@@ -63,28 +63,13 @@ export class ModalComponent implements OnInit {
   private addToComponent() {
     this.innerHtmlContent = this.modalContent;
   }
+  
+  public openModal() {
+    this.visibility = 'shown';
+  }
 
   public closeModal() {
     this.visibility = 'hidden';
-    this._componentRef.destroy();
-  }
-
-
-  public openModal(id: string) {
-    this.modalCurrent = document.getElementById(id);
-
-    //try {
-      this.modalCurrent.addEventListener.bind(this._openModal());
-      this._buildModal();
-
-    // } catch (err) {
-    //   console.log('não existe modal de id: ' + id)
-    //   console.log(err)
-    // }
-  }
-
-  private _openModal() {
-    this.visibility = 'shown';
   }
 
 }

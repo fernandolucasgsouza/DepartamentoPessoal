@@ -23,7 +23,8 @@
                 placeholder="R$0,00"
                 formControlName="salario"
                 mask="#.##0,00"
-                maskReverse="true">
+                maskReverse="true"
+                (keyup)="keyupSalario($event)">
                 <fs-validation-message [control]="fbGroup.salario"></fs-validation-message>
             </div>
           </div>
@@ -37,7 +38,8 @@
                   placeholder="R$0,00"
                   formControlName="horasExtras"
                   mask="#.##0,00"
-                  maskReverse="true">
+                  maskReverse="true"
+                  (keyup)="keyupHrExtras($event)">
                   <fs-validation-message [control]="fbGroup.horasExtras"></fs-validation-message>
               </div>
             </div>
@@ -136,7 +138,6 @@
                       <td align="right">{{itemInss.descontos}}</td>
                   </tr>
                   <tr scope="row">
-                      <!-- <td>IRRF</td> -->
                        <td (click)="modalShown('modal_2')" class="fs-cursor-pointer">
                           IRRF &nbsp;<i class="glyphicon glyphicon-plus-sign txt-color-9"></i>
                       </td>
@@ -165,15 +166,8 @@
   [bgColorClassSection]="'bg-color-8'"
   [bgColorClassContainer]="'bg-color-1'"
   [idModal]="'modal_1'"
-  [title]="'INSS'"
-  [description]="'Tabela Atualizada em : 26/12/2017'"
-  [modalContent]="modalContent">
+  [title]="modalTitle"
+  [description]="modalDescription"
+  [modalContent]="contentModal">
 </fs-modal>
-<!-- <fs-modal #modal_2
-  [bgColorClassSection]="'bg-color-8'"
-  [bgColorClassContainer]="'bg-color-1'"
-  [idModal]="'modal_2'"
-  [title]="'IRRF'"
-  [description]="'Tabela Atualizada em : 26/12/2017'"
-  [modalContent]="modal_Irrf">
-</fs-modal> -->
+
