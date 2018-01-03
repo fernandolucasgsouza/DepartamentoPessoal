@@ -5,26 +5,25 @@ import { Pipe, PipeTransform, style } from '@angular/core';
 })
 export class FormatCurrencyPipe implements PipeTransform {
 
-  transform(value: any, locale = 'pt-BR', currency = 'BRL'): any {
-
-    /*let currency = '';
-    switch (locale) {
-      case 'de-DE':
-        currency = 'EUR';
+  transform(value: any, currency = 'BRL'): any {
+    /**
+     * injetar o código da moeda no html
+     * <div>{{(itemIrrf.descontos | formatCurrency:'EUR')}}</div>
+     * 'BRL' default
+     */
+    let locale = '';
+    switch (currency) {
+      case 'EUR':
+        locale = 'de-DE';
         break;
-        case 'ja-JP':
-        currency = 'JPY';
+        case 'JPY':
+        locale = 'ja-JP';
         break;
       default:
-        currency = 'BRL';
+        locale = 'pt-BR';
         break;
-    }*/
+    }
 
     return new Intl.NumberFormat(locale, { style: 'currency', currency: currency }).format(value);
   }
-
-  // transform(value: any, args ?:any): any {
-  //   return new Intl.NumberFormat('de-DE', {style: 'currency', currency : 'EUR'}).format(value);
-  // }
-
 }
