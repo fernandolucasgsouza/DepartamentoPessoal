@@ -15,7 +15,7 @@ export class FeriasService {
 
   constructor(private calcPercent: pc.CalculaPercentualPipe) {}
 
-  public calculaFerias(salario, horasExtras: number, diasFerias: number): number {
+  public calculaFerias(salario: number, horasExtras: number, diasFerias: number): number {
     let diaria: number = 0;
     diaria = (salario + horasExtras) / 30;
     return diasFerias * diaria;
@@ -124,21 +124,21 @@ export class FeriasService {
 
   }
 
-  private _calculoIRRF(percentual, valBase, deducao) {
+  private _calculoIRRF(percentual:number, valBase:number, deducao:number) {
     this.percentual_IRRF = percentual;
     let calc = this.calcPercent.transform(valBase, percentual);
     return calc - deducao;
   }
 
   public somaSubtotal(val_A: any, val_B: any) {
-    (val_A == '-' ? 0 : val_A);
-    (val_B == '-' ? 0 : val_B);
+    (val_A == null ? 0 : val_A);
+    (val_B == null ? 0 : val_B);
     return val_A + val_B;
   }
 
   public calcTotal(val_A: any, val_B: any) {
-    (val_A == '-' ? 0 : val_A);
-    (val_B == '-' ? 0 : val_B);
+    (val_A == null ? 0 : val_A);
+    (val_B == null ? 0 : val_B);
     return val_A - val_B;
   }
 }

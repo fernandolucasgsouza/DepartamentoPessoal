@@ -1,9 +1,8 @@
-
-.fs-section-modal{
+.fs-section-modal {
   opacity: 0;
 }
 
-.fs-content-modal{
+.fs-content-modal {
   width: 100%;
   height: 100%;
   margin: auto;
@@ -15,11 +14,11 @@
   z-index: 2;
 }
 
-.fs-container-modal{
+.fs-container-modal {
   width: 100%;
   max-width: 940px;
   padding: 5px 10px;
-  margin:auto;
+  margin: auto;
   position: absolute;
   top: 10%;
   right: 0;
@@ -27,17 +26,24 @@
   border-radius: 2px;
 }
 
-.fs-head-modal{
+.fs-head-modal {
   width: 100%;
   padding: 15px 10px 10px 10px;
   margin-bottom: 10px;
   border-bottom: 1px solid #ccc;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.fs-btn-close-modal{
+.fs-btn-close-modal {
   width: 40px;
   font-size: 1.9em;
   color: #5d6b7e;
@@ -55,22 +61,30 @@
   -o-transition: all 350ms ease-in-out;
 }
 
-.fs-btn-close-modal:hover{
+.fs-btn-close-modal:hover {
   color: #fff;
   background-color: orange;
 }
 
-.fs-title-modal{
+.fs-title-modal {
   font-size: 1.5em;
   margin: 0;
 }
 
-.fs-body-modal{
+.fs-body-modal {
   max-height: 500px;
   overflow-y: hidden;
 }
 
-.fs-description-modal{
+.fs-description-modal {
   font-size: 1em;
   padding: 0 0 10px 0;
+}
+
+@media (max-width: 767px) {
+  .fs-body-modal {
+    max-height: 270px;
+    overflow-y: auto;
+    padding: 15px 15px 30px 15px;
+  }
 }

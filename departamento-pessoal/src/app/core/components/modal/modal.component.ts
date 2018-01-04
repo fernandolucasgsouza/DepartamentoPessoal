@@ -64,10 +64,12 @@ export class ModalComponent implements OnInit {
 
   public openModal() {
     this.visibility = 'shown';
+    document.body.setAttribute('style', 'overflow:hidden');
   }
 
   public closeModal() {
     this.visibility = 'hidden';
+    document.body.setAttribute('style', 'overflow:auto');
   }
 
 }
