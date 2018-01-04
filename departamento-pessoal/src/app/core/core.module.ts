@@ -9,6 +9,7 @@ import * as cc from './components';
 import * as sc from './services';
 import * as pc from './pipes';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -26,7 +27,8 @@ import * as pc from './pipes';
     cc.ModalComponent,
     cc.TableComponent,
     cc.TabelaInssComponent,
-    cc.TabelaIrrfComponent
+    cc.TabelaIrrfComponent,
+    cc.FooterComponent
   ],
   declarations: [
     dc.MaskDirective,
@@ -35,7 +37,8 @@ import * as pc from './pipes';
     cc.ModalComponent,
     cc.TableComponent,
     cc.TabelaInssComponent,
-    cc.TabelaIrrfComponent
+    cc.TabelaIrrfComponent,
+    cc.FooterComponent
   ],
   providers: [
     sc.ValidationService

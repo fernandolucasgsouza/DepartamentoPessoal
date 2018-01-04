@@ -3,15 +3,15 @@
     <div class="container">
       <div class="container-title-main">
         <i class="icon-calculator"></i>
-        <h4 class="title-main">Cálcula férias 12/12</h4>
+        <h3 class="title-main">Cálcula férias 12/12</h3>
       </div>
     </div>
   </div>
 </section>
 <section class="section bg-color-3">
   <div class="container">
-    <form [formGroup]="formCalculaFerias">
-      <div class="row form-group ">
+    <form [formGroup]="formCalculaFerias" (keydown)="onKeyDown($event)">
+      <div class="row form-group fs-row-form-ferias">
         <div class="col-md-4">
           <div class="row form-group">
             <div class="col-md-12">
@@ -92,14 +92,16 @@
                     type="submit"
                     class="btn fs-btn-dark  pull-right"
                     (click)="calcular()"
-                    [disabled]="!formCalculaFerias.valid || btnStatus">
+                    [disabled]="!formCalculaFerias.valid || btnStatus"
+                    title="tecle ENTER para calcular">
                     Calcular
                   </button>
 
                     <button
                       type="text"
                       class="btn fs-btn-dark  pull-right fs-margin-right-5"
-                      (click)="clean()">
+                      (click)="clean()"
+                      title="tecle ESC para limpar os campos">
                       Limpar
                     </button>
 

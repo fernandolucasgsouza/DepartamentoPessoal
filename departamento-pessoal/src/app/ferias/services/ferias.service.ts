@@ -13,25 +13,7 @@ export class FeriasService {
   public percentual_INSS: number;
   public percentual_IRRF: number;
 
-  constructor(private calcPercent: pc.CalculaPercentualPipe) {
-
-    // console.log(cec.Inss.FAIXA_1);
-    // console.log(cec.Inss.FAIXA_2);
-    // console.log(cec.Inss.FAIXA_3);
-
-    // console.log(cec.Irrf.FAIXA_1);
-    // console.log(cec.Irrf.FAIXA_2);
-    // console.log(cec.Irrf.FAIXA_3);
-    // console.log(cec.Irrf.FAIXA_4);
-    // console.log(cec.Irrf.FAIXA_5);
-
-    // console.log(cec.Faltas.FAIXA_1);
-    // console.log(cec.Faltas.FAIXA_2);
-    // console.log(cec.Faltas.FAIXA_3);
-    // console.log(cec.Faltas.FAIXA_4);
-    // console.log(cec.Faltas.FAIXA_5);
-
-  }
+  constructor(private calcPercent: pc.CalculaPercentualPipe) {}
 
   public calculaFerias(salario, horasExtras: number, diasFerias: number): number {
     let diaria: number = 0;

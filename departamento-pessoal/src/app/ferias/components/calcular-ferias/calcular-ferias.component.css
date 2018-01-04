@@ -8,7 +8,8 @@
 }
 
 .title-main {
-      padding-left: 2px;
+       padding: 2px 0 0 5px;
+      margin: 0;
 }
 .fs-input{
       border-left: solid 3px #777;
@@ -25,10 +26,15 @@
       padding: 2px 8px;
 }
 .icon-calculator{
-  width: 26px;
-  height: 26px;
+  width: 25px;
+  height: 25px;
   background-image: url('../../../../assets/images/calculator.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+}
+.fs-row-form-ferias{
+      width: 100%;
+      display: flex;
+      justify-content: center;
 }

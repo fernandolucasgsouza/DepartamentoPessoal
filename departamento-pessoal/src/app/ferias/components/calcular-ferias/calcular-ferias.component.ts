@@ -161,6 +161,11 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
     }
   }
 
+  public onKeyDown(event: KeyboardEvent) {
+    if (event.keyCode === 27)
+      this.clean();
+  }
+
   public clean() {
     /**
     * reseta campos tabela [ref, proventos, descontos]
@@ -177,8 +182,6 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
     for (let key in this.fbGroup) {
       if (key == 'horasExtras') {
         this.fbGroup[key].reset('0,00');
-      } else if (key == 'faltas' || key == 'dependentes') {
-        this.fbGroup[key].reset('00');
       } else {
         this.fbGroup[key].reset();
       }
@@ -203,6 +206,8 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
 
     this.modal.openModal();
   }
+
+
 
   public fadeIn(itemId: string) {
     let item = document.getElementById(itemId);

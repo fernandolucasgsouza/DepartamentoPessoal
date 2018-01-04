@@ -1,0 +1,58 @@
+.fs-section-footer {
+    padding: 40px 20px;
+}
+
+.fs-colum-footer, .fs-browsers {
+    border-radius: 3px;
+    padding: 15px;
+}
+
+.fs-container-browsers {
+    padding: 15px;
+}
+
+.fs-browsers {
+    width: 100%;
+}
+
+.fs-footer-title {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: .85em;
+}
+
+.fs-link-footer {
+    color: #fff;
+}
+
+.fs-link-footer:hover {
+    color: #fff;
+}
+
+.fs-container-icons-browsers{
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    display: flex;
+    direction: row;
+}
+
+.fs-icon-browser{
+    width: 30px;
+    height: 30px;
+    margin: 0 4px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.fs-icon-browser.fs-icon-chrome{
+    background-image: url('../../../../assets/images/chrome.png');  
+}
+
+.fs-icon-browser.fs-icon-mozilla{
+    background-image: url('../../../../assets/images/firefox.png');  
+}
+
+.fs-icon-browser.fs-icon-edge{
+    background-image: url('../../../../assets/images/edge.png');  
+}

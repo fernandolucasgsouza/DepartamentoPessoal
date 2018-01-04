@@ -124,6 +124,10 @@ body {
       cursor: pointer;
 }
 
+.fs-no-margin{
+      margin: 0;
+}
+
 /* inicio custom bootstrap */
 
 .table>thead>tr>th {
