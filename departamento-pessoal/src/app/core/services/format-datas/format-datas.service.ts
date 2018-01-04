@@ -13,7 +13,7 @@ export class FormatDatasService {
     aux = val.replace(/\./gi, '');
     result = aux.replace(/[\,]/gi, '.');
 
-    return result;
+    return parseFloat(result);
   }
   /**
  * retorna no formato 32518,03

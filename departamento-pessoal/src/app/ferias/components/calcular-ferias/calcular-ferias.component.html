@@ -52,7 +52,7 @@
                   class="form-control {{(fbGroup.faltas.valid) ? 'fs-input' : 'fs-input-error'}}"
                   placeholder="0"
                   formControlName="faltas"
-                  (keyup)="onKeyFalta($event)"
+                  (change)="onKeyFalta($event)"
                   mask="99"
                   maskReverse="true">
                   <fs-validation-message [control]="fbGroup.faltas"></fs-validation-message>

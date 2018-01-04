@@ -29,9 +29,9 @@ export class FeriasService {
   public calculaINSS(salarioFerias: number, salario1_3: number): number {
     let result: number = 0;
     let salarioBruto: number = 0;
-    let FX1 = parseFloat(sc.FormatDatasService.formatForFloat(cec.Inss.FAIXA_1.MAX));
-    let FX2 = parseFloat(sc.FormatDatasService.formatForFloat(cec.Inss.FAIXA_2.MAX));
-    let FX3 = parseFloat(sc.FormatDatasService.formatForFloat(cec.Inss.FAIXA_3.MAX));
+    let FX1 = sc.FormatDatasService.formatForFloat(cec.Inss.FAIXA_1.MAX);
+    let FX2 = sc.FormatDatasService.formatForFloat(cec.Inss.FAIXA_2.MAX);
+    let FX3 = sc.FormatDatasService.formatForFloat(cec.Inss.FAIXA_3.MAX);
 
     salarioBruto = salarioFerias + salario1_3;
 
@@ -50,7 +50,7 @@ export class FeriasService {
       result = this.calcPercent.transform(salarioBruto, cec.Inss.FAIXA_3.PERCENT)
       return result;
     } else {
-      let teto = parseFloat(sc.FormatDatasService.formatForFloat(cec.Inss.FAIXA_3.MAX))
+      let teto = sc.FormatDatasService.formatForFloat(cec.Inss.FAIXA_3.MAX)
       this.percentual_INSS = cec.Inss.FAIXA_3.PERCENT;
       result = this.calcPercent.transform(teto, cec.Inss.FAIXA_3.PERCENT)
       return result;
@@ -60,18 +60,18 @@ export class FeriasService {
   calculaIRRF(vrFerias: number, vr1_3: number, vrInss: number, numDependentes: number) {
     let valorBase: number = 0;
     let vrDependentes: number = 0;
-    let FX1 = parseFloat(sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_1.MAX));
-    let FX2 = parseFloat(sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_2.MAX));
-    let FX3 = parseFloat(sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_3.MAX));
-    let FX4 = parseFloat(sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_4.MAX));
-    let FX5 = parseFloat(sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_5.ACIMA));
+    let FX1 = sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_1.MAX);
+    let FX2 = sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_2.MAX);
+    let FX3 = sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_3.MAX);
+    let FX4 = sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_4.MAX);
+    let FX5 = sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_5.ACIMA);
 
-    let DED_FX2 = parseFloat(sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_2.DEDUCAO));
-    let DED_FX3 = parseFloat(sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_3.DEDUCAO));
-    let DED_FX4 = parseFloat(sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_4.DEDUCAO));
-    let DED_FX5 = parseFloat(sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_5.DEDUCAO));
+    let DED_FX2 = sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_2.DEDUCAO);
+    let DED_FX3 = sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_3.DEDUCAO);
+    let DED_FX4 = sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_4.DEDUCAO);
+    let DED_FX5 = sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_5.DEDUCAO);
 
-    let VR_DEP = parseFloat(sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_DEPENDENTE.VALOR));
+    let VR_DEP = sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_DEPENDENTE.VALOR);
 
     vrDependentes = numDependentes * VR_DEP;
     valorBase = (vrFerias + vr1_3) - (vrInss + vrDependentes);

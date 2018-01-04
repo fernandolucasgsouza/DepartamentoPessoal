@@ -5,6 +5,7 @@ import { } from '@angular/core/src/metadata/lifecycle_hooks';
 import * as sc from '../../../core/services';
 import * as cc from '../../../core/components';
 import * as s from '../../services';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-calcular-ferias',
@@ -81,18 +82,21 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
   ngOnChanges(): void { }
 
   public keyupSalario(event: any) {
-    this.salario = parseFloat(sc.FormatDatasService.formatForFloat(event.target.value));
+    this.salario = sc.FormatDatasService.formatForFloat(event.target.value);
   }
 
   public keyupHrExtras(event: any) {
-    this.horasExtras = parseFloat(sc.FormatDatasService.formatForFloat(event.target.value));
+    this.horasExtras = sc.FormatDatasService.formatForFloat(event.target.value);
   }
 
   public calcular(): void {
-    let diasFerias = parseInt(this.formCalculaFerias.get('dias').value);
-    let totDependentes = parseInt(this.formCalculaFerias.get('dependentes').value);
 
-    let vrBrutoFerias = this._service.calculaFerias(this.salario, this.horasExtras, diasFerias);
+    let form = this.formCalculaFerias.value;
+
+    let diasFerias = parseInt(form.dias);
+    let totDependentes = parseInt(form.dependentes);
+
+    let vrBrutoFerias = this._service.calculaFerias(sc.FormatDatasService.formatForFloat(form.salario), sc.FormatDatasService.formatForFloat(form.horasExtras), diasFerias);
     let vr1_3 = this._service.calculaFerias1_3(vrBrutoFerias);
     let vrInss = this._service.calculaINSS(vrBrutoFerias, vr1_3);
     let vrIrrf = this._service.calculaIRRF(vrBrutoFerias, vr1_3, vrInss, totDependentes);
@@ -134,6 +138,7 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
   }
 
   onKeyFalta(event: any) {
+
     let vrInput = event.target.value;
     this._btnStatus = false;
 
@@ -149,6 +154,8 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
         Validators.max(this.faltas)
       ]);
 
+      this.setFocus('dias');
+
       if (this.faltas == 0) {
         this.formCalculaFerias.get('dias').disable();
         this._btnStatus = true;
@@ -156,8 +163,8 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
       }
     }
     else {
-      this.formCalculaFerias.get('dias').disable();
       this.formCalculaFerias.get('dias').setValue('');
+      this.formCalculaFerias.get('dias').disable();
     }
   }
 
