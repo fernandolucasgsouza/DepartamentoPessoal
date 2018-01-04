@@ -34,7 +34,8 @@
     max-width: 300px;
     margin: 10px auto;
     display: flex;
-    direction: row;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .fs-icon-browser{
@@ -56,3 +57,7 @@
 .fs-icon-browser.fs-icon-edge{
     background-image: url('../../../../assets/images/edge.png');  
 }
+
+@media (max-width: 991px) {}
+@media (max-width: 767px) {}
+@media (max-width: 479px) {}

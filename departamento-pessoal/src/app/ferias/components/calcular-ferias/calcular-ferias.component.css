@@ -33,8 +33,18 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+
 .fs-row-form-ferias{
       width: 100%;
       display: flex;
       justify-content: center;
 }
+
+@media (max-width: 991px) {}
+@media (max-width: 767px) {
+      .fs-row-form-ferias{
+           flex-direction: column;
+           margin: 0;
+      }   
+}
+@media (max-width: 479px) {}
