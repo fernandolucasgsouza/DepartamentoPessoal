@@ -29,7 +29,7 @@
     color: #fff;
 }
 
-.fs-container-icons-browsers{
+.fs-container-icons-browsers {
     width: 100%;
     max-width: 300px;
     margin: 10px auto;
@@ -38,7 +38,7 @@
     justify-content: center;
 }
 
-.fs-icon-browser{
+.fs-icon-browser {
     width: 30px;
     height: 30px;
     margin: 0 4px;
@@ -46,18 +46,32 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
-.fs-icon-browser.fs-icon-chrome{
-    background-image: url('../../../../assets/images/chrome.png');  
+
+.fs-icon-browser.fs-icon-chrome {
+    background-image: url('../../../../assets/images/chrome.png');
 }
 
-.fs-icon-browser.fs-icon-mozilla{
-    background-image: url('../../../../assets/images/firefox.png');  
+.fs-icon-browser.fs-icon-mozilla {
+    background-image: url('../../../../assets/images/firefox.png');
 }
 
-.fs-icon-browser.fs-icon-edge{
-    background-image: url('../../../../assets/images/edge.png');  
+.fs-icon-browser.fs-icon-edge {
+    background-image: url('../../../../assets/images/edge.png');
 }
 
 @media (max-width: 991px) {}
-@media (max-width: 767px) {}
-@media (max-width: 479px) {}
+
+@media (max-width: 767px) {
+    .fs-colum-footer {
+        margin: 3px 0;
+    }
+}
+
+@media (max-width: 479px) {
+    .fs-footer-description {
+        font-size: .8em;
+    }
+    .fs-section-footer {
+        overflow: hidden;
+    }
+}

@@ -40,11 +40,23 @@
       justify-content: center;
 }
 
+
+
 @media (max-width: 991px) {}
 @media (max-width: 767px) {
       .fs-row-form-ferias{
            flex-direction: column;
            margin: 0;
-      }   
+      } 
+      .title-main {
+            font-size: 1.2em;
+      }
+     
 }
-@media (max-width: 479px) {}
+@media (max-width: 479px) {
+      .fs-overflow-x{
+            overflow-x: auto;
+            max-width: 290px;
+      } 
+     
+}
