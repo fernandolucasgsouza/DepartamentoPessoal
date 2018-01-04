@@ -15,7 +15,7 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
 
   @ViewChild(cc.ModalComponent) modal: cc.ModalComponent
 
-  private _startObj = { ref: '-', proventos: '', descontos: '' };
+  private _startObj = { ref: '-', proventos: 0, descontos: 0 };
   private _btnStatus: boolean = false;
   public modal_Inss: any;
   public modal_Irrf: any;

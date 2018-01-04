@@ -15,8 +15,9 @@ export class FeriasService {
 
   constructor(private calcPercent: pc.CalculaPercentualPipe) {}
 
-  public calculaFerias(salario: number, horasExtras: number, diasFerias: number): number {
+  public calculaFerias(salario: number, horasExtras: number = 0, diasFerias: number = 0): number {
     let diaria: number = 0;
+
     diaria = (salario + horasExtras) / 30;
     return diasFerias * diaria;
   }
