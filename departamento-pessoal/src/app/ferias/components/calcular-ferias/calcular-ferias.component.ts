@@ -196,12 +196,12 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
     if (id == 'modal_1') {
       this.contentModal = this.modal_Inss;
       this.modalTitle = 'INSS - Instituto Nacional do Seguro Social',
-        this.modalDescription = 'Tabela referente ao ano de 2016'
+        this.modalDescription = 'Tabela Empregado Doméstico e Trabalhador Avulso 2017'
     }
     else {
       this.contentModal = this.modal_Irrf;
       this.modalTitle = 'IRRF -  Imposto de Renda Retido na Fonte',
-        this.modalDescription = 'Tabela referente ao ano de 2016'
+        this.modalDescription = 'Tabela referente ao ano de 2017'
     }
 
     this.modal.openModal();
