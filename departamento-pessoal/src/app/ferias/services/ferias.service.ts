@@ -9,24 +9,22 @@ import { CalculaPercentualPipe } from '../../core/pipes';
 @Injectable()
 export class FeriasService {
 
-  public result: number;
-  public percentual_INSS: number;
-  public percentual_IRRF: number;
+  public percentual_INSS: number = 0;
+  public percentual_IRRF: number = 0;
 
-  constructor(private calcPercent: pc.CalculaPercentualPipe) {}
+  constructor(private calcPercent: pc.CalculaPercentualPipe) { }
 
-  public calculaFerias(salario: number, horasExtras: number = 0, diasFerias: number = 0): number {
+  public calculaFerias(salario: number = 0, horasExtras: number = 0, diasFerias: number = 0): number {
     let diaria: number = 0;
-
     diaria = (salario + horasExtras) / 30;
     return diasFerias * diaria;
   }
 
-  public calculaFerias1_3(valorBruto: number): number {
+  public calculaFerias1_3(valorBruto: number = 0): number {
     return valorBruto / 3;
   }
 
-  public calculaINSS(salarioFerias: number, salario1_3: number): number {
+  public calculaINSS(salarioFerias: number = 0, salario1_3: number = 0): number {
     let result: number = 0;
     let salarioBruto: number = 0;
     let FX1 = sc.FormatDatasService.formatForFloat(cec.Inss.FAIXA_1.MAX);
@@ -57,7 +55,7 @@ export class FeriasService {
     }
   }
 
-  calculaIRRF(vrFerias: number, vr1_3: number, vrInss: number, numDependentes: number) {
+  calculaIRRF(vrFerias: number = 0, vr1_3: number = 0, vrInss: number = 0, numDependentes: number = 0) {
     let valorBase: number = 0;
     let vrDependentes: number = 0;
     let FX1 = sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_1.MAX);
@@ -99,7 +97,7 @@ export class FeriasService {
     }
   }
 
-  public verificaFaltas(falta: number) {
+  public verificaFaltas(falta: number = 0) {
 
     let FX1 = cec.Faltas.FAIXA_1.MAX;
     let FX2 = cec.Faltas.FAIXA_2.MAX;
@@ -125,21 +123,21 @@ export class FeriasService {
 
   }
 
-  private _calculoIRRF(percentual:number, valBase:number, deducao:number) {
+  private _calculoIRRF(percentual, valBase, deducao) {
     this.percentual_IRRF = percentual;
     let calc = this.calcPercent.transform(valBase, percentual);
     return calc - deducao;
   }
 
   public somaSubtotal(val_A: any, val_B: any) {
-    (val_A == null ? 0 : val_A);
-    (val_B == null ? 0 : val_B);
+    (val_A == null || val_A == undefined ? 0 : val_A);
+    (val_B == null || val_B == undefined ? 0 : val_B);
     return val_A + val_B;
   }
 
   public calcTotal(val_A: any, val_B: any) {
-    (val_A == null ? 0 : val_A);
-    (val_B == null ? 0 : val_B);
+    (val_A == null || val_A == undefined ? 0 : val_A);
+    (val_B == null || val_B == undefined ? 0 : val_B);
     return val_A - val_B;
   }
 }

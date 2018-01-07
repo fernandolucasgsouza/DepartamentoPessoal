@@ -5,7 +5,6 @@ import { } from '@angular/core/src/metadata/lifecycle_hooks';
 import * as sc from '../../../core/services';
 import * as cc from '../../../core/components';
 import * as s from '../../services';
-import { debug } from 'util';
 
 @Component({
   selector: 'app-calcular-ferias',
@@ -16,7 +15,7 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
 
   @ViewChild(cc.ModalComponent) modal: cc.ModalComponent
 
-  private _startObj = { ref: '-', proventos: 0, descontos: 0 };
+  private _startObj = { ref: '-', proventos: '', descontos: '' };
   private _btnStatus: boolean = false;
   public modal_Inss: any;
   public modal_Irrf: any;
@@ -30,8 +29,8 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
   public itemInss: object = this._startObj;
   public itemIrrf: object = this._startObj;
   public itemSubTotais: object = this._startObj;
-  public vrTotal: any;
-  public faltas: any;
+  public vrTotal: any = 0;
+  public faltas: any = 0;
 
   public salario: number;
   public horasExtras: number;
@@ -90,13 +89,10 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
   }
 
   public calcular(): void {
+    let diasFerias = parseInt(this.formCalculaFerias.get('dias').value);
+    let totDependentes = parseInt(this.formCalculaFerias.get('dependentes').value);
 
-    let form = this.formCalculaFerias.value;
-
-    let diasFerias = parseInt(form.dias);
-    let totDependentes = parseInt(form.dependentes);
-
-    let vrBrutoFerias = this._service.calculaFerias(sc.FormatDatasService.formatForFloat(form.salario), sc.FormatDatasService.formatForFloat(form.horasExtras), diasFerias);
+    let vrBrutoFerias = this._service.calculaFerias(this.salario, this.horasExtras, diasFerias);
     let vr1_3 = this._service.calculaFerias1_3(vrBrutoFerias);
     let vrInss = this._service.calculaINSS(vrBrutoFerias, vr1_3);
     let vrIrrf = this._service.calculaIRRF(vrBrutoFerias, vr1_3, vrInss, totDependentes);
@@ -138,7 +134,6 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
   }
 
   onKeyFalta(event: any) {
-
     let vrInput = event.target.value;
     this._btnStatus = false;
 
@@ -154,8 +149,6 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
         Validators.max(this.faltas)
       ]);
 
-      this.setFocus('dias');
-
       if (this.faltas == 0) {
         this.formCalculaFerias.get('dias').disable();
         this._btnStatus = true;
@@ -163,8 +156,8 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
       }
     }
     else {
-      this.formCalculaFerias.get('dias').setValue('');
       this.formCalculaFerias.get('dias').disable();
+      this.formCalculaFerias.get('dias').setValue('');
     }
   }
 
@@ -202,12 +195,12 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
   modalShown(id: string) {
     if (id == 'modal_1') {
       this.contentModal = this.modal_Inss;
-      this.modalTitle = 'INSS',
+      this.modalTitle = 'INSS - Instituto Nacional do Seguro Social',
         this.modalDescription = 'Tabela referente ao ano de 2016'
     }
     else {
       this.contentModal = this.modal_Irrf;
-      this.modalTitle = 'IRRF',
+      this.modalTitle = 'IRRF -  Imposto de Renda Retido na Fonte',
         this.modalDescription = 'Tabela referente ao ano de 2016'
     }
 

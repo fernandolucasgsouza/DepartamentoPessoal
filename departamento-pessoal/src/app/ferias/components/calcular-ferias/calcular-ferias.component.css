@@ -1,40 +1,31 @@
-.fs-header {
-  border-bottom: 1px solid #ccc;
+.header {
+      border-bottom: 1px solid #ccc;
 }
 
-.fs-container-title-main {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+.container-title-main {
+      display: flex;
+      align-items: center;
 }
 
-.fs-title-main {
-  padding: 2px 0 0 5px;
-  margin: 0;
+.title-main {
+       padding: 2px 0 0 5px;
+      margin: 0;
 }
-
-.fs-input {
-  border-left: solid 3px #777;
+.fs-input{
+      border-left: solid 3px #777;
 }
-
 .fs-input-error {
-  border-left: solid 3px rgb(212, 63, 63)
+      border-left: solid 3px rgb(212, 63, 63)
 }
-
-.fs-container-total {
-  padding: 0 15px;
+.fs-container-total{
+      padding: 0 15px;
 }
-
-.fs-total {
-  text-align: right;
-  font-weight: 600;
-  padding: 2px 8px;
+.fs-total{
+      text-align: right;
+      font-weight: 600;
+      padding: 2px 8px;
 }
-
-.icon-calculator {
+.icon-calculator{
   width: 25px;
   height: 25px;
   background-image: url('../../../../assets/images/calculator.png');
@@ -43,42 +34,34 @@
   background-size: contain;
 }
 
-.fs-row-form-ferias {
-  width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+.fs-row-form-ferias{
+      width: 100%;
+      display: flex;
+      justify-content: center;
+}
+
+.fs-container-table-rs{
+      padding: 0;
+      margin: 0;
 }
 
 @media (max-width: 991px) {}
-
 @media (max-width: 767px) {
-  .fs-row-form-ferias {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    margin: 0;
-  }
-  .title-main {
-    font-size: 1.2em;
-  }
-  .fs-container-total {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-  }
+      .fs-row-form-ferias{
+           flex-direction: column;
+           margin: 0;
+      } 
+      .title-main {
+            font-size: 1.2em;
+      }
+     
 }
-
 @media (max-width: 479px) {
-  .fs-overflow-x {
-    overflow-x: auto;
-    max-width: 290px;
-  }
+      .fs-overflow-x{
+            overflow-x: auto;
+            max-width: 300px;
+      }  
+      .fs-container-table-rs{
+            margin: auto;
+      } 
 }

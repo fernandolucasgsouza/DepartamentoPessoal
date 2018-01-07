@@ -68,7 +68,7 @@
 
 .fs-title-modal {
   font-size: 1.5em;
-  margin: 0;
+  margin: 0 20px 0 0;
 }
 
 .fs-body-modal {
@@ -82,9 +82,20 @@
 }
 
 @media (max-width: 767px) {
+  .fs-container-modal {
+    width: 98%;
+  }
   .fs-body-modal {
     max-height: 270px;
     overflow-y: auto;
     padding: 15px 15px 30px 15px;
   }
+  .fs-title-modal {
+    font-size: 1.1em;
+  }
+  .fs-head-modal {
+    margin-bottom: 0;
+  }
 }
+
+

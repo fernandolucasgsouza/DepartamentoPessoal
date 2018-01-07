@@ -1,15 +1,15 @@
 <section>
-  <div class="section fs-header bg-color-3">
+  <div class="section header bg-color-3">
     <div class="container">
-      <div class="fs-container-title-main">
+      <div class="container-title-main">
         <i class="icon-calculator"></i>
-        <h3 class="fs-title-main">Cálcula férias 12/12</h3>
+        <h3 class="title-main">Cálcula férias 12/12</h3>
       </div>
     </div>
   </div>
 </section>
 <section class="section bg-color-3">
-  <div class="container">
+  <div class="container fs-container-main">
     <form [formGroup]="formCalculaFerias" (keydown)="onKeyDown($event)">
       <div class="row form-group fs-row-form-ferias">
         <div class="col-md-4">
@@ -52,7 +52,7 @@
                   class="form-control {{(fbGroup.faltas.valid) ? 'fs-input' : 'fs-input-error'}}"
                   placeholder="0"
                   formControlName="faltas"
-                  (change)="onKeyFalta($event)"
+                  (keyup)="onKeyFalta($event)"
                   mask="99"
                   maskReverse="true">
                   <fs-validation-message [control]="fbGroup.faltas"></fs-validation-message>
@@ -108,7 +108,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group col-md-4 fs-overflow-x">
+        <div class="form-group col-md-4 fs-overflow-x fs-container-table-rs">
             <table class="table table-hover bg-color-1 fs-margin-top25">
               <thead >
                 <tr>
@@ -156,8 +156,8 @@
               </tbody>
             </table>
             <div id="fs-container-total" class="row form-group fs-container-total fs-fade-out">
-              <div class="col-md-9 fs-total txt-color-5">TOTAL:</div>
-              <div class="col-md-3 fs-total txt-color-5">{{(vrTotal | formatCurrency)}}</div>
+              <div class="col-md-9 col-sm-9 col-xs-8 fs-total txt-color-5">TOTAL:</div>
+              <div class="col-md-3 col-sm-3 col-xs-4 fs-total txt-color-5">{{(vrTotal | formatCurrency)}}</div>
             </div>
         </div>
       </div>
