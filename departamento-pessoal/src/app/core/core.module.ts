@@ -28,7 +28,8 @@ import * as pc from './pipes';
     cc.TableComponent,
     cc.TabelaInssComponent,
     cc.TabelaIrrfComponent,
-    cc.FooterComponent
+    cc.FooterComponent,
+    cc.InputComponent
   ],
   declarations: [
     dc.MaskDirective,
@@ -38,7 +39,8 @@ import * as pc from './pipes';
     cc.TableComponent,
     cc.TabelaInssComponent,
     cc.TabelaIrrfComponent,
-    cc.FooterComponent
+    cc.FooterComponent,
+    cc.InputComponent
   ],
   providers: [
     sc.ValidationService
