@@ -10,6 +10,7 @@ import * as sc from './services';
 import * as pc from './pipes';
 
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -22,6 +23,7 @@ import * as pc from './pipes';
     HttpModule,
     FormsModule,
     dc.MaskDirective,
+    dc.MaskDecimalDirective,
     pc.FormatCurrencyPipe,
     cc.ValidationMessageComponent,
     cc.ModalComponent,
@@ -33,6 +35,7 @@ import * as pc from './pipes';
   ],
   declarations: [
     dc.MaskDirective,
+    dc.MaskDecimalDirective,
     pc.FormatCurrencyPipe,
     cc.ValidationMessageComponent,
     cc.ModalComponent,
@@ -40,10 +43,11 @@ import * as pc from './pipes';
     cc.TabelaInssComponent,
     cc.TabelaIrrfComponent,
     cc.FooterComponent,
-    cc.InputComponent
+    cc.InputComponent,
   ],
   providers: [
-    sc.ValidationService
+    sc.ValidationService,
+    pc.FormatCurrencyPipe,
   ]
 })
 export class CoreModule { }

@@ -72,7 +72,6 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
   ) {
     this.formCalculaFerias = this._fb.group(this.fbGroup);
 
-    console.log(this.formCalculaFerias)
   }
 
   ngOnInit() {

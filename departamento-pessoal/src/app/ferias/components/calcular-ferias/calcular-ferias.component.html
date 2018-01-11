@@ -22,7 +22,9 @@
                                 type="text"
                                 placeholder="R$0,00"
                                 [control]="fbGroup.salario"
-                                formControlName="salario">
+                                formControlName="salario"
+                                >
+                                <!-- fsMaskDecimal -->
                             </fs-input>
                         </div>
                     </div>
@@ -48,7 +50,8 @@
                         <div class="col-md-12">
                             <label class="title-input" for="horasExtras">Valor médio horas extras ano:</label>
 
-                            <input type="text" id="horasExtras" class="form-control {{(fbGroup.horasExtras.valid) ? 'fs-input' : 'fs-input-error'}}"
+                            <input
+                              type="text" id="horasExtras" class="form-control {{(fbGroup.horasExtras.valid) ? 'fs-input' : 'fs-input-error'}}"
                                 placeholder="R$0,00" formControlName="horasExtras" mask="#.##0,00" maskReverse="true" (keyup)="keyupHrExtras($event)">
 
                             <fs-validation-message [control]="fbGroup.horasExtras"></fs-validation-message>
