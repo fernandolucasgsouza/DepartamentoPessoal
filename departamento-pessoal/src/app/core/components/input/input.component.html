@@ -1,15 +1,15 @@
-<div class="fs-input">
+
     <label class="title-input" for="salario">{{label}}</label>
 
     <input
-        class="form-control"
+        class="form-control {{(control.valid) ? 'fs-input' : 'fs-input-error'}}"
         [attr.id]="id"
         [attr.type]="type"
         [attr.placeholder]="placeholder"
         (change)="onChange($event)"
-
+        (blur)="onBlur($event)"
     >
 
     <fs-validation-message [control]="control"></fs-validation-message>
 
-</div>
+

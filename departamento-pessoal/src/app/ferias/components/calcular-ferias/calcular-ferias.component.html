@@ -12,33 +12,45 @@
 <section class="section bg-color-3">
     <div class="container fs-container-main">
         <form [formGroup]="formCalculaFerias" (keydown)="onKeyDown($event)">
-            <!-- <fs-input
-               [label]="'Component Input teste'"
-               id="salario"
-               type="text"
-               placeholder="R$0,00"
-               [control]="fbGroup.salario"
-               formControlName="salario"
-
-               >
-           </fs-input> -->
-            <div class="row form-group fs-row-form-ferias">
+             <div class="row form-group fs-row-form-ferias">
                 <div class="col-md-4">
                     <div class="row form-group">
                         <div class="col-md-12">
+                            <fs-input
+                                [label]="'Salário'"
+                                id="salario"
+                                type="text"
+                                placeholder="R$0,00"
+                                [control]="fbGroup.salario"
+                                formControlName="salario">
+                            </fs-input>
+                        </div>
+                    </div>
+
+                    <!-- <div class="row form-group">
+                        <div class="col-md-12">
                             <label class="title-input" for="salario">Valor salário bruto:</label>
-                            <input type="text" id="salario" class="form-control {{(fbGroup.salario.valid) ? 'fs-input' : 'fs-input-error'}}" placeholder="R$0,00"
-                                formControlName="salario" mask="#.##0,00" maskReverse="true" (keyup)="keyupSalario($event)">
+                            <input
+                            type="text"
+                            id="salario"
+                            class="form-control {{(fbGroup.salario.valid) ? 'fs-input' : 'fs-input-error'}}"
+                            placeholder="R$0,00"
+                            formControlName="salario"
+                             mask="#.##0,00"
+                             maskReverse="true"
+                             (keyup)="keyupSalario($event)">
 
                             <fs-validation-message [control]="fbGroup.salario"></fs-validation-message>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="row form-group">
                         <div class="col-md-12">
                             <label class="title-input" for="horasExtras">Valor médio horas extras ano:</label>
+
                             <input type="text" id="horasExtras" class="form-control {{(fbGroup.horasExtras.valid) ? 'fs-input' : 'fs-input-error'}}"
                                 placeholder="R$0,00" formControlName="horasExtras" mask="#.##0,00" maskReverse="true" (keyup)="keyupHrExtras($event)">
+
                             <fs-validation-message [control]="fbGroup.horasExtras"></fs-validation-message>
                         </div>
                     </div>

@@ -1,7 +1,13 @@
-import { Component, OnInit, Input, forwardRef, ElementRef, Renderer2 } from '@angular/core';
-import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { FormControlName,ControlValueAccessor } from '@angular/forms';
+import { Component, OnInit, Input, forwardRef, ElementRef, Renderer2, } from '@angular/core';
+import { FormControl, FormGroup, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
+
+
+// export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+//     provide: NG_VALUE_ACCESSOR,
+//     useExisting: forwardRef(() => InputComponent),
+//     multi: true
+// };
 
 @Component({
     selector: 'fs-input',
@@ -22,35 +28,37 @@ export class InputComponent implements OnInit, ControlValueAccessor {
     @Input() type: string;
     @Input() placeholder: string;
     @Input() control: FormControl;
-    @Input() controlGroup: FormGroup;
 
-    public onChanged;
-    public onTouched;
+    private _onChanged;
+    private _onTouched;
 
     constructor( private _elRef: ElementRef, private _renderer: Renderer2) { }
 
-    ngOnInit() {
+    ngOnInit() { }
 
-        // console.log(this.control)
-        // console.log(this.item)
-        // console.log(this.controlGroup)
-    }
+
     writeValue(value: any): void {
         this._renderer.setProperty(this._elRef.nativeElement, 'value', value);
+
     }
     registerOnChange(fn: (_: any) => void): void {
-        this.onChanged = fn;
+        this._onChanged = fn;
     }
     registerOnTouched(fn: any): void {
-        this.onTouched = fn;
+        this._onTouched = fn;
     }
     setDisabledState?(isDisabled: boolean): void {
         this._renderer.setProperty(this._elRef.nativeElement,'disabled',isDisabled)
     }
 
 
-   onChange(event) {
-         this.onChange(event.target.value);
-         console.log(event.target.value)
+    onKeyup(event){
+        this.writeValue(event.target.value);
+    }
+    onBlur(event) {
+        this._onTouched(event.target.value);
+   }
+    onChange(event) {
+         this._onChanged(event.target.value);
     }
 }
