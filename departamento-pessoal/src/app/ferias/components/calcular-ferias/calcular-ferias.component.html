@@ -12,17 +12,18 @@
 <section class="section bg-color-3">
     <div class="container fs-container-main">
         <form [formGroup]="formCalculaFerias" (keydown)="onKeyDown($event)">
+            <!-- <fs-input
+               [label]="'Component Input teste'"
+               id="salario"
+               type="text"
+               placeholder="R$0,00"
+               [control]="fbGroup.salario"
+               formControlName="salario"
+
+               >
+           </fs-input> -->
             <div class="row form-group fs-row-form-ferias">
                 <div class="col-md-4">
-                    <!-- <fs-input
-                        [label]="'Component Input teste'"
-                        id="teste"
-                        placeholder="R$0,00"
-                        formControlName="salario"
-                        [control]="fbGroup.salario"
-                        >
-                    </fs-input> -->
-
                     <div class="row form-group">
                         <div class="col-md-12">
                             <label class="title-input" for="salario">Valor salário bruto:</label>

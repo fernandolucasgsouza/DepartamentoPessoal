@@ -38,7 +38,7 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
   public totDependentes: number;
 
   public fbGroup = {
-    salario: new FormControl('', Validators.compose([
+    salario: new FormControl('0', Validators.compose([
       Validators.required,
       Validators.min(0),
       Validators.minLength(6)
@@ -71,6 +71,8 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
     private _service: s.FeriasService,
   ) {
     this.formCalculaFerias = this._fb.group(this.fbGroup);
+
+    console.log(this.formCalculaFerias)
   }
 
   ngOnInit() {

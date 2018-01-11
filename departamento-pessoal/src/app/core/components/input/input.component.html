@@ -6,9 +6,10 @@
         [attr.id]="id"
         [attr.type]="type"
         [attr.placeholder]="placeholder"
-        [ngClass]=""
-        >
+        (change)="onChange($event)"
 
-    <!-- <fs-validation-message [control]="fb.formControlName"></fs-validation-message> -->
+    >
+
+    <fs-validation-message [control]="control"></fs-validation-message>
 
 </div>
