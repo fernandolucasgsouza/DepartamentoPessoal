@@ -1,0 +1,12 @@
+|-- pedido // Module
+    |-- [+] components
+            |-- novo
+                |-- novo-pedido.component .|html|scss|spec|.ts
+            |-- editar
+                |-- editar-pedido.component .|html|scss|spec|.ts
+            |-- detalhes
+                |-- detalhes-pedido.component .|html|scss|spec|.ts
+    |-- services
+        |-- pedido.service.ts
+    |-- pedido.module.ts
+    |-- pedido.routes.ts
