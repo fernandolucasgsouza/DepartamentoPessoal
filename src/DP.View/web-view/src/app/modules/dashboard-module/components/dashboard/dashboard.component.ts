@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MaskProvider } from 'src/app/core/format-datas/mask.provider';
+import { MaskProvider } from 'src/app/core/providers/mask.providers';
 
 
 

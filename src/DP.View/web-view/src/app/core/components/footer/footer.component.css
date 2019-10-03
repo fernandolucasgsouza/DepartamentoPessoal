@@ -1,0 +1,105 @@
+.fs-section-footer {
+    padding: 40px 20px;
+  }
+
+  .fs-colum-footer, .fs-browsers {
+    border-radius: 3px;
+    padding: 15px;
+  }
+
+  .fs-container-browsers {
+    padding: 15px;
+  }
+
+  .fs-browsers {
+    width: 100%;
+  }
+
+  .fs-footer-title {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: .85em;
+  }
+
+  .fs-link-footer {
+    color: #fff;
+  }
+
+  .fs-link-footer:hover {
+    color: #fff;
+  }
+
+  .fs-container-icons-browsers {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .fs-icon-browser {
+    width: 30px;
+    height: 30px;
+    margin: 0 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  /* .fs-icon-browser.fs-icon-chrome {
+    background-image: url('../../../../assets/images/chrome.png');
+  }
+
+  .fs-icon-browser.fs-icon-mozilla {
+    background-image: url('../../../../assets/images/firefox.png');
+  }
+
+  .fs-icon-browser.fs-icon-edge {
+    background-image: url('../../../../assets/images/edge.png');
+  }
+
+  .fs-icon-browser.fs-icon-opera{
+    background-image: url('../../../../assets/images/opera.png');
+  } */
+
+  .fs-ancor-browser {
+    width: 60px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  @media (max-width: 991px) {}
+
+  @media (max-width: 767px) {
+    .fs-colum-footer {
+      margin: 3px 0;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .fs-footer-description {
+      font-size: .8em;
+    }
+    .fs-section-footer {
+      overflow: hidden;
+    }
+  }

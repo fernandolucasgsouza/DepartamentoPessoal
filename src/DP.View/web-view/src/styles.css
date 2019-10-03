@@ -12,6 +12,53 @@
   background-color:#663399;
 }
 
+.txt-color-2{
+  color:#33a7d8;
+}
+
+.bg-color-2{
+  background-color:#33a7d8;
+}
+
+.txt-color-3{
+  color:maroon;
+}
+
+.bg-color-3{
+  background-color:maroon;
+}
+
+
+.txt-color-4{
+  color:#333;
+}
+
+.bg-color-4{
+  background-color:#333;
+}
+
+.txt-color-5{
+  color:#fff;
+}
+
+.bg-color-5{
+  background-color: #fff;
+}
+.txt-color-6{
+  color:#4c4d4e;
+}
+
+.bg-color-6{
+  background-color: #4c4d4e;
+}
+.txt-color-7{
+  color:#b7b5b5;
+}
+
+.bg-color-7{
+  background-color: #b7b5b5;
+}
+
 .fs-18{
   font-size: 18px;
 }
@@ -21,4 +68,28 @@
 }
 .fs-30{
   font-size: 30px;
+}
+ .mt-400{
+   /* margin-top: 300px */
+ }
+
+.page-main{
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* Custom Bootstrap */
+.navbar-light .navbar-nav .nav-link {
+    color: #dcdcdc;
+}
+
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show>.nav-link {
+    color: #fff;
 }

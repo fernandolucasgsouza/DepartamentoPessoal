@@ -9,3 +9,7 @@
   justify-content: center;
   flex-direction: column;
 }
+
+.navbar-light .navbar-nav .nav-link {
+    color: #dcdcdc;
+}
