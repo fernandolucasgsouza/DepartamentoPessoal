@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import { faBell as faRegularBell, faSmileBeam, faSmileWink } from '@fortawesome/free-solid-svg-icons';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+
+
 
 @Component({
   selector: 'app-dashboard',
@@ -10,12 +9,9 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 })
 export class DashboardComponent implements OnInit {
 
+  name = 'fernando';
+  constructor() {
 
-  constructor(library: FaIconLibrary) {
-    library.addIcons(
-      faSmileWink, faSmileBeam,
-
-    faRegularBell)
   }
 
   ngOnInit() {
