@@ -7,6 +7,9 @@
 
 <div>
   <br>
-  <input type="text" [(ngModel)]="name"> <br><br>
-  <p>{{name}}</p>
+  <input type="text" [(ngModel)]="input" [mask]="mask.dateBRL"> <br><br>
+  <p>{{input}}</p>
+
+
+  <input mask="XXX/X0/0000" />
 </div>

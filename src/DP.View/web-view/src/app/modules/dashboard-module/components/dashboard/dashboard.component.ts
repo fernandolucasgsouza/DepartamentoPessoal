@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MaskProvider } from 'src/app/core/format-datas/mask.provider';
 
 
 
@@ -9,12 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  name = 'fernando';
+  public mask: MaskProvider = MaskProvider;
+
   constructor() {
 
   }
 
   ngOnInit() {
+
   }
 
 }

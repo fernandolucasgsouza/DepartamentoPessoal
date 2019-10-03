@@ -1,17 +1,20 @@
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgxMaskModule } from 'ngx-mask';
 
 
 
 @NgModule({
   declarations: [],
-  imports: [],
+  imports: [
+    NgxMaskModule.forRoot()
+  ],
   exports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule
   ],
   providers: [],
 })
