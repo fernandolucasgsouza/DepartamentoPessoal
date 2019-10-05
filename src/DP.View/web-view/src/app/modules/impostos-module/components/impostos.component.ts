@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-irrf',
+  selector: 'fs-irrf',
   templateUrl: './impostos.component.html',
   styleUrls: ['./impostos.component.css']
 })

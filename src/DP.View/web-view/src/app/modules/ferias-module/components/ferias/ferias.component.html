@@ -1,0 +1,96 @@
+
+<div class="description-page">
+  <div class="title-page"><i class="fas fa-calculator txt-color-8"></i><h4 class="ml-2 mb-0">Cálculo de Férias</h4></div>
+  <p>Cálculo do valor a ser pago ao trabalhador referente as férias 12/12.</p>
+</div>
+
+<div class="row">
+  <div class="col-sm-12	col-md-6 col-lg-6col-xl-6 col-6">
+    <h5 class="mb-3">Dados de Entrada:</h5>
+    <form>
+      <div class="form-group">
+        <div class="d-flex align-items-baseline">
+          <label for="salario">Salário:</label>
+          <small class="form-text text-muted ml-1"></small>
+        </div>
+        <input type="email" class="form-control" id="salario" placeholder="0,00">
+      </div>
+
+      <div class="form-group">
+         <div class="d-flex align-items-baseline">
+          <label for="hora-extra">Horas extras:</label>
+          <small class="form-text text-muted ml-1">Valor médio horas extras ano.</small>
+        </div>
+        <input type="text" class="form-control" id="hora-extra" placeholder="0,00">
+      </div>
+
+      <div class="form-group">
+        <div class="d-flex align-items-baseline">
+          <label for="faltas">Dias faltas:</label>
+          <small class="form-text text-muted ml-1">Quantidade dias falta sem justificativa ano.</small>
+        </div>
+        <input type="text" class="form-control" id="faltas" placeholder="0,00">
+      </div>
+
+      <div class="form-group">
+         <div class="d-flex align-items-baseline">
+          <label for="ferias">Dias férias:</label>
+          <small class="form-text text-muted ml-1">Quantidade dias férias por direito.</small>
+        </div>
+        <input type="text" class="form-control" id="ferias" placeholder="0">
+      </div>
+
+       <div class="form-group">
+        <label for="dependentes">Qtd. dependentes:</label>
+        <input type="text" class="form-control" id="dependentes" placeholder="0">
+      </div>
+        <button type="submit" class="btn btn-1 ligth mr-2">Limpar</button>
+        <button type="submit" class="btn btn-1">Cálcular</button>
+      </form>
+  </div>
+  <div class="col-sm-12	col-md-6 col-lg-6col-xl-6 col-6">
+    <h5 class="mb-44">Resultado:</h5>
+    <table class="table table-hover">
+      <thead class="bg-color-6 txt-color-5">
+        <tr>
+          <th class="font-weight-normal" scope="col">Descrição</th>
+          <th class="font-weight-normal" scope="col">Ref.</th>
+          <th class="font-weight-normal" scope="col">Proventos</th>
+          <th class="font-weight-normal" scope="col">Descontos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row">Valor Férias</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td scope="row">1/3 Férias</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td scope="row">INSS</td>
+           <td>-</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td scope="row">IRRF</td>
+          <td>-</td>
+          <td>-</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <th scope="row">Subtototais</th>
+          <th scope="row">0,00</th>
+          <th scope="row">0,00</th>
+          <th scope="row">0,00</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

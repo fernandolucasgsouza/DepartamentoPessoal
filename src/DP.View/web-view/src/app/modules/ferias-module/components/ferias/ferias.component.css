@@ -1,0 +1,11 @@
+.description-page{
+  border-bottom: 1px solid #ccc;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.title-page{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

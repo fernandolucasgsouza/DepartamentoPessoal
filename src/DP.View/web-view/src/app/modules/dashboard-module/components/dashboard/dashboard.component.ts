@@ -4,7 +4,7 @@ import { MaskProvider } from 'src/app/core/providers/mask.providers';
 
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'fs-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
