@@ -1,0 +1,22 @@
+
+<div class="form-group">
+    <div class="d-flex align-items-baseline">
+      <label [attr.for]="id">{{label}}:</label>
+      <small class="form-text text-muted ml-1">{{helper}}</small>
+    </div>
+    <div
+        class="content-select {{control.invalid && control.touched ? 'field-error' :  'field-success'}}"
+        [ngClass]="control.disabled ? 'disabled' : 'enable'">
+      <select
+        [attr.id]="id"
+        [disabled]="!!isReadOnly"
+        [formControl]="control"
+        [compareWith]="compareItems"
+        (blur)="onChanges(control.value)"
+        >
+        <option value="">Selecione</option>
+        <option [ngValue]="item" *ngFor="let item of items" >{{item.description}}</option>
+      </select>
+    </div>
+    <fs-validation-message [control]="control"></fs-validation-message>
+</div>

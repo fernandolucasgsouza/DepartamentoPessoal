@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, forwardRef } from '@angular/core';
+import { Component, OnInit, Input, forwardRef, EventEmitter, Output } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 
@@ -8,6 +8,19 @@ export const CUSTOM_INPUT_CONTROL_ACESS_VALUE: any = {
   multi: true
 }
 
+/**
+ * @example html
+  <fs-input
+    label="Salário"
+    id="salario"
+    formControlName="salario"
+    [control]="form.get('salario')"
+    mask="dot_separator.2"
+    placeholder="0,00"
+  >
+  </fs-input>
+ *
+ */
 @Component({
   selector: 'fs-input',
   templateUrl: './input.component.html',
@@ -25,6 +38,9 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   @Input() placeholder: string;
   @Input() isReadOnly = false;
   @Input() control: FormControl;
+
+
+  @Output() onChangeInput: EventEmitter<any> = new EventEmitter();
 
   private _currentValue: any;
 
@@ -65,6 +81,13 @@ export class InputComponent implements OnInit, ControlValueAccessor {
 
   setDisabledState?(isDisabled: boolean): void {
     this.isReadOnly = isDisabled;
+  }
+
+  onChanges(v) {
+    if (v !== this._currentValue) {
+      this.value = v;
+      this.onChangeInput.emit(this.value);
+    }
   }
 
 }

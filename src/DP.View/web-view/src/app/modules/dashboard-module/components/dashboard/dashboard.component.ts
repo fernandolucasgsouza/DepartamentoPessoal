@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MaskProvider } from 'src/app/core/providers/mask.providers';
 
 
-
 @Component({
   selector: 'fs-dashboard',
   templateUrl: './dashboard.component.html',
@@ -17,6 +16,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+
 
   }
 
