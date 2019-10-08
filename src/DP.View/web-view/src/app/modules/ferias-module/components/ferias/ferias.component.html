@@ -10,6 +10,14 @@
       <h5 class="mb-3">Dados de entrada:</h5>
       <form [formGroup]="form">
 
+        <fs-text-area
+          label="Texto"
+          id="text"
+          formControlName="text"
+          [control]="form.get('text')"
+          placeholder="descreva">
+        </fs-text-area>
+
         <fs-input
           label="Salário"
           id="salario"

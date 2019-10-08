@@ -16,7 +16,8 @@ export class FeriasComponent implements OnInit {
     horasExtras: ['',],
     diasFalta: ['', [Validators.required]],
     diasFerias: ['', [Validators.required, Validators.max(30)]],
-    dependentes: ['', [Validators.required]]
+    dependentes: ['', [Validators.required]],
+    text: ['', [Validators.required]]
   }
   constructor(private _fb: FormBuilder) {
     this.form = _fb.group(this.fbGroup)

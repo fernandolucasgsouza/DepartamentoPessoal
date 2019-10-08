@@ -42,7 +42,7 @@ export class InputComponent implements OnInit, ControlValueAccessor {
 
   @Output() onChangeInput: EventEmitter<any> = new EventEmitter();
 
-  private _currentValue: any;
+  protected _currentValue: any;
 
   get value() {
     return this._currentValue;
@@ -64,8 +64,8 @@ export class InputComponent implements OnInit, ControlValueAccessor {
   ngOnInit() {
   }
 
-  onChangeCB: (_: any) => void = () => { };
-  onTouchedCB: (_: any) => void = () => { };
+  protected onChangeCB: (_: any) => void = () => { };
+  protected onTouchedCB: (_: any) => void = () => { };
 
   writeValue(v: any): void {
     this.value = v;

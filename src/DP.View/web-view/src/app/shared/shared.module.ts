@@ -6,13 +6,15 @@ import { NgxMaskModule } from 'ngx-mask';
 import { ValidationMessageComponent } from './components/validation-message/validation-message.component';
 import { InputComponent } from './components/input/input.component';
 import { SelectComponent } from './components/select/select.component';
+import { TextAreaComponent } from './components/text-area/text-area.component';
 
 
 @NgModule({
   declarations: [
     InputComponent,
     SelectComponent,
-    ValidationMessageComponent
+    ValidationMessageComponent,
+    TextAreaComponent
   ],
   imports: [
     CommonModule,
@@ -26,6 +28,7 @@ import { SelectComponent } from './components/select/select.component';
     ReactiveFormsModule,
     InputComponent,
     SelectComponent,
+    TextAreaComponent,
     ValidationMessageComponent
   ],
   providers: [],

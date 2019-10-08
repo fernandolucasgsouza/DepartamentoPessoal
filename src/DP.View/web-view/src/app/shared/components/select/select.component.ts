@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, forwardRef, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, forwardRef, Output, EventEmitter } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
 
 import { CodeDescriptionModel } from 'src/app/core/models/code-description.model';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
 
 export const CUSTOM_SELECT_CONTROL_VALUE_ACESSOR = {
   provide: NG_VALUE_ACCESSOR,
