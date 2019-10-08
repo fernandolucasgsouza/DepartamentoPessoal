@@ -4,7 +4,8 @@
     <small class="form-text text-muted ml-1">{{helper}}</small>
   </div>
   <textarea
-    class="form-control {{control.invalid && control.touched ? 'input-error' :  'input-success'}}"
+    rows="5"
+    class="form-control {{control.invalid && control.touched ? ' field-error' :  'field-success'}}"
     [ngClass]="classCss"
     [attr.id]="id"
     [attr.type]="type"

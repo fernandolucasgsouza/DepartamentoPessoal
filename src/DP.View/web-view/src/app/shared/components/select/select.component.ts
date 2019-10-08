@@ -1,19 +1,14 @@
-import { Component, OnInit, Input, forwardRef, Output, EventEmitter } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
+import { Component, Input } from '@angular/core';
 
 import { CodeDescriptionModel } from 'src/app/core/models/code-description.model';
+import { ControlValueAcessorProvider, CUSTOM_CONTROL_ACESS } from 'src/app/core/providers/control-value-acessor.providers';
 
-export const CUSTOM_SELECT_CONTROL_VALUE_ACESSOR = {
-  provide: NG_VALUE_ACCESSOR,
-  useExisting: forwardRef(() => SelectComponent),
-  multi: true
-}
 
 @Component({
   selector: 'fs-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.css'],
-  providers: [CUSTOM_SELECT_CONTROL_VALUE_ACESSOR]
+  providers: [CUSTOM_CONTROL_ACESS.Values(SelectComponent)]
 })
 
 /**
@@ -40,63 +35,16 @@ export const CUSTOM_SELECT_CONTROL_VALUE_ACESSOR = {
       this.form.get('nomes').setValue(nome);
     }
  */
-export class SelectComponent implements OnInit, ControlValueAccessor {
+export class SelectComponent extends ControlValueAcessorProvider {
 
-  @Input() label: string;
-  @Input() helper: string;
-  @Input() id: string;
   @Input() items: Array<CodeDescriptionModel>;
-  @Input() isReadOnly = false;
-  @Input() control: FormControl;
 
-  @Output() onChangeSelect: EventEmitter<any> = new EventEmitter();
-
-  private _currentValue: any;
-
-  get value() {
-    return this._currentValue;
-  }
-
-  set value(v: any) {
-    if (v !== this._currentValue) {
-      this._currentValue = v;
-      this.onChangeCB(v);
-    }
-  }
-
-  constructor() { }
-
-  ngOnInit() { }
-
-  onChangeCB: (_: any) => void = () => { };
-  onTouchedCB: (_: any) => void = () => { };
-
-  writeValue(v: any): void {
-    this.value = v;
-  }
-
-  registerOnChange(fn: any): void {
-    this.onChangeCB = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onTouchedCB = fn;
-  }
-
-  setDisabledState?(isDisabled: boolean): void {
-    console.log(isDisabled);
-
-    this.isReadOnly = isDisabled;
+  constructor() {
+    super();
   }
 
   compareItems(obj1: CodeDescriptionModel, obj2: CodeDescriptionModel) {
     return obj1 && obj2 ? (obj1.code === obj2.code) : obj1 === obj2;
   }
 
-  onChanges(v) {
-    if (v !== this._currentValue) {
-      this.value = v;
-      this.onChangeSelect.emit(this.value);
-    }
-  }
 }

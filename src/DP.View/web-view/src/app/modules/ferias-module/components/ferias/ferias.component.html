@@ -10,12 +10,24 @@
       <h5 class="mb-3">Dados de entrada:</h5>
       <form [formGroup]="form">
 
+         <fs-select
+            label="Nomes"
+            id="nomes"
+            helper="Nomes de dependentes"
+            [items]="datas"
+            formControlName="nomes"
+            [control]="form.get('nomes')"
+            (onChangeSelect)="changeSelect($event)"
+            >
+          </fs-select>
         <fs-text-area
-          label="Texto"
+          label="Descrição"
           id="text"
           formControlName="text"
           [control]="form.get('text')"
-          placeholder="descreva">
+          isReadOnly="true"
+          placeholder="Adicione aqui sua descrição..."
+          >
         </fs-text-area>
 
         <fs-input

@@ -14,12 +14,12 @@
   border-left: 3px solid #33a7d8;
 }
 
-.content-select.field-sucess select {
+.content-select.field-select-sucess select {
   border-radius: .25rem;
   border-left: 3px solid #33a7d8;
 }
 
-.content-select.field-error select {
+.content-select.field-select-error select {
   border-left: 2px solid red;
 }
 

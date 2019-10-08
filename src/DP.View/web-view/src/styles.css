@@ -117,6 +117,14 @@
   justify-content: space-between;
 }
 
+.field-success {
+  border-left: 3px solid #33a7d8;
+}
+
+.field-error {
+  border-left: 2px solid red;
+}
+
 .container-page {
   padding: 30px 0;
 }
