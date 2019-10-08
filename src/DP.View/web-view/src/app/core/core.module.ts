@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from './../shared/shared.module';
-import { FooterComponent } from './components/footer/footer.component';
-
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
   declarations: [
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     SharedModule,
@@ -15,8 +14,8 @@ import { FooterComponent } from './components/footer/footer.component';
   exports: [
     SharedModule,
     FooterComponent
-
   ],
 
+  providers: []
 })
 export class CoreModule { }

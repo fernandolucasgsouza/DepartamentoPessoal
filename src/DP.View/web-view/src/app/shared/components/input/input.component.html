@@ -1,0 +1,17 @@
+<div class="form-group">
+  <div class="d-flex align-items-baseline">
+    <label [attr.for]="id">{{label}}:</label>
+    <small class="form-text text-muted ml-1">{{helper}}</small>
+  </div>
+  <input
+    class="form-control {{control.invalid && control.touched ? 'input-error' :  'input-success'}}"
+    [ngClass]="classCss"
+    [attr.id]="id"
+    [attr.type]="type"
+    [attr.placeholder]="placeholder"
+    [mask]="mask"
+    [readonly]="!!isReadOnly"
+    [(ngModel)]="value"
+    >
+    <fs-validation-message [control]="control"></fs-validation-message>
+</div>

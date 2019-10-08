@@ -3,18 +3,27 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxMaskModule } from 'ngx-mask';
 
+import { ValidationMessageComponent } from './components/validation-message/validation-message.component';
+import { InputComponent } from './components/input/input.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    InputComponent,
+    ValidationMessageComponent
+  ],
   imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     NgxMaskModule.forRoot()
   ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxMaskModule
+    InputComponent,
+    ValidationMessageComponent
   ],
   providers: [],
 })
