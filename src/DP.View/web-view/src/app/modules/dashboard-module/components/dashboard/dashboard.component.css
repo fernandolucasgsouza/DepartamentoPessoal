@@ -1,15 +1,37 @@
-
-.btn-frame{
+.btn-frame {
   width: 120px;
   height: 120px;
-  border: 1px solid rebeccapurple;
+  border: 1px solid #333;
   border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin: 20px 40px;
+  cursor: pointer;
+  transition: all 350ms ease;
+  text-decoration: none;
+  color: #333;
+}
+
+.btn-frame:hover i {
+  color: rebeccapurple;
+}
+
+.btn-frame:hover {
+  -webkit-transform: translateY(-3px);
+  transform: translateY(-3px);
+  border-color: rebeccapurple;
+  -webkit-box-shadow: 0 18px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 16px 20px rgba(0, 0, 0, 0.15);
 }
 
 .navbar-light .navbar-nav .nav-link {
-    color: #dcdcdc;
+  color: #dcdcdc;
+}
+
+.container-access-dash {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }

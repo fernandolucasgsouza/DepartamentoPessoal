@@ -14,8 +14,8 @@ export class ValidationMessageService {
       'cpf': 'CPF inválido',
       'minlength': `Tamanho mínimo é de ${validatorValue.requiredLength} caracteres`,
       'maxlength': `Tamanho máximo é de ${validatorValue.requiredLength} caracteres`,
-      'min': `Quantidade mínima é ${validatorValue.min}`,
-      'max': `Quantidade máxima é ${validatorValue.max}`
+      'min': `Valor mínimo é ${validatorValue.min}`,
+      'max': `Valor máximo é ${validatorValue.max}`
     }
     return `*${errosConfig[validatorName]}.`;
   }

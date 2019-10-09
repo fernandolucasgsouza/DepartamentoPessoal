@@ -8,28 +8,8 @@
   <div class="row">
     <div class="col-sm-12	col-md-6 col-lg-6 col-xl-6 col-6">
       <h5 class="mb-3">Dados de entrada:</h5>
+
       <form [formGroup]="form">
-
-         <fs-select
-            label="Nomes"
-            id="nomes"
-            helper="Nomes de dependentes"
-            [items]="datas"
-            formControlName="nomes"
-            [control]="form.get('nomes')"
-            (onChangeSelect)="changeSelect($event)"
-            >
-          </fs-select>
-        <fs-text-area
-          label="Descrição"
-          id="text"
-          formControlName="text"
-          [control]="form.get('text')"
-          isReadOnly="true"
-          placeholder="Adicione aqui sua descrição..."
-          >
-        </fs-text-area>
-
         <fs-input
           label="Salário"
           id="salario"
@@ -48,7 +28,6 @@
           [control]="form.get('horasExtras')"
           mask="dot_separator.2"
           placeholder="0,00"
-          isReadOnly="true"
         >
         </fs-input>
 
@@ -63,16 +42,16 @@
         >
         </fs-input>
 
-        <fs-input
+        <fs-select
           label="Dias férias"
-          helper="Quantidade dias férias por direito"
           id="diasFerias"
+          helper="Quantidade dias férias por direito"
+          [items]="datas"
           formControlName="diasFerias"
           [control]="form.get('diasFerias')"
-          mask="00"
-          placeholder="00"
-        >
-        </fs-input>
+          (onChangeSelect)="changeSelect($event)"
+          >
+        </fs-select>
 
         <fs-input
           label="Qtd. dependentes"
@@ -85,7 +64,7 @@
         </fs-input>
 
         <div class="mt-4">
-          <button type="submit" class="btn btn-1 ligth mr-2">Limpar</button>
+          <button type="button" class="btn btn-1 ligth mr-2">Limpar</button>
           <button type="submit" class="btn btn-1" (click)="onSubmit()">Cálcular</button>
         </div>
         </form>

@@ -71,7 +71,7 @@ export class ControlValueAcessorProvider {
   }
 
   onChanges(v) {
-    if (v !== this._currentValue) {
+    if (v !== undefined && v !== this._currentValue) {
       this.value = v;
       this.onChangeField.emit(this.value);
     }

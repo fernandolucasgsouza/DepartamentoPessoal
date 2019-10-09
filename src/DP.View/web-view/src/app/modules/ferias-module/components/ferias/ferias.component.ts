@@ -1,7 +1,9 @@
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+
 import { ValidationMessageComponent } from 'src/app/shared/components/validation-message/validation-message.component';
 import { CodeDescriptionModel } from 'src/app/core/models/code-description.model';
+import { DiasMesService } from 'src/app/core/services/business/dias-mes.service';
 
 @Component({
   selector: 'fs-ferias',
@@ -9,42 +11,29 @@ import { CodeDescriptionModel } from 'src/app/core/models/code-description.model
   styleUrls: ['./ferias.component.css']
 })
 export class FeriasComponent implements OnInit {
+
+  public datas: Array<CodeDescriptionModel> = [];
   form: FormGroup;
   fbGroup = {
-    nomes: [{ value: '', disabled: false }, [Validators.required]],
-    salario: ['', [Validators.required]],
-    horasExtras: ['',],
-    diasFalta: ['', [Validators.required]],
+    salario: ['', [Validators.required, Validators.maxLength(8), Validators.max(25000)]],
+    horasExtras: ['', Validators.required],
+    diasFalta: ['', [Validators.required, Validators.max(30)]],
     diasFerias: ['', [Validators.required, Validators.max(30)]],
-    dependentes: ['', [Validators.required]],
-    text: ['', [Validators.required]]
+    dependentes: ['', [Validators.required, Validators.max(10)]],
   }
-  constructor(private _fb: FormBuilder) {
+
+  constructor(
+    private _fb: FormBuilder,
+    private _serviceDiasMes: DiasMesService
+  ) {
     this.form = _fb.group(this.fbGroup)
   }
 
-  public datas: Array<CodeDescriptionModel> = [];
   ngOnInit() {
-    this.datas = [
-      { code: 1, description: 'Fernando', sigla: 'FE' },
-      { code: 2, description: 'Lucas', sigla: 'LU' },
-      { code: 3, description: 'Gomes', sigla: 'GO' },
-      { code: 4, description: 'Souza', sigla: 'SO' }
-    ];
-    this.setNames();
+    this._serviceDiasMes.getDiasMes().subscribe((days) => this.datas = days);
   }
 
-  setNames() {
-    const nome = { code: 2, description: 'Lucas', sigla: 'LU' }
-    this.form.get('nomes').setValue(nome);
-  }
-
-  changeSelect(e) {
-    console.log('changed', e);
-
-  }
   onSubmit() {
-
     if (this.form.invalid) {
       const errors = new ValidationMessageComponent();
       errors.errorMessageAll(this.form);
