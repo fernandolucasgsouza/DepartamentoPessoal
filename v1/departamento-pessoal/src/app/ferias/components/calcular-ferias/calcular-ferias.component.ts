@@ -42,15 +42,18 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
       Validators.min(0),
       Validators.minLength(6)
     ])),
+
     horasExtras: new FormControl('0,00', Validators.compose([
       Validators.required,
       Validators.min(0),
       Validators.minLength(3)
     ])),
+
     faltas: new FormControl('', Validators.compose([
       Validators.required,
       Validators.min(0)
     ])),
+
     dias: new FormControl(
       { value: '', disabled: true },
       Validators.compose([
@@ -59,6 +62,7 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
         Validators.max(30),
       ])
     ),
+
     dependentes: new FormControl('', Validators.compose([
       Validators.required,
       Validators.min(0)
