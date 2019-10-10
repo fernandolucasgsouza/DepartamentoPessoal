@@ -17,6 +17,7 @@
           [control]="form.get('salario')"
           mask="dot_separator.2"
           placeholder="0,00"
+          (onChangeField)="changeField($event, 'salario')"
         >
         </fs-input>
 
@@ -28,6 +29,7 @@
           [control]="form.get('horasExtras')"
           mask="dot_separator.2"
           placeholder="0,00"
+          (onChangeField)="changeField($event, 'horasExtras')"
         >
         </fs-input>
 
@@ -39,6 +41,7 @@
           [control]="form.get('diasFalta')"
           mask="00"
           placeholder="00"
+          (onChangeField)="changeField($event, 'diasFalta')"
         >
         </fs-input>
 
@@ -49,7 +52,7 @@
           [items]="datas"
           formControlName="diasFerias"
           [control]="form.get('diasFerias')"
-          (onChangeSelect)="changeSelect($event)"
+          (onChangeField)="changeField($event, 'diasFerias')"
           >
         </fs-select>
 
@@ -60,6 +63,7 @@
           [control]="form.get('dependentes')"
           mask="00"
           placeholder="0"
+          (onChangeField)="changeField($event, 'dependentes')"
         >
         </fs-input>
 

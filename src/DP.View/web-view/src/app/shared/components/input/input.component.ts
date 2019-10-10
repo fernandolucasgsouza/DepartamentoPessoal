@@ -12,8 +12,7 @@ import { ControlValueAcessorProvider, CUSTOM_CONTROL_ACESS } from 'src/app/core/
     placeholder="0,00"
   >
   </fs-input>
- *
- */
+ **/
 
 @Component({
   selector: 'fs-input',

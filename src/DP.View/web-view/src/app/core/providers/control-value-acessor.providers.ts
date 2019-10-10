@@ -70,10 +70,10 @@ export class ControlValueAcessorProvider {
     this.isReadOnly = isDisabled;
   }
 
-  onChanges(v) {
-    if (v !== undefined && v !== this._currentValue) {
-      this.value = v;
-      this.onChangeField.emit(this.value);
+  onChanges() {
+
+    if (!!this._currentValue) {
+      this.onChangeField.emit(this._currentValue);
     }
   }
 
