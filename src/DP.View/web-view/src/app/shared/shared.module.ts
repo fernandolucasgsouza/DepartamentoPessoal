@@ -7,6 +7,7 @@ import { ValidationMessageComponent } from './components/validation-message/vali
 import { InputComponent } from './components/input/input.component';
 import { SelectComponent } from './components/select/select.component';
 import { TextAreaComponent } from './components/text-area/text-area.component';
+import { CalculaPercentualPipe } from './pipes/calcula-percentual/calcula-percentual.pipe';
 
 
 @NgModule({
@@ -14,7 +15,9 @@ import { TextAreaComponent } from './components/text-area/text-area.component';
     InputComponent,
     SelectComponent,
     ValidationMessageComponent,
-    TextAreaComponent
+    TextAreaComponent,
+
+    CalculaPercentualPipe
   ],
   imports: [
     CommonModule,
@@ -29,9 +32,12 @@ import { TextAreaComponent } from './components/text-area/text-area.component';
     InputComponent,
     SelectComponent,
     TextAreaComponent,
-    ValidationMessageComponent
+    ValidationMessageComponent,
+
   ],
-  providers: [],
+  providers: [
+    CalculaPercentualPipe
+  ],
 })
 export class SharedModule {
 

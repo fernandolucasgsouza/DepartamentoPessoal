@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 
 import { InssModel, IrrfModel } from '../../models';
 
@@ -7,6 +7,16 @@ import { InssModel, IrrfModel } from '../../models';
   providedIn: 'root'
 })
 export class ImpostosService {
+
+  Inss: Subject<InssModel[]> = new Subject<InssModel[]>();
+  get Inss$() {
+    return this.Inss.asObservable();
+  }
+
+  Irrf: Subject<IrrfModel[]> = new Subject<IrrfModel[]>();
+  get Irrf$() {
+    return this.Irrf.asObservable();
+  }
 
   public tableInss: Array<InssModel>;
   public tableIrrf: Array<IrrfModel>;

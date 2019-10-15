@@ -90,10 +90,6 @@ export class FeriasService {
     }
     if (valorBase > FX5) {
       return this._calculoIRRF(cec.Irrf.FAIXA_5.PERCENT, valorBase, DED_FX5);
-
-    }
-    if (valorBase > FX1 && valorBase <= FX2) {
-      return this._calculoIRRF(cec.Irrf.FAIXA_2.PERCENT, valorBase, DED_FX2);
     }
   }
 
