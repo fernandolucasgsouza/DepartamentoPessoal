@@ -1,6 +1,7 @@
 <div class="form-group">
   <div class="d-flex align-items-baseline">
-    <label [attr.for]="id">{{label}}:</label>
+    <label *ngIf="!!label" [attr.for]="id">{{label}}:</label>
+    <label *ngIf="!!sigla" [attr.for]="id">{{sigla}}:</label>
     <small class="form-text text-muted ml-1">{{helper}}</small>
   </div>
   <input

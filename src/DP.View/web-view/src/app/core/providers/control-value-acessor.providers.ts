@@ -16,7 +16,8 @@ export class CUSTOM_CONTROL_ACESS {
 
 export class ControlValueAcessorProvider {
 
-  @Input() label: string;
+  @Input() label: any;
+  @Input() sigla: string;
   @Input() helper: string;
   @Input() classCss: string;
   @Input() id: string;
@@ -49,6 +50,8 @@ export class ControlValueAcessorProvider {
   }
 
   ngOnInit() {
+    if (this.label) this.label = this.word(this.label, 'label');
+    else if (this.sigla) this.sigla = this.word(this.sigla, 'sigla');
   }
 
   protected onChangeCB: (_: any) => void = () => { };
@@ -74,6 +77,16 @@ export class ControlValueAcessorProvider {
 
     if (!!this._currentValue) {
       this.onChangeField.emit(this._currentValue);
+    }
+  }
+
+  word(word: string, type: 'label' | 'sigla') {
+    if (type === 'sigla') {
+      const upAll = sgl => sgl.toLocaleUpperCase();
+      return upAll(word);
+    } else if (type === 'label') {
+      const firstLetterUp = lbl => lbl.charAt(0).toLocaleUpperCase().concat(lbl.substr(1).toLocaleLowerCase());
+      return firstLetterUp(word)
     }
   }
 
