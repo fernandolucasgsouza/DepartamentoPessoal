@@ -1,12 +1,12 @@
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { ValidationMessageComponent } from 'src/app/shared/components/validation-message/validation-message.component';
 import { CodeDescriptionModel } from 'src/app/core/models/code-description.model';
 import { DiasMesService } from 'src/app/core/services/business/dias-mes.service';
 import { ImpostosService } from 'src/app/core/services';
 import { InssModel, IrrfModel } from 'src/app/core/models';
-import { Observable } from 'rxjs';
 import { CalculaPercentualPipe } from 'src/app/shared/pipes/calcula-percentual/calcula-percentual.pipe';
 
 @Component({
@@ -16,11 +16,15 @@ import { CalculaPercentualPipe } from 'src/app/shared/pipes/calcula-percentual/c
 })
 export class FeriasComponent implements OnInit {
 
-  public datas: Array<CodeDescriptionModel> = [];
-  public INSS: InssModel[] = [];
-  public IRRF: IrrfModel[] = [];
-  public deducaoDependente: number;
-  public valorTotal: number;
+  valorFerias: number;
+  diasFerias: number;
+  valorInss: number;
+  valorIrrf: number;
+  valorTotal: number;
+  deducaoDependente: number;
+  datas: Array<CodeDescriptionModel> = [];
+  INSS: InssModel[] = [];
+  IRRF: IrrfModel[] = [];
   form: FormGroup;
   fbGroup = {
     salario: ['', [Validators.required, Validators.maxLength(8), Validators.max(25000)]],
@@ -59,18 +63,23 @@ export class FeriasComponent implements OnInit {
   }
 
   calcular() {
-    const val_ferias = this._calculaFerias(+this.fbGroup.salario.values, +this.fbGroup.horasExtras.values, +this.fbGroup.diasFerias.values);
-    const val_um_terco_ferias = (val_ferias / 3);
-    const val_inss = this._calculaInssFerias(val_ferias, val_um_terco_ferias);
-    const val_irrf = this._calculaIrrfFerias(val_ferias, val_um_terco_ferias, +this.fbGroup.dependentes.values, val_inss);
-    const tot_proventos = (val_ferias | 0) + (val_um_terco_ferias | 0);
-    const tot_descontos = (val_inss | 0) + (val_irrf | 0);
-    this.valorTotal = tot_proventos - tot_descontos;
+    this.valorFerias = this._calculaFerias();
+    const val_um_terco_ferias = (this.valorFerias / 3);
 
+    this.valorInss = this._calculaInssFerias(this.valorFerias, val_um_terco_ferias);
+    this.valorIrrf = this._calculaIrrfFerias(this.valorFerias, val_um_terco_ferias, this.valorInss);
+
+    const tot_proventos = (this.valorFerias | 0) + (val_um_terco_ferias | 0);
+    const tot_descontos = (this.valorInss | 0) + (this.valorIrrf | 0);
+
+    this.valorTotal = tot_proventos - tot_descontos;
   }
 
-  private _calculaFerias(salario = 0, horas_extras = 0, dias_ferias = 0) {
-    return dias_ferias * ((salario + horas_extras) / 30)
+  private _calculaFerias() {
+    const dias_ferias = +this.form.get('diasFerias').value.description;
+    const salario = +this.form.get('salario').value;
+    const horas_extras = +this.form.get('horasExtras').value;
+    return dias_ferias * ((salario + horas_extras) / 30);
   }
 
   private _calculaInssFerias(valor_ferias_receber = 0, um_terco_receber = 0) {
@@ -93,14 +102,14 @@ export class FeriasComponent implements OnInit {
     return this._pipeCalcPercent.transform(valor_ferias_receber, percentual);
   }
 
-  private _calculaIrrfFerias(val_ferias_receber = 0, val_um_terco_receber = 0, tot_dependentes = 0, val_inss = 0) {
+  private _calculaIrrfFerias(val_ferias_receber = 0, val_um_terco_receber = 0, val_inss = 0) {
     const faixa_01 = this.IRRF[0]; // 0: { descricao: "Faixa 01", min: 0, max: 1903.98, perc: 0, deducao: 0 }
     const faixa_02 = this.IRRF[1]; // 1: { descricao: "Faixa 02", min: 1903.98, max: 2826.65, perc: 7.5, deducao: 142.8 }
     const faixa_03 = this.IRRF[2]; // 2: { descricao: "Faixa 03", min: 2826.66, max: 3751.05, perc: 15, deducao: 354.8 }
     const faixa_04 = this.IRRF[3]; // 3: { descricao: "Faixa 04", min: 3751.06, max: 4664.68, perc: 22.5, deducao: 636.13 }
     const faixa_05 = this.IRRF[4]; // 4: { descricao: "Faixa 05", min: 4664.69, max: null, perc: 27.5, deducao: 869.36 }
 
-    const val_total_dependentes = this.deducaoDependente * tot_dependentes;
+    const val_total_dependentes = this.deducaoDependente * Number(this.form.get('dependentes').value);
     const val_base = (val_ferias_receber + val_um_terco_receber) - (val_inss + val_total_dependentes);
 
     if ((val_base > faixa_01.max) && (val_base <= faixa_02.max)) {
@@ -125,6 +134,7 @@ export class FeriasComponent implements OnInit {
   }
 
   onSubmit() {
+    this.calcular();
     // console.log(this.form.value);
     // if (this.form.invalid) {
     //   const errors = new ValidationMessageComponent();

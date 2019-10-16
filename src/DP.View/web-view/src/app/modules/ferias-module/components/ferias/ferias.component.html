@@ -1,122 +1,123 @@
 
 <div class="container-page">
-  <div class="description-page">
-    <div class="title-page"><i class="fas fa-calculator txt-color-1"></i><h4 class="ml-2 mb-0">Cálcula férias</h4></div>
-    <p>Cálculo do valor a ser pago ao trabalhador referente as férias 12/12.</p>
-  </div>
+	<div class="description-page">
+		<div class="title-page"><i class="fas fa-calculator txt-color-1"></i><h4 class="ml-2 mb-0">Cálcula férias</h4></div>
+		<p>Cálculo do valor a ser pago ao trabalhador referente as férias 12/12.</p>
+	</div>
 
-  <div class="row">
-    <div class="col-sm-12	col-md-6 col-lg-6 col-xl-6 col-6">
-      <h5 class="mb-3">Dados de entrada:</h5>
+	<form [formGroup]="form">
+	<div class="row">
+		<div class="col-sm-12	col-md-6 col-lg-6 col-xl-6 col-6">
+			<h5 class="mb-3">Dados de entrada:</h5>
 
-      <form [formGroup]="form">
-        <fs-input
-          label="Salário"
-          id="salario"
-          formControlName="salario"
-          [control]="form.get('salario')"
-          mask="dot_separator.2"
-          placeholder="0,00"
-          (onChangeField)="changeField($event, 'salario')"
-        >
-        </fs-input>
+				<fs-input
+					label="Salário"
+					id="salario"
+					formControlName="salario"
+					[control]="form.get('salario')"
+					mask="dot_separator.2"
+					placeholder="0,00"
+					(onChangeField)="changeField($event, 'salario')"
+				>
+				</fs-input>
 
-        <fs-input
-          label="Horas extras"
-          helper="Valor médio horas extras ano"
-          id="horasExtras"
-          formControlName="horasExtras"
-          [control]="form.get('horasExtras')"
-          mask="dot_separator.2"
-          placeholder="0,00"
-          (onChangeField)="changeField($event, 'horasExtras')"
-        >
-        </fs-input>
+				<fs-input
+					label="Horas extras"
+					helper="Valor médio horas extras ano"
+					id="horasExtras"
+					formControlName="horasExtras"
+					[control]="form.get('horasExtras')"
+					mask="dot_separator.2"
+					placeholder="0,00"
+					(onChangeField)="changeField($event, 'horasExtras')"
+				>
+				</fs-input>
 
-        <fs-input
-          label="Dias faltas"
-          helper="Quantidade dias falta sem justificativa ano"
-          id="diasFalta"
-          formControlName="diasFalta"
-          [control]="form.get('diasFalta')"
-          mask="00"
-          placeholder="00"
-          (onChangeField)="changeField($event, 'diasFalta')"
-        >
-        </fs-input>
+				<fs-input
+					label="Dias faltas"
+					helper="Quantidade dias falta sem justificativa ano"
+					id="diasFalta"
+					formControlName="diasFalta"
+					[control]="form.get('diasFalta')"
+					mask="00"
+					placeholder="00"
+					(onChangeField)="changeField($event, 'diasFalta')"
+				>
+				</fs-input>
 
-        <fs-select
-          label="Dias férias"
-          id="diasFerias"
-          helper="Quantidade dias férias por direito"
-          [items]="datas"
-          formControlName="diasFerias"
-          [control]="form.get('diasFerias')"
-          (onChangeField)="changeField($event, 'diasFerias')"
-          >
-        </fs-select>
+				<fs-select
+					label="Dias férias"
+					id="diasFerias"
+					helper="Quantidade dias férias por direito"
+					[items]="datas"
+					formControlName="diasFerias"
+					[control]="form.get('diasFerias')"
+					(onChangeField)="changeField($event, 'diasFerias')"
+					>
+				</fs-select>
 
-        <fs-input
-          label="Qtd. dependentes"
-          id="dependentes"
-          formControlName="dependentes"
-          [control]="form.get('dependentes')"
-          mask="00"
-          placeholder="0"
-          (onChangeField)="changeField($event, 'dependentes')"
-        >
-        </fs-input>
+				<fs-input
+					label="Qtd. dependentes"
+					id="dependentes"
+					formControlName="dependentes"
+					[control]="form.get('dependentes')"
+					mask="00"
+					placeholder="0"
+					(onChangeField)="changeField($event, 'dependentes')"
+				>
+				</fs-input>
 
-        <div class="mt-4">
-          <button type="button" class="btn btn-1 ligth mr-2">Limpar</button>
-          <button type="submit" class="btn btn-1" (click)="onSubmit()">Cálcular</button>
-        </div>
-        </form>
-    </div>
-    <div class="col-sm-12	col-md-6 col-lg-6 col-xl-6 col-6">
-      <h5 class="mb-44">Resultado:</h5>
-      <table class="table table-hover">
-        <thead class="bg-color-8 txt-color-5">
-          <tr>
-            <th class="font-weight-normal" scope="col">Descrição</th>
-            <th class="font-weight-normal" scope="col">Ref.</th>
-            <th class="font-weight-normal" scope="col">Proventos</th>
-            <th class="font-weight-normal" scope="col">Descontos</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td scope="row">Valor Férias</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-          </tr>
-          <tr>
-            <td scope="row">1/3 Férias</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-          </tr>
-          <tr>
-            <td scope="row">INSS</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-          </tr>
-          <tr>
-            <td scope="row">IRRF</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-          </tr>
-          <tr>
-            <th scope="row">Subtotais</th>
-            <th scope="row">0,00</th>
-            <th scope="row">0,00</th>
-            <th scope="row">0,00</th>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+				<div class="mt-4">
+					<button type="button" class="btn btn-1 ligth mr-2">Limpar</button>
+					<button type="submit" class="btn btn-1" (click)="onSubmit()">Cálcular</button>
+				</div>
+
+		</div>
+		<div class="col-sm-12	col-md-6 col-lg-6 col-xl-6 col-6">
+			<h5 class="mb-44">Resultado:</h5>
+			<table class="table table-hover">
+				<thead class="bg-color-8 txt-color-5">
+					<tr>
+					<th class="font-weight-normal" scope="col">Descrição</th>
+					<th class="font-weight-normal" scope="col">Ref.</th>
+					<th class="font-weight-normal" scope="col">Proventos</th>
+					<th class="font-weight-normal" scope="col">Descontos</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+					<td scope="row">Valor Férias</td>
+					<td>{{form.get('diasFerias').value.description}} dias</td>
+					<td>{{valorFerias}}</td>
+					<td>-</td>
+					</tr>
+					<tr>
+					<td scope="row">Férias</td>
+					<td>1/3</td>
+					<td>-</td>
+					<td>-</td>
+					</tr>
+					<tr>
+					<td scope="row">INSS</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					</tr>
+					<tr>
+					<td scope="row">IRRF</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					</tr>
+					<tr>
+					<th scope="row">Subtotais</th>
+					<th scope="row">0,00</th>
+					<th scope="row">0,00</th>
+					<th scope="row">0,00</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</form>
 </div>
