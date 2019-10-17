@@ -96,6 +96,7 @@ export class CalcularFeriasComponent implements OnInit, OnChanges {
     let diasFerias = parseInt(this.formCalculaFerias.get('dias').value);
     let totDependentes = parseInt(this.formCalculaFerias.get('dependentes').value);
 
+    debugger
     let vrBrutoFerias = this._service.calculaFerias(this.salario, this.horasExtras, diasFerias);
     let vr1_3 = this._service.calculaFerias1_3(vrBrutoFerias);
     let vrInss = this._service.calculaINSS(vrBrutoFerias, vr1_3);

@@ -37,7 +37,6 @@ export class ControlValueAcessorProvider {
   }
 
   set value(v: any) {
-
     if (v !== this._currentValue) {
       this.control.markAsTouched();
       this._currentValue = v;
@@ -73,8 +72,8 @@ export class ControlValueAcessorProvider {
     this.isReadOnly = isDisabled;
   }
 
-  onChanges() {
-
+  onChanges(v?: any) {
+    this.value = v;
     if (!!this._currentValue) {
       this.onChangeField.emit(this._currentValue);
     }

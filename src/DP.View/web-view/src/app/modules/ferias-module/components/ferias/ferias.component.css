@@ -16,3 +16,30 @@
 .input-error {
   border-left: 2px solid red;
 }
+
+.title-result {
+  margin-top: 40px;
+}
+
+#ct-table {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#ct-table.fadeIn {
+  opacity: 1;
+  visibility: visible;
+  transition: visibility 100ms, opacity 550ms ease-in-out;
+}
+
+#ct-table.fadeOut {
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 600ms, opacity 550ms ease-in-out;
+}
+
+@media(min-width:967px) {
+  .title-result {
+    margin-top: 0;
+  }
+}

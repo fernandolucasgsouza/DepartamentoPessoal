@@ -41,6 +41,7 @@ export class SelectComponent extends ControlValueAcessorProvider {
 
   constructor() {
     super();
+    this._currentValue = '';
   }
 
   compareItems(obj1: CodeDescriptionModel, obj2: CodeDescriptionModel) {

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Renderer2 } from '@angular/core';
 import { ControlValueAcessorProvider, CUSTOM_CONTROL_ACESS } from 'src/app/core/providers/control-value-acessor.providers';
 
 /**
@@ -25,7 +25,9 @@ export class InputComponent extends ControlValueAcessorProvider {
   @Input() mask: any;
   @Input() type = 'text';
 
-  constructor() {
+  public element: any;
+
+  constructor(private _renderer: Renderer2) {
     super();
     this._currentValue = '';
   }

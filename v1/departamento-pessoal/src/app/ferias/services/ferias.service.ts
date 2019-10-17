@@ -70,7 +70,7 @@ export class FeriasService {
     let DED_FX5 = sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_5.DEDUCAO);
 
     let VR_DEP = sc.FormatDatasService.formatForFloat(cec.Irrf.FAIXA_DEPENDENTE.VALOR);
-
+    debugger
     vrDependentes = numDependentes * VR_DEP;
     valorBase = (vrFerias + vr1_3) - (vrInss + vrDependentes);
 

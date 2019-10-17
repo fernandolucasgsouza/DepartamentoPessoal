@@ -13,6 +13,7 @@
         [formControl]="control"
         [compareWith]="compareItems"
         (blur)="onChanges(control.value)"
+        (change)="onChanges(control.value)"
         >
         <option value="">Selecione</option>
         <option [ngValue]="item" *ngFor="let item of items" >{{item.description}}</option>

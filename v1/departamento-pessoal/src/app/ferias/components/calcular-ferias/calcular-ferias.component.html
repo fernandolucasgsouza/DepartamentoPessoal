@@ -14,7 +14,7 @@
         <form [formGroup]="formCalculaFerias" (keydown)="onKeyDown($event)">
              <div class="row form-group fs-row-form-ferias">
                 <div class="col-md-4">
-                    <div class="row form-group">
+                    <!-- <div class="row form-group">
                         <div class="col-md-12">
                             <fs-input
                                 [label]="'Salário'"
@@ -24,12 +24,12 @@
                                 [control]="fbGroup.salario"
                                 formControlName="salario"
                                 >
-                                <!-- fsMaskDecimal -->
+                                 fsMaskDecimal
                             </fs-input>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <!-- <div class="row form-group">
+                    <div class="row form-group">
                         <div class="col-md-12">
                             <label class="title-input" for="salario">Valor salário bruto:</label>
                             <input
@@ -44,7 +44,7 @@
 
                             <fs-validation-message [control]="fbGroup.salario"></fs-validation-message>
                         </div>
-                    </div> -->
+                    </div>
 
                     <div class="row form-group">
                         <div class="col-md-12">

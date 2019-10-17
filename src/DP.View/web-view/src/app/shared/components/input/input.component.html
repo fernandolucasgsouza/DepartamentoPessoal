@@ -13,7 +13,7 @@
     [mask]="mask"
     [readonly]="!!isReadOnly"
     [(ngModel)]="value"
-    (blur)="onChanges()"
+    (blur)="onChanges(control.value)"
     >
     <fs-validation-message [control]="control"></fs-validation-message>
 </div>

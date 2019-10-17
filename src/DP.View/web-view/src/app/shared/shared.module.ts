@@ -8,6 +8,7 @@ import { InputComponent } from './components/input/input.component';
 import { SelectComponent } from './components/select/select.component';
 import { TextAreaComponent } from './components/text-area/text-area.component';
 import { CalculaPercentualPipe } from './pipes/calcula-percentual/calcula-percentual.pipe';
+import { FormatCurrencyPipe } from './pipes/format-currency/format-currency.pipe';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CalculaPercentualPipe } from './pipes/calcula-percentual/calcula-percen
     ValidationMessageComponent,
     TextAreaComponent,
 
-    CalculaPercentualPipe
+    CalculaPercentualPipe,
+    FormatCurrencyPipe
   ],
   imports: [
     CommonModule,
@@ -34,9 +36,12 @@ import { CalculaPercentualPipe } from './pipes/calcula-percentual/calcula-percen
     TextAreaComponent,
     ValidationMessageComponent,
 
+    CalculaPercentualPipe,
+    FormatCurrencyPipe
   ],
   providers: [
-    CalculaPercentualPipe
+    CalculaPercentualPipe,
+    FormatCurrencyPipe
   ],
 })
 export class SharedModule {
