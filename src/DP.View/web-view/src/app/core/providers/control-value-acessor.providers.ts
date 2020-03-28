@@ -1,5 +1,6 @@
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms'
-import { forwardRef, Input, Output, EventEmitter } from '@angular/core'
+import { forwardRef, Input, Output, EventEmitter, Directive } from '@angular/core'
+import { MaskProvider } from './mask.providers';
 
 
 
@@ -14,6 +15,7 @@ export class CUSTOM_CONTROL_ACESS {
   }
 }
 
+@Directive()
 export class ControlValueAcessorProvider {
 
   @Input() label: any;
@@ -22,7 +24,8 @@ export class ControlValueAcessorProvider {
   @Input() classCss: string;
   @Input() id: string;
   @Input() type = 'text';
-
+  
+  @Input() mask : MaskProvider;
   @Input() placeholder: string;
   @Input() isReadOnly = false;
   @Input() control: FormControl;

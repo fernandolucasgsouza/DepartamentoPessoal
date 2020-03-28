@@ -38,6 +38,14 @@
   transition: visibility 600ms, opacity 550ms ease-in-out;
 }
 
+
+.show-table{
+display: block;
+}
+.show-hide{
+  display: none;
+}
+
 @media(min-width:967px) {
   .title-result {
     margin-top: 0;
