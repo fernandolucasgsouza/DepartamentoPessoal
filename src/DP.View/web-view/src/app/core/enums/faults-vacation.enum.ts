@@ -1,4 +1,4 @@
-export enum FaltasEnum {
+export enum FaultsVacation {
   /**
    * Até 5 dias de faltas
    * Direito 30 dias férias
