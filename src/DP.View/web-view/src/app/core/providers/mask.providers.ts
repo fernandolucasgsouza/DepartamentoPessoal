@@ -1,4 +1,3 @@
 export class MaskProvider {
-
-  public static dateBRL = '00/00/0000'
+  public static dateBRL = '00/00/0000';
 }

@@ -17,7 +17,7 @@
 					[control]="form.get('salario')"
 					mask="dot_separator.2"
 					placeholder="0,00"
-					(onChangeField)="changeField($event, 'salario')"
+					(changeField)="changeField($event, 'salario')"
 				>
 				</fs-input>
 
@@ -29,7 +29,7 @@
 					[control]="form.get('horasExtras')"
 					mask="dot_separator.2"
 					placeholder="0,00"
-					(onChangeField)="changeField($event, 'horasExtras')"
+					(changeField)="changeField($event, 'horasExtras')"
 				>
 				</fs-input>
 
@@ -41,7 +41,7 @@
 					[control]="form.get('diasFalta')"
 					mask="00"
 					placeholder="00"
-					(onChangeField)="changeField($event, 'diasFalta')"
+					(changeField)="changeField($event, 'diasFalta')"
 				>
 				</fs-input>
 
@@ -49,10 +49,10 @@
 					label="Dias férias"
 					id="diasFerias"
 					helper="Quantidade dias férias por direito"
-					[items]="datas"
+					[items]="days"
 					formControlName="diasFerias"
 					[control]="form.get('diasFerias')"
-					(onChangeField)="changeField($event, 'diasFerias')"
+					(changeField)="changeField($event, 'diasFerias')"
 					>
 				</fs-select>
 
@@ -63,7 +63,7 @@
 					[control]="form.get('dependentes')"
 					mask="00"
 					placeholder="0"
-					(onChangeField)="changeField($event, 'dependentes')"
+					(changeField)="changeField($event, 'dependentes')"
 				>
 				</fs-input>
 

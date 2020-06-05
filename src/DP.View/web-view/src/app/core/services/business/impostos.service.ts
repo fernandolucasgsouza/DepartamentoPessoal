@@ -28,7 +28,7 @@ export class ImpostosService {
       { descricao: 'Faixa 01', min: 0, max: 1659.38, perc: 8 },
       { descricao: 'Faixa 02', min: 1659.39, max: 2765.66, perc: 9 },
       { descricao: 'Faixa 03', min: 2765.67, max: 5531.31, perc: 11 },
-    ])
+    ]);
   }
 
   getIRRF(): Observable<IrrfModel[]> {
@@ -38,13 +38,13 @@ export class ImpostosService {
       { descricao: 'Faixa 03', min: 2826.66, max: 3751.05, perc: 15, deducao: 354.8 },
       { descricao: 'Faixa 04', min: 3751.06, max: 4664.68, perc: 22.5, deducao: 636.13 },
       { descricao: 'Faixa 05', min: 4664.69, max: null, perc: 27.5, deducao: 869.36 },
-    ])
+    ]);
   }
 
-  getDepennte(): Observable<any> {
+  getDepente(): Observable<any> {
     return of([
       { descricao: 'Faixa dependente', valor: 189.59 },
-    ])
+    ]);
   }
 
 }

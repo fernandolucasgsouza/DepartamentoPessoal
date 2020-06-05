@@ -7,10 +7,10 @@ export class FormatCurrencyPipe implements PipeTransform {
 
   transform(value: any, currency = 'BRL'): any {
     /**
-    * injetar o código da moeda no html
-    * <div>{{valor.irrf| formatCurrency:'EUR')}}</div>
-    * 'BRL' default
-    */
+     * injetar o código da moeda no html
+     * <div>{{valor.irrf| formatCurrency:'EUR')}}</div>
+     * 'BRL' default
+     */
     let locale = '';
     switch (currency) {
       case 'EUR':
@@ -24,7 +24,7 @@ export class FormatCurrencyPipe implements PipeTransform {
         break;
     }
 
-    return new Intl.NumberFormat(locale, { style: 'currency', currency: currency }).format(value);
+    return new Intl.NumberFormat(locale, { style: 'currency', currency: `${currency}` }).format(value);
   }
 
 }
