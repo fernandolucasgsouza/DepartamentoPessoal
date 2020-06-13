@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InssComponent } from './inss.component';
+import { ImpostoIrrfComponent } from './imposto-irrf.component';
 
-describe('InssComponent', () => {
-  let component: InssComponent;
-  let fixture: ComponentFixture<InssComponent>;
+describe('ImpostoIrrfComponent', () => {
+  let component: ImpostoIrrfComponent;
+  let fixture: ComponentFixture<ImpostoIrrfComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [InssComponent]
+      declarations: [ ImpostoIrrfComponent ]
     })
-      .compileComponents();
+    .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InssComponent);
+    fixture = TestBed.createComponent(ImpostoIrrfComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

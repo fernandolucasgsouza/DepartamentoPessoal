@@ -1,0 +1,19 @@
+@import '../../../../../assets/styles/impostos/impostos.css';
+.flex-inss {
+    display: flex;
+    flex-direction: column;
+}
+
+.justify-content-inss {
+    justify-content: flex-start;
+}
+
+@media screen and (min-width:992px) {
+    .flex-inss {
+        display: flex;
+        flex-direction: row;
+    }
+    .justify-content-inss {
+        justify-content: flex-end;
+    }
+}

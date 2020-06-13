@@ -1,0 +1,36 @@
+<p>INSS</p>
+
+<ng-container *ngFor="let inssCollection of (inssDatas$ | async)">
+    <div class="container container-list">
+        <div class="row row-scroll-bar">
+            <div class="scroll-bar"></div>
+            <ng-container *ngFor="let inssDatas of inssCollection.datas; let i = index">
+                <div class="col-lg-4 col-sm-12 border border-{{i}}">
+                    <div class="pecentage percent-inss-{{i}}">{{inssDatas.percentage}}%</div>
+                </div>
+            </ng-container>
+        </div>
+        
+        <div class="row row-custom">
+            <div class="col-lg-4 col-sm-12 column-custom" *ngFor="let inssDatas of inssCollection.datas; let i = index">
+                <div class="column-0 border-grad-left-{{i}}">
+                    <small>Ano {{inssCollection.year}} - {{inssDatas.description}}</small>
+                    <div class="flex-inss">
+                        <div class="w-100 d-flex flex-row">
+                            <div><strong>De:&nbsp;</strong></div> 
+                            <div>{{inssDatas.minimum.toString()  | formatCurrency }}</div> 
+                        </div>
+                        <div class="w-100 d-flex flex-row justify-content-inss">
+                            <div><strong>Até:&nbsp;</strong></div> 
+                            <div>{{inssDatas.maximum.toString()  | formatCurrency}}</div> 
+                        </div>
+                        <div class="w-100 d-flex flex-row percent-mobile">
+                            <div><strong class="font-featured">Percentual:&nbsp;</strong></div> 
+                            <div>{{inssDatas.percentage}}%</div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

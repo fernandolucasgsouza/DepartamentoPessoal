@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { ImpostoRoutingModule } from './imposto-routing.module';
+import { ImpostoInssComponent } from './components/imposto-inss/imposto-inss.component';
+import { ImpostoIrrfComponent } from './components/imposto-irrf/imposto-irrf.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ImpostoInssComponent,
+    ImpostoIrrfComponent
+  ],
   imports: [
-    CommonModule,
+    SharedModule,
     ImpostoRoutingModule
   ]
 })

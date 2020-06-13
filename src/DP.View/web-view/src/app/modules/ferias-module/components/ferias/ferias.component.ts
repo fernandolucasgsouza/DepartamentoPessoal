@@ -1,12 +1,13 @@
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
-import { ICodeDescription } from 'src/app/core/interfaces/code-description.interface';
+import { ITaxes } from 'src/app/core/interfaces';
+import { FaultsVacation } from 'src/app/core/enums';
 import { ImpostosService } from 'src/app/core/services';
+import { ValuesVacationModel } from 'src/app/core/models/values-vacation.model';
+import { ICodeDescription } from 'src/app/core/interfaces/code-description.interface';
 import { CalculaPercentualPipe } from 'src/app/shared/pipes/calcula-percentual/calcula-percentual.pipe';
 import { ValidationMessageComponent } from 'src/app/shared/components/validation-message/validation-message.component';
-import { FaultsVacation } from 'src/app/core/enums';
-import { ITaxes } from 'src/app/core/interfaces';
 
 @Component({
   selector: 'fs-ferias',
@@ -17,6 +18,7 @@ export class FeriasComponent implements OnInit {
   public days: Array<ICodeDescription> = [];
   public percentage = { inss: 0, irrf: 0 };
   public faultsStatus = FaultsVacation;
+  public values: ValuesVacationModel = new ValuesVacationModel();
 
   public form: FormGroup;
   public fbGroup = {
@@ -35,17 +37,6 @@ export class FeriasComponent implements OnInit {
   private irrfList: Array<ITaxes> = [];
   private toogle: boolean;
 
-  valor = {
-    ferias: 0,
-    umTercoFerias: 0,
-    inss: 0,
-    irrf: 0,
-    deducaoDependente: 0,
-    subTotProventos: 0,
-    subTotDescontos: 0,
-    total: 0,
-  };
-
 
   constructor(
     private fb: FormBuilder,
@@ -56,11 +47,10 @@ export class FeriasComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.serviceImpostos.getDepente().subscribe(res => this.valor.deducaoDependente = res[0]);
+    this.getDepentes();
     this.createMonthDaysSelect(30);
     this.getInss();
     this.getIrrf();
-    console.log(this.inssList);
   }
 
   public createMonthDaysSelect(days: number) {
@@ -73,20 +63,17 @@ export class FeriasComponent implements OnInit {
 
   private getInss() {
     this.serviceImpostos.getInss()
-      .subscribe(datas => {
-        this.inssList = datas;
-        this.serviceImpostos.Inss.next(datas);
-        console.log(this.inssList);
-      });
+      .subscribe((resp: ITaxes[]) => this.inssList = resp);
   }
 
   private getIrrf() {
     this.serviceImpostos.getIrrf()
-      .subscribe(datas => {
-        this.irrfList = datas;
-        this.serviceImpostos.Irrf.next(datas);
-        console.log(this.irrfList);
-      });
+      .subscribe((resp: ITaxes[]) => this.irrfList = resp);
+  }
+
+  private getDepentes() {
+    this.serviceImpostos.getDepente()
+      .subscribe(res => this.values.deducaoDependente = res[0].valor);
   }
 
   changeField(value: string | number, controlName: string) {
@@ -95,15 +82,15 @@ export class FeriasComponent implements OnInit {
 
   private calcMain() {
 
-    this.valor.ferias = this.calcVacation();
-    this.valor.umTercoFerias = (this.valor.ferias / 3);
-    this.valor.inss = this.calcInss();
-    console.log(this.valor.inss);
+    this.values.ferias = this.calcVacation();
+    this.values.feriasUmTerco = (this.values.ferias / 3);
+    this.values.inss = this.calcInss();
+    console.log(this.values.inss);
 
-    this.valor.irrf = this.calcIrrf();
-    this.valor.subTotProventos = (this.valor.ferias || 0) + (this.valor.umTercoFerias || 0);
-    this.valor.subTotDescontos = (this.valor.inss || 0) + (this.valor.irrf || 0);
-    this.valor.total = this.valor.subTotProventos - this.valor.subTotDescontos;
+    this.values.irrf = this.getValueIrrf();
+    this.values.subTotalProventos = (this.values.ferias || 0) + (this.values.feriasUmTerco || 0);
+    this.values.subTotalDescontos = (this.values.inss || 0) + (this.values.irrf || 0);
+    this.values.total = this.values.subTotalProventos - this.values.subTotalDescontos;
 
   }
 
@@ -122,63 +109,63 @@ export class FeriasComponent implements OnInit {
   private calcInss() {
 
     const vacationValueTotal = this.valueVacationBase();
+    const inss = this.inssList[this.irrfList.length - 1].datas;
 
-    if (vacationValueTotal > +this.inssList[2].maximum) {
-      this.percentage.inss = +this.inssList[2].percentage;
-      return this.pipeCalcPercent.transform(+this.inssList[2].maximum, this.percentage.inss);
+    if (vacationValueTotal > +inss[2].maximum) {
+      this.percentage.inss = +inss[2].percentage;
+      return this.pipeCalcPercent.transform(+inss[2].maximum, this.percentage.inss);
     }
 
-    if (vacationValueTotal <= +this.inssList[0].maximum) {
-      this.percentage.inss = +this.inssList[0].percentage;
-    } else if ((vacationValueTotal > +this.inssList[0].maximum) && (vacationValueTotal <= +this.inssList[1].maximum)) {
-      this.percentage.inss = +this.inssList[1].percentage;
+    if (vacationValueTotal <= +inss[0].maximum) {
+      this.percentage.inss = +inss[0].percentage;
+    } else if ((vacationValueTotal > +inss[0].maximum) && (vacationValueTotal <= +inss[1].maximum)) {
+      this.percentage.inss = +inss[1].percentage;
     } else {
-      this.percentage.inss = +this.inssList[2].percentage;
-
+      this.percentage.inss = +inss[2].percentage;
     }
     return this.pipeCalcPercent.transform(vacationValueTotal, this.percentage.inss);
 
   }
 
-  private calcIrrf() {
+  private getValueIrrf() {
 
     const valueBase = this.valueIrrfBase();
+    const irrf = this.irrfList[this.irrfList.length - 1].datas;
 
-    if (valueBase < this.irrfList[0].maximum) {
+    if (valueBase < irrf[0].maximum) {
       this.percentage.irrf = 0;
       return 0;
     }
 
-    if ((valueBase > this.irrfList[0].maximum) && (valueBase <= this.irrfList[1].maximum)) {
-      return this.calculationIrrf(+valueBase, +this.irrfList[1].percentage, +this.irrfList[1].deduction);
+    if ((valueBase > irrf[0].maximum) && (valueBase <= irrf[1].maximum)) {
+      return this.calcIrrf(+valueBase, +irrf[1].percentage, +irrf[1].deduction);
     }
-    if ((valueBase > this.irrfList[1].maximum) && (valueBase <= this.irrfList[2].maximum)) {
-      return this.calculationIrrf(+valueBase, +this.irrfList[2].percentage, +this.irrfList[2].deduction);
+    if ((valueBase > irrf[1].maximum) && (valueBase <= irrf[2].maximum)) {
+      return this.calcIrrf(+valueBase, +irrf[2].percentage, +irrf[2].deduction);
     }
-    if ((valueBase > this.irrfList[2].maximum) && (valueBase <= this.irrfList[3].maximum)) {
-      return this.calculationIrrf(+valueBase, +this.irrfList[3].percentage, +this.irrfList[3].deduction);
+    if ((valueBase > irrf[2].maximum) && (valueBase <= irrf[3].maximum)) {
+      return this.calcIrrf(+valueBase, +irrf[3].percentage, +irrf[3].deduction);
     }
-    if (valueBase >= this.irrfList[4].minimum) {
-      return this.calculationIrrf(+valueBase, +this.irrfList[4].percentage, +this.irrfList[4].deduction);
+    if (valueBase >= irrf[4].minimum) {
+      return this.calcIrrf(+valueBase, +irrf[4].percentage, +irrf[4].deduction);
     }
 
   }
 
-  private calculationIrrf(valueBase: number, percentage: number, deducao: number) {
+  private calcIrrf(valueBase: number, percentage: number, deducao: number) {
     this.percentage.irrf = percentage;
     const valorBruto = this.pipeCalcPercent.transform(valueBase, percentage);
     return valorBruto - deducao;
   }
 
-  public valueVacationBase(): number {
-    return Number(this.valor.ferias) + Number(this.valor.umTercoFerias);
+  private valueVacationBase(): number {
+    return Number(this.values.ferias) + Number(this.values.feriasUmTerco);
   }
 
-  public valueIrrfBase(): number {
+  private valueIrrfBase(): number {
     const valueInss = this.calcInss();
     const valueVacation = this.valueVacationBase();
-    // tslint:disable-next-line:no-string-literal
-    const valueDependent = Number(this.valor.deducaoDependente['valor']) * (Number(this.form.get('dependentes').value) || 0);
+    const valueDependent = Number(this.values.deducaoDependente) * (Number(this.form.get('dependentes').value) || 0);
     return valueVacation - (valueInss + valueDependent);
   }
 

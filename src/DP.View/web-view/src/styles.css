@@ -143,6 +143,10 @@
   color: #fff;
 }
 
+.form-control::-webkit-input-placeholder {
+  color: #bbb;
+}
+
 .form-control::-webkit-input-placeholder, .form-control::placeholder {
   color: #bbb;
 }
