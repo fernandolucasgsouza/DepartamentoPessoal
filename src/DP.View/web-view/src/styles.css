@@ -107,6 +107,10 @@
   margin-bottom: 44px
 }
 
+.pd-0{
+  padding: 0 !important;
+}
+
 .page-main {
   position: absolute;
   top: 60px;
@@ -132,9 +136,36 @@
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: rgba(51, 167, 216, 0.21);
 }
+.box-gradient{
+  position: relative;
+  box-sizing: border-box;
+  border: 5px solid transparent;
+  background-clip: padding-box;
+  padding: 5px;
+  display: inline-flex;
+}
+.box-gradient::before{
+  content: '';
+  position: absolute;
+  margin: -5px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: inherit;
+  background: linear-gradient(to right, #00feec, #0053ff);
+  z-index: -1;
+}
+.txt-gradient{
+  background: linear-gradient(to right,#00feec, #0053ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 /* CUSTOM BOOTSTRAP */
-
+.navbar{
+  z-index: 10;
+}
 .navbar-light .navbar-nav .nav-link {
   color: #dcdcdc;
 }

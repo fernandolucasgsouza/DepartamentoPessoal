@@ -1,10 +1,12 @@
-<p>IRRF</p>
+<div class="h4 mt-2 mb-4 d-inline-block txt-gradient">
+    <i class="fas fa-search-dollar"></i> IRRF
+</div>
 
 <ng-container *ngFor="let irrfCollection of (irrfDatas$ | async)">
     <div class="container container-list">
         <div class="row row-scroll-bar">
             <div class="scroll-bar"></div>
-            <div class="col-lg-2 col-sm-12 border border-year"></div>
+            <div class="col-lg-2 col-sm-12 border-year"></div>
             <ng-container *ngFor="let irrfDatas of irrfCollection.datas; let i = index">
                 <div class="col-lg-2 col-sm-12 border border-{{i}}">
                     <div class="pecentage percent-irrf-{{i}}">{{irrfDatas.percentage}}%</div>
@@ -13,14 +15,16 @@
         </div>
         
         <div class="row row-custom">
+            
             <div class="col-lg-2 col-sm-12 column-custom">
-                <div class="column-0">
-                    <div class="w-100 d-flex flex-row">
-                        <div><strong class="font-featured">Ano:&nbsp;</strong></div> 
-                        <div>{{irrfCollection.year}}</div> 
-                    </div>
+              
+                <div class="w-100 h-100 d-flex flex-row align-items-end p-1">
+                    <div><strong>Ano:&nbsp;</strong></div> 
+                    <div>{{irrfCollection.year}}</div> 
                 </div>
+               
             </div>
+
             <div class="col-lg-2 col-sm-12 column-custom" *ngFor="let irrfDatas of irrfCollection.datas; let i = index">
                 <div class="column-0 border-grad-left-{{i}}">
                     <small>{{irrfDatas.description}}</small>

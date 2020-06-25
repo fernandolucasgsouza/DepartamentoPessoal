@@ -1,26 +1,24 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ImpostosComponent } from './components/impostos.component';
-import { ImpostoInssComponent } from './components/imposto-inss/imposto-inss.component';
-import { ImpostoIrrfComponent } from './components/imposto-irrf/imposto-irrf.component';
+import { HistoricoImpostosComponent, HistoricoImpostoInssComponent, HistoricoImpostoIrrfComponent } from './components';
 
 const routes: Routes = [
   {
-    path: '', component: ImpostosComponent,
+    path: '', component: HistoricoImpostosComponent,
     children: [
       {
-        path: 'inss', component: ImpostoInssComponent
+        path: 'inss', component: HistoricoImpostoInssComponent
       },
       {
-        path: 'irrf', component: ImpostoIrrfComponent
+        path: 'irrf', component: HistoricoImpostoIrrfComponent
       }
     ]
   }
 ];
 
 @NgModule({
-  declarations: [ImpostosComponent],
+  declarations: [HistoricoImpostosComponent],
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })

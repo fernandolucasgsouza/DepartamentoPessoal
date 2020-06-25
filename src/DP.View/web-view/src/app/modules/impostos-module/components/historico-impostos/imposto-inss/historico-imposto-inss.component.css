@@ -1,4 +1,4 @@
-@import '../../../../../assets/styles/impostos/impostos.css';
+@import '../../../../../../assets/styles/impostos/impostos.css';
 .flex-inss {
     display: flex;
     flex-direction: column;

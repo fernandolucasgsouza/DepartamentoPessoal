@@ -1,16 +1,18 @@
 <h4 class="text-center mt-5 mb-5 txt-color-3">Departamento Pessoal</h4>
+<div class="container">
+    <div class="container-access-dash">
+      <a class="btn-frame fs-30" [routerLink]="['/ferias/calcular']">
+        <i class="fas fa-umbrella-beach txt-color-3" ></i>
+        <span class="fs-18 text-center mt-2">Calcular Férias</span>
+      </a>
+      <div class="btn-frame fs-30" [routerLink]="['/inss']">
+        <i class="fas fa-umbrella-beach txt-color-3" ></i>
+        <span class="fs-18 text-center mt-2">Tabela INSS</span>
+      </div>
+      <div class="btn-frame fs-30" [routerLink]="['/impostos']">
+        <i class="fas fa-umbrella-beach txt-color-3" ></i>
+        <span class="fs-18 text-center mt-2">Tabela IRRF</span>
+      </div>
+  </div>
 
-<div class="container-access-dash">
-    <a class="btn-frame fs-30" [routerLink]="['/calcula-ferias']">
-      <i class="fas fa-umbrella-beach txt-color-3" ></i>
-      <span class="fs-18">Calc. Férias</span>
-    </a>
-    <div class="btn-frame fs-30" [routerLink]="['/inss']">
-      <i class="fas fa-umbrella-beach txt-color-3" ></i>
-      <span class="fs-18">Tab. INSS</span>
-    </div>
-    <div class="btn-frame fs-30" [routerLink]="['/impostos']">
-      <i class="fas fa-umbrella-beach txt-color-3" ></i>
-      <span class="fs-18">Tab. IRRF</span>
-    </div>
 </div>

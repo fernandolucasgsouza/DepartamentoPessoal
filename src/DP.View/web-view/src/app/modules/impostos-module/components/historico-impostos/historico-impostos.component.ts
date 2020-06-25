@@ -6,10 +6,10 @@ import { take } from 'rxjs/Operators';
 
 @Component({
   selector: 'fs-impostos',
-  templateUrl: './impostos.component.html',
-  styleUrls: ['./impostos.component.css']
+  templateUrl: './historico-impostos.component.html',
+  styleUrls: ['./historico-impostos.component.css']
 })
-export class ImpostosComponent implements OnInit {
+export class HistoricoImpostosComponent implements OnInit {
 
   public inssDatas$: Observable<any>;
   public irrfDatas: ITaxes[];

@@ -1,0 +1,13 @@
+<ng-container>
+    <section class="sec-modal-page bg-color-5">
+        <div class="container">
+            <div class="container-close-modal">
+                <div 
+                    *ngIf="buttonClose === 'show'" 
+                    class="close-modal" 
+                    (click)="closeModal()">&times;</div>
+            </div>
+            <ng-content #name></ng-content>
+        </div>
+    </section>
+</ng-container>

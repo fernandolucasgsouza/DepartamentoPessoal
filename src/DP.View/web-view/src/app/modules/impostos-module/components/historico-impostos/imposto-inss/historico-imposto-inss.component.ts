@@ -6,10 +6,10 @@ import { take } from 'rxjs/Operators';
 
 @Component({
   selector: 'fs-imposto-inss',
-  templateUrl: './imposto-inss.component.html',
-  styleUrls: ['./imposto-inss.component.css']
+  templateUrl: './historico-imposto-inss.component.html',
+  styleUrls: ['./historico-imposto-inss.component.css']
 })
-export class ImpostoInssComponent implements OnInit {
+export class HistoricoImpostoInssComponent implements OnInit {
 
   public inssDatas$: Observable<any>;
   public irrfDatas: ITaxes[];
@@ -19,7 +19,7 @@ export class ImpostoInssComponent implements OnInit {
   constructor(private serviceImpostos: ImpostosService) { }
 
   ngOnInit() {
-     this.getInss();
+    this.getInss();
     // this.getIrrf();
   }
 

@@ -6,10 +6,10 @@ import { take } from 'rxjs/Operators';
 
 @Component({
   selector: 'fs-imposto-irrf',
-  templateUrl: './imposto-irrf.component.html',
-  styleUrls: ['./imposto-irrf.component.css']
+  templateUrl: './historico-imposto-irrf.component.html',
+  styleUrls: ['./historico-imposto-irrf.component.css']
 })
-export class ImpostoIrrfComponent implements OnInit {
+export class HistoricoImpostoIrrfComponent implements OnInit {
 
   public irrfDatas$: Observable<any>;
   public isLoading = true;

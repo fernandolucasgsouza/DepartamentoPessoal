@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImpostoIrrfComponent } from './imposto-irrf.component';
+import { ModalComponent } from './modal.component';
 
-describe('ImpostoIrrfComponent', () => {
-  let component: ImpostoIrrfComponent;
-  let fixture: ComponentFixture<ImpostoIrrfComponent>;
+describe('ModalComponent', () => {
+  let component: ModalComponent;
+  let fixture: ComponentFixture<ModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImpostoIrrfComponent ]
+      declarations: [ ModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ImpostoIrrfComponent);
+    fixture = TestBed.createComponent(ModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

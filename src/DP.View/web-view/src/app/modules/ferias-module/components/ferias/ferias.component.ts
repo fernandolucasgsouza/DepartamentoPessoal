@@ -63,12 +63,18 @@ export class FeriasComponent implements OnInit {
 
   private getInss() {
     this.serviceImpostos.getInss()
-      .subscribe((resp: ITaxes[]) => this.inssList = resp);
+      .subscribe((resp: ITaxes[]) => {
+        this.inssList = resp;
+        this.serviceImpostos.taxesInss.next(this.inssList);
+      });
   }
 
   private getIrrf() {
     this.serviceImpostos.getIrrf()
-      .subscribe((resp: ITaxes[]) => this.irrfList = resp);
+      .subscribe((resp: ITaxes[]) => {
+        this.irrfList = resp;
+        this.serviceImpostos.taxesIrrf.next(this.irrfList);
+      });
   }
 
   private getDepentes() {

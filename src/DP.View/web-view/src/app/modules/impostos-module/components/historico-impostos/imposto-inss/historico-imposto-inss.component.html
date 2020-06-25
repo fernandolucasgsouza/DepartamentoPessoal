@@ -1,20 +1,33 @@
-<p>INSS</p>
+<div class="h4 mt-2 mb-4 d-inline-block txt-gradient">
+    <i class="fas fa-search-dollar"></i> INSS
+</div>
 
 <ng-container *ngFor="let inssCollection of (inssDatas$ | async)">
     <div class="container container-list">
         <div class="row row-scroll-bar">
             <div class="scroll-bar"></div>
+            <div class="col-lg-1 col-sm-12 border-year"></div>
             <ng-container *ngFor="let inssDatas of inssCollection.datas; let i = index">
-                <div class="col-lg-4 col-sm-12 border border-{{i}}">
+                <div class="col border border-{{i}}">
                     <div class="pecentage percent-inss-{{i}}">{{inssDatas.percentage}}%</div>
                 </div>
             </ng-container>
         </div>
         
         <div class="row row-custom">
-            <div class="col-lg-4 col-sm-12 column-custom" *ngFor="let inssDatas of inssCollection.datas; let i = index">
+            
+            <div class="col-lg-1 col-sm-12 column-custom">
+                
+                <div class="w-100 h-100 d-flex flex-row align-items-end p-1">
+                    <div><strong>Ano&nbsp;</strong></div> 
+                    <div>{{ inssCollection.year }}</div> 
+                </div>
+
+            </div>
+
+            <div class="col column-custom" *ngFor="let inssDatas of inssCollection.datas; let i = index">
                 <div class="column-0 border-grad-left-{{i}}">
-                    <small>Ano {{inssCollection.year}} - {{inssDatas.description}}</small>
+                    <small>{{inssDatas.description}}</small>
                     <div class="flex-inss">
                         <div class="w-100 d-flex flex-row">
                             <div><strong>De:&nbsp;</strong></div> 

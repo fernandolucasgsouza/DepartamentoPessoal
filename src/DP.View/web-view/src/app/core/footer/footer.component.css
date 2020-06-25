@@ -1,5 +1,7 @@
 .fs-section-footer {
     padding: 40px 20px;
+    position: relative;
+    z-index: 20;
   }
 
   .fs-colum-footer, .fs-browsers {

@@ -9,6 +9,7 @@ import { SelectComponent } from './components/select/select.component';
 import { TextAreaComponent } from './components/text-area/text-area.component';
 import { CalculaPercentualPipe } from './pipes/calcula-percentual/calcula-percentual.pipe';
 import { FormatCurrencyPipe } from './pipes/format-currency/format-currency.pipe';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 @NgModule({
@@ -17,9 +18,10 @@ import { FormatCurrencyPipe } from './pipes/format-currency/format-currency.pipe
     SelectComponent,
     ValidationMessageComponent,
     TextAreaComponent,
+    ModalComponent,
 
     CalculaPercentualPipe,
-    FormatCurrencyPipe
+    FormatCurrencyPipe,
   ],
   imports: [
     CommonModule,
@@ -31,10 +33,12 @@ import { FormatCurrencyPipe } from './pipes/format-currency/format-currency.pipe
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+
     InputComponent,
     SelectComponent,
     TextAreaComponent,
     ValidationMessageComponent,
+    ModalComponent,
 
     CalculaPercentualPipe,
     FormatCurrencyPipe

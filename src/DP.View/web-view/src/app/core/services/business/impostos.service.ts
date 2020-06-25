@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, BehaviorSubject } from 'rxjs';
 
 import { ITaxes } from '../../interfaces';
 import { ColletionBaseService } from '../base/colletion-base.service';
@@ -8,6 +8,9 @@ import { ColletionBaseService } from '../base/colletion-base.service';
   providedIn: 'root'
 })
 export class ImpostosService {
+
+  public taxesInss = new BehaviorSubject(null);
+  public taxesIrrf = new BehaviorSubject(null);
 
   constructor(private base: ColletionBaseService<ITaxes>) { }
 
