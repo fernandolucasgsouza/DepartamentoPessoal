@@ -10,6 +10,8 @@ import { TextAreaComponent } from './components/text-area/text-area.component';
 import { CalculaPercentualPipe } from './pipes/calcula-percentual/calcula-percentual.pipe';
 import { FormatCurrencyPipe } from './pipes/format-currency/format-currency.pipe';
 import { ModalComponent } from './components/modal/modal.component';
+import { TabelaInssComponent } from './components/business/impostos/tabela-inss/tabela-inss.component';
+import { TabelaIrrfComponent } from './components/business/impostos/tabela-irrf/tabela-irrf.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { ModalComponent } from './components/modal/modal.component';
     ValidationMessageComponent,
     TextAreaComponent,
     ModalComponent,
+    TabelaInssComponent,
+    TabelaIrrfComponent,
 
     CalculaPercentualPipe,
     FormatCurrencyPipe,
@@ -39,6 +43,8 @@ import { ModalComponent } from './components/modal/modal.component';
     TextAreaComponent,
     ValidationMessageComponent,
     ModalComponent,
+    TabelaInssComponent,
+    TabelaIrrfComponent,
 
     CalculaPercentualPipe,
     FormatCurrencyPipe

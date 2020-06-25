@@ -4,11 +4,11 @@ import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'fs-ferias-tabelas-impostos',
-  templateUrl: './ferias-tabelas-impostos.component.html',
-  styleUrls: ['./ferias-tabelas-impostos.component.css']
+  selector: 'fs-tabelas-impostos',
+  templateUrl: './tabelas-impostos.component.html',
+  styleUrls: ['./tabelas-impostos.component.css']
 })
-export class FeriasTabelaImpostosComponent implements OnInit {
+export class TabelasImpostosComponent implements OnInit {
 
   public title: string;
   route$ = new Observable();

@@ -1,0 +1,9 @@
+<fs-modal buttonClose='show'>
+    <h5 class="title-modal m-0">Tabela {{title | uppercase}}</h5>
+    <h2>Em desenvolvimento </h2>
+
+    <fs-tabela-inss *ngIf="title.toLowerCase() === 'inss'"></fs-tabela-inss>
+    <fs-tabela-irrf *ngIf="title.toLowerCase() === 'irrf'"></fs-tabela-irrf>
+</fs-modal>
+
+

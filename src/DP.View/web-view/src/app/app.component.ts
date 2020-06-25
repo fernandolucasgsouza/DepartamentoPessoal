@@ -14,12 +14,12 @@ import { routerTransition } from './core/providers/animations/router-animation';
 export class AppComponent {
   title = 'Departamento Pessoal';
 
-  public getState(outlet: RouterOutlet) {
-    return outlet.activatedRouteData.state;
-  }
-
   constructor(routerCustomService: RouterCustomService) {
     routerCustomService.getUrl();
+  }
+
+  public getState(outlet: RouterOutlet) {
+    return outlet.activatedRouteData.state;
   }
 }
 
