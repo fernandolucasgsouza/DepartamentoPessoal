@@ -1,3 +1,24 @@
-<pre>
-    {{ (inssDatas$ | async) | json }}
-</pre>
+<ng-container *ngIf="inssDatas$ | async as inss; else loading">
+    <h6 class="mb-5">Vingente em {{inss[inss.length -1].year}}</h6>
+    <table class="table table-borderless table-striped table-hover  table-responsive-sm">
+        <thead class="thead-brown-50">
+        <tr>
+            <th scope="col">Descrição</th>
+            <th class="text-right" scope="col">De</th>
+            <th class="text-right" scope="col">Até</th>
+            <th class="text-right" scope="col">Percentual</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of inss[inss.length -1].datas">
+                <td scope="row">Salário - {{item.description}}</td>
+                <td class="text-right">{{item.minimum | formatCurrency}}</td>
+                <td class="text-right">{{item.maximum | formatCurrency}}</td>
+                <td class="text-right">{{item.percentage}}%</td>
+            </tr>
+        </tbody>
+    </table>
+</ng-container>
+<ng-template #loading>
+    <div>Aguarde ...</div>
+</ng-template>

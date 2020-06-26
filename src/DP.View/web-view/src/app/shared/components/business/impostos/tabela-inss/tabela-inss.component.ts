@@ -11,6 +11,7 @@ import { ImpostosService } from 'src/app/core/services';
 export class TabelaInssComponent implements OnInit {
 
   public inssDatas$ = new Observable();
+  public inssDatas2 = new Observable();
 
   constructor(private impostosService: ImpostosService) {
   }
@@ -19,7 +20,7 @@ export class TabelaInssComponent implements OnInit {
     this.getInss();
   }
 
-  public async getInss() {
-    this.inssDatas$ = await this.impostosService.getInss();
+  public getInss() {
+    this.inssDatas$ = this.impostosService.getInss();
   }
 }

@@ -22,4 +22,8 @@ export class TabelaIrrfComponent implements OnInit {
   public async getIrrf() {
     this.irrfDatas$ = await this.impostosService.getIrrf();
   }
+
+  validateTeto(description: string) {
+    return description.toLowerCase().replace(/ /gi, '') === 'faixa05';
+  }
 }

@@ -1,3 +1,31 @@
-<pre>
-    {{ (irrfDatas$ | async) | json }}
-</pre>
+
+<ng-container  *ngIf="irrfDatas$ | async as irrf; else loading">
+    <h6 class="mb-5">Vingente em {{irrf[irrf.length -1].year}}</h6>
+    <table class="table table-borderless table-striped table-hover  table-responsive-sm">
+        <thead class="thead-brown-50">
+        <tr>
+            <th scope="col">Descrição</th>
+            <th class="text-right" scope="col">De</th>
+            <th class="text-right" scope="col">Até</th>
+            <th class="text-right" scope="col">Percentual</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of irrf[irrf.length -1].datas">
+                <td scope="row">Salário - {{item.description}}</td>
+                <ng-container *ngIf="!validateTeto(item.description); else teto">
+                    <td class="text-right">{{item.minimum | formatCurrency}}</td>
+                    <td class="text-right">{{item.maximum | formatCurrency}}</td>
+                </ng-container>
+                <ng-template #teto>
+                    <td class="text-center" colspan="2"><b>igual</b> ou <b>maior</b> que {{item.minimum | formatCurrency}}</td>
+                </ng-template>
+                
+                <td class="text-right">{{item.percentage}}%</td>
+            </tr>
+        </tbody>
+    </table>
+</ng-container>
+<ng-template #loading>
+    <div>Aguarde ...</div>
+</ng-template>

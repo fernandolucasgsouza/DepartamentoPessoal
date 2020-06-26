@@ -82,7 +82,7 @@
         background-color: #fff;
         z-index: 1;
         -webkit-animation: scroll_bar 3600ms 0s 1 ease-in-out forwards;
-                animation: scroll_bar 3600ms 0s 1 ease-in-out forwards;
+        animation: scroll_bar 3600ms 0s 1 ease-in-out forwards;
     }
     @-webkit-keyframes scroll_bar {
         0% {
@@ -153,35 +153,40 @@
     }
     .percent-inss-0 {
         -webkit-animation: display-circle 1000ms 670ms 1 ease-in-out forwards;
-                animation: display-circle 1000ms 670ms 1 ease-in-out forwards;
+        animation: display-circle 1000ms 670ms 1 ease-in-out forwards;
     }
     .percent-inss-1 {
         -webkit-animation: display-circle 1000ms 1500ms 1 ease-in-out forwards;
-                animation: display-circle 1000ms 1500ms 1 ease-in-out forwards;
+        animation: display-circle 1000ms 1500ms 1 ease-in-out forwards;
     }
     .percent-inss-2 {
         -webkit-animation: display-circle 1000ms 2300ms 1 ease-in-out forwards;
-                animation: display-circle 1000ms 2300ms 1 ease-in-out forwards;
+        animation: display-circle 1000ms 2300ms 1 ease-in-out forwards;
     }
+    .percent-inss-3 {
+        -webkit-animation: display-circle 1000ms 2300ms 1 ease-in-out forwards;
+        animation: display-circle 1000ms 2300ms 1 ease-in-out forwards;
+    }
+    
     .percent-irrf-0 {
         -webkit-animation: display-circle 1000ms 900ms 1 ease-in-out forwards;
-                animation: display-circle 1000ms 900ms 1 ease-in-out forwards;
+        animation: display-circle 1000ms 900ms 1 ease-in-out forwards;
     }
     .percent-irrf-1 {
         -webkit-animation: display-circle 1000ms 1300ms 1 ease-in-out forwards;
-                animation: display-circle 1000ms 1300ms 1 ease-in-out forwards;
+        animation: display-circle 1000ms 1300ms 1 ease-in-out forwards;
     }
     .percent-irrf-2 {
         -webkit-animation: display-circle 1000ms 1700ms 1 ease-in-out forwards;
-                animation: display-circle 1000ms 1700ms 1 ease-in-out forwards;
+        animation: display-circle 1000ms 1700ms 1 ease-in-out forwards;
     }
     .percent-irrf-3 {
         -webkit-animation: display-circle 1000ms 2100ms 1 ease-in-out forwards;
-                animation: display-circle 1000ms 2100ms 1 ease-in-out forwards;
+        animation: display-circle 1000ms 2100ms 1 ease-in-out forwards;
     }
     .percent-irrf-4 {
         -webkit-animation: display-circle 1000ms 2500ms 1 ease-in-out forwards;
-                animation: display-circle 1000ms 2500ms 1 ease-in-out forwards;
+        animation: display-circle 1000ms 2500ms 1 ease-in-out forwards;
     }
     @-webkit-keyframes display-circle {
         0% {

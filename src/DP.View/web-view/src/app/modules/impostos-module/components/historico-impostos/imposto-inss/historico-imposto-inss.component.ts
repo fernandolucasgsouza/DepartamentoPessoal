@@ -20,16 +20,10 @@ export class HistoricoImpostoInssComponent implements OnInit {
 
   ngOnInit() {
     this.getInss();
-    // this.getIrrf();
   }
 
   public async getInss(): Promise<void> {
     this.inssDatas$ = await this.serviceImpostos.getInss();
     this.inssDatas$.pipe(take(1)).subscribe(() => this.isLoading = false);
   }
-
-  public getIrrf() {
-
-  }
-
 }
