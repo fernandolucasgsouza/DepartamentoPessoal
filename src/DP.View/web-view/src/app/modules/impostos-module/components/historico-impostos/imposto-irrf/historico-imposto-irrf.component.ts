@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ITaxes } from 'src/app/core/interfaces';
 import { ImpostosService } from 'src/app/core/services';
-import { take } from 'rxjs/Operators';
+import { take } from 'rxjs/internal/operators/take';
+import { ITaxes } from 'src/app/core/interfaces';
+import { Orderby } from 'src/app/core/enums/orderby';
 
 @Component({
   selector: 'fs-imposto-irrf',
@@ -11,9 +12,8 @@ import { take } from 'rxjs/Operators';
 })
 export class HistoricoImpostoIrrfComponent implements OnInit {
 
-  public irrfDatas$: Observable<any>;
-  public isLoading = true;
-  public loading = 'Aguarde...';
+  public datas$: Observable<any>;
+  public irrfCollection: ITaxes[] = [];
 
   constructor(private serviceImpostos: ImpostosService) { }
 
@@ -22,8 +22,21 @@ export class HistoricoImpostoIrrfComponent implements OnInit {
   }
 
   public async getIrrf() {
-    this.irrfDatas$ = await this.serviceImpostos.getIrrf();
-    this.irrfDatas$.pipe(take(1)).subscribe(() => this.isLoading = false);
+    this.datas$ = await this.serviceImpostos.getIrrf();
+    this.datas$.pipe(take(1)).subscribe((data) => {
+      if (!data) { return; }
+      this.orderby(data, 'year', Orderby.DESC);
+      this.irrfCollection = data;
+    });
+  }
+
+  private orderby(array, itemOrder: string, typeOrder: Orderby = Orderby.ESC) {
+    if (typeOrder === Orderby.ESC) {
+      return array.sort((a, b) => a[itemOrder] - b[itemOrder]);
+    }
+    if (typeOrder === Orderby.DESC) {
+      return array.sort((a, b) => b[itemOrder] - a[itemOrder]);
+    }
   }
 
 }

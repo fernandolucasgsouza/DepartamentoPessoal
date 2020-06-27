@@ -2,53 +2,69 @@
     <i class="fas fa-search-dollar"></i> IRRF
 </div>
 
-<ng-container *ngFor="let irrfCollection of (irrfDatas$ | async)">
-    <div class="container container-list mb-5">
-        <div class="row row-scroll-bar">
-            <div class="scroll-bar"></div>
-            <div class="col-lg-2 col-sm-12 border-year"></div>
-            <ng-container *ngFor="let irrfDatas of irrfCollection.datas; let i = index">
-                <div class="col-lg-2 col-sm-12 border border-{{i}}">
-                    <div class="pecentage percent-irrf-{{i}}">{{irrfDatas.percentage}}%</div>
-                </div>
-            </ng-container>
-        </div>
-        
-        <div class="row row-custom">
-            
-            <div class="col-lg-2 col-sm-12 column-custom">
-              
-                <div class="w-100 h-100 d-flex flex-row align-items-end p-1">
-                    <div><strong>Ano:&nbsp;</strong></div> 
-                    <div>{{irrfCollection.year}}</div> 
-                </div>
-               
-            </div>
+<ng-container *ngIf="!!irrfCollection; else loading">
 
-            <div class="col-lg-2 col-sm-12 column-custom" *ngFor="let irrfDatas of irrfCollection.datas; let i = index">
-                <div class="column-0 border-grad-left-{{i}}">
-                    <small>{{irrfDatas.description}}</small>
-                    <div class="d-flex flex-column">
-                        <div class="w-100 d-flex flex-row">
-                            <div><strong class="font-featured" >
-                               <span *ngIf="i === irrfCollection.datas.length -1">A Partir</span> De:&nbsp;</strong></div> 
-                            <div>{{irrfDatas.minimum }}</div> 
-                        </div>
-                        <div *ngIf="i !== irrfCollection.datas.length -1" class="w-100 d-flex flex-row">
-                            <div><strong class="font-featured">Até:&nbsp;</strong></div> 
-                            <div>{{irrfDatas.maximum}}</div> 
-                        </div>
-                        <div class="w-100 d-flex flex-row percent-mobile">
-                            <div><strong class="font-featured">Percentual:&nbsp;</strong></div> 
-                            <div>{{irrfDatas.percentage}}%</div> 
-                        </div>
-                        <div class="w-100 d-flex flex-row">
-                            <div><strong class="font-featured">Dedução:&nbsp;</strong></div> 
-                            <div>{{irrfDatas.deduction}}</div> 
+    <ng-container *ngFor="let irrfMap of irrfCollection">
+        <div class="container container-list mb-5">
+            <div class="row row-scroll-bar">
+                
+                <div class="scroll-bar"></div>
+                <div class="col-lg-2 col-sm-12 border-year"></div>
+                
+                <ng-container *ngFor="let data of irrfMap.datas; let i = index">
+                    <div class="col-lg-2 col-sm-12 border border-{{i}}">
+                        <div class="pecentage percent-irrf-{{i}}">{{data.percentage}}%</div>
+                    </div>
+                </ng-container>
+
+            </div>
+            
+            <div class="row row-custom">
+                
+                <div class="col-lg-2 col-sm-12 column-custom">
+                    <div class="w-100 h-100 d-flex flex-row align-items-end p-1">
+                        <div><strong>Ano:&nbsp;</strong></div> 
+                        <div>{{irrfMap.year}}</div> 
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-sm-12 column-custom" *ngFor="let data of irrfMap.datas; let i = index">
+                    <div class="column-0 border-grad-left-{{i}}">
+                        <small>{{data.description}}</small>
+                        <div class="d-flex flex-column">
+                            
+                            <div class="w-100 d-flex flex-row">
+                                <div><strong class="font-featured" >
+                                <span *ngIf="i === irrfMap.datas.length -1">A Partir</span> De:&nbsp;</strong></div> 
+                                <div>{{data.minimum }}</div> 
+                            </div>
+                            
+                            <div *ngIf="i !== irrfMap.datas.length -1" class="w-100 d-flex flex-row">
+                                <div><strong class="font-featured">Até:&nbsp;</strong></div> 
+                                <div>{{data.maximum}}</div> 
+                            </div>
+                            
+                            <div class="w-100 d-flex flex-row percent-mobile">
+                                <div><strong class="font-featured">Percentual:&nbsp;</strong></div> 
+                                <div>{{data.percentage}}%</div> 
+                            </div>
+                            
+                            <div class="w-100 d-flex flex-row">
+                                <div><strong class="font-featured">Dedução:&nbsp;</strong></div> 
+                                <div>{{data.deduction}}</div> 
+                            </div>
+
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
-    </div>
+    </ng-container>
+
 </ng-container>
+<ng-template #loading>
+    <h4 class="m-5 text-center">
+        Aguarde ...
+    </h4>
+</ng-template>

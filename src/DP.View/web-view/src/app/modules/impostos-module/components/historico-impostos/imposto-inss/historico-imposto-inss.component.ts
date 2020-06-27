@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/Operators';
+
 import { ITaxes } from 'src/app/core/interfaces';
 import { ImpostosService } from 'src/app/core/services';
-import { take } from 'rxjs/Operators';
+import { Orderby } from 'src/app/core/enums/orderby';
 
 @Component({
   selector: 'fs-imposto-inss',
@@ -11,10 +13,8 @@ import { take } from 'rxjs/Operators';
 })
 export class HistoricoImpostoInssComponent implements OnInit {
 
-  public inssDatas$: Observable<any>;
-  public irrfDatas: ITaxes[];
-  public isLoading = true;
-  public loading = 'Aguarde...';
+  public datas$: Observable<any>;
+  public inssCollection: ITaxes[] = [];
 
   constructor(private serviceImpostos: ImpostosService) { }
 
@@ -22,8 +22,21 @@ export class HistoricoImpostoInssComponent implements OnInit {
     this.getInss();
   }
 
-  public async getInss(): Promise<void> {
-    this.inssDatas$ = await this.serviceImpostos.getInss();
-    this.inssDatas$.pipe(take(1)).subscribe(() => this.isLoading = false);
+  private async getInss(): Promise<void> {
+    this.datas$ = await this.serviceImpostos.getInss();
+    this.datas$.pipe(take(1)).subscribe((data) => {
+      if (!data) { return; }
+      this.orderby(data, 'year', Orderby.DESC);
+      this.inssCollection = data;
+    });
+  }
+
+  private orderby(array, itemOrder: string, typeOrder: Orderby = Orderby.ESC) {
+    if (typeOrder === Orderby.ESC) {
+      return array.sort((a, b) => a[itemOrder] - b[itemOrder]);
+    }
+    if (typeOrder === Orderby.DESC) {
+      return array.sort((a, b) => b[itemOrder] - a[itemOrder]);
+    }
   }
 }
